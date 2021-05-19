@@ -1,4 +1,4 @@
-package com.lebi.model;
+package com.lebi.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class BancoDeDados {
-	private Connection connection = null;
-	private Statement statement = null;
-	private ResultSet resultset = null;
+	public Connection connection = null;
+	public Statement statement = null;
+	public ResultSet resultset = null;
 	
 	public void conectar() {
 		String servidor = "jdbc:mysql://localhost:3306/lebi";

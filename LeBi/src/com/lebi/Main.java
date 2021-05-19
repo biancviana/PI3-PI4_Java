@@ -1,7 +1,7 @@
 package com.lebi;
 	
-import com.lebi.model.BancoDeDados;
-import com.lebi.gui.*;
+import com.lebi.controller.*;
+import com.lebi.dao.BancoDeDados;
 import com.lebi.model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +15,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = FXMLLoader.load(getClass().getResource("gui/principal.fxml"));
+			BorderPane root = FXMLLoader.load(getClass().getResource("view/Login.fxml"));
 			Scene scene = new Scene(root,600,500);
-			scene.getStylesheets().add(getClass().getResource("gui/application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("view/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
@@ -26,14 +26,6 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		BancoDeDados bd = new BancoDeDados();
-		bd.conectar();
-		if(bd.estaConectado()) {
-			bd.listarAgenda();
-			bd.desconectar();
-		} else {
-			System.out.println("Não foi possível conectar ao banco de dados");
-		}
 		launch(args);
 	}
 }
