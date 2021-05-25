@@ -31,6 +31,11 @@ public class BancoDeDados {
 		}
 	}
 	
+	public Connection getConnection() {
+		return this.connection;
+	}
+	
+	
 	public void listarAgenda() {
 		try {
 			String query = "SELECT * FROM agenda";

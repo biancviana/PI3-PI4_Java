@@ -1,16 +1,13 @@
 package com.lebi.model;
 
-public class Medico {
-	private int id;
-	private String nome;
+public class Medico extends Usuario{
+
 	private String especialidade;
 	private String crm;
 	
-	public int getId() {return id;}
-	public void setId(int id) {this.id = id;}
-	
-	public String getNome() {return nome;}	
-	public void setNome(String nome) {this.nome = nome;}
+	public Medico(String nome, String email) {
+		super(nome, email);
+	}
 	
 	public String getEspecialidade() {return especialidade;}
 	public void setEspecialidade(String especialidade) {this.especialidade = especialidade;}

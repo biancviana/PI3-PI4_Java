@@ -1,14 +1,10 @@
 package com.lebi;
 	
-import com.lebi.controller.*;
-import com.lebi.dao.BancoDeDados;
-import com.lebi.model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-
 
 public class Main extends Application {
 	

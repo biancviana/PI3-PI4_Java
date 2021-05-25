@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="652.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lebi.controller.AgendaEspecialistaController">
+   <children>
+      <TableView fx:id="tbAgendaEspecialista" layoutX="124.0" layoutY="100.0" prefHeight="302.0" prefWidth="404.0">
+        <columns>
+          <TableColumn prefWidth="168.0" text="Médico" />
+          <TableColumn minWidth="0.0" prefWidth="149.0" text="Dia" />
+            <TableColumn prefWidth="87.0" text="Horário" />
+        </columns>
+      </TableView>
+      <Label layoutX="188.0" layoutY="30.0" text="Faça o seu agendamento">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
