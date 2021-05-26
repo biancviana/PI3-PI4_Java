@@ -4,32 +4,28 @@ import com.lebi.dao.UsuarioDao;
 
 public class Paciente extends Usuario{
 	private String cpf;
-	private String senha;
 
-	
 	
 	public Paciente(String nome, String email) {
 		super(nome, email);
 	}
 	
 	public Paciente(String nome, String cpf, String telefone, String endereco, String senha, String email) {
-		nome = super.getNome();
+		this.nome = nome;
 		this.cpf = cpf;
-		telefone = super.getTelefone();
-		endereco = super.getEndereco();
+		this.telefone = telefone;
+		this.endereco = endereco;
 		this.senha = senha;
-		email = super.getEmail();
+		this.email = email;
+
 	}
-	
-	public String getSenha() {return senha;}
-	public void setSenha(String senha) {this.senha = senha;}
-	
+		
 	public String getCpf() {return cpf;}
 	public void setCpf(String cpf) {this.cpf = cpf;}
 		
 	public boolean cadastro() {
 		UsuarioDao ud = new UsuarioDao();
-		Boolean paciente = ud.cadastrar(getNome(), getCpf(), getTelefone(), getEndereco(), getSenha(), getEmail());
+		Boolean paciente = ud.cadastrar(nome, cpf, telefone, endereco, senha, email);
 		
 		if(paciente) {
 			return true;

@@ -31,10 +31,13 @@ public class CadastroPacienteController implements Initializable{
 	
 	@FXML
 	public void cadastrar() {
-		Paciente paciente = new Paciente(txNome.getText(), txCpf.getText(), txTelefone.getText(), txEndereco. getText(), txSenha.getText(), txEmail.getText());
+		Paciente paciente = new Paciente(txNome.getText(), txCpf.getText(), txTelefone.getText(), txEndereco.getText(), txSenha.getText(), txEmail.getText());
 		
 		if (paciente.cadastro()) {
 			System.out.println("Paciente cadastrado");
+		}
+		else {
+			System.out.println("Ocorreu um erro");
 		}
 	}
 

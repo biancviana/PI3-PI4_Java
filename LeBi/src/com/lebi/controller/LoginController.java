@@ -8,6 +8,7 @@ import com.lebi.dao.BancoDeDados;
 import com.lebi.model.Paciente;
 import com.lebi.model.Usuario;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -62,14 +63,13 @@ public class LoginController implements Initializable {
 	}
 	
 	@FXML
-	public void cadastrar() {
-		
+	protected void cadastrarPaciente(ActionEvent event) {
+
 		Parent root = null;
 		Stage stage = (Stage) btCadastrar.getScene().getWindow();
 		FXMLLoader loader = new FXMLLoader();
 		try {
-			root = loader.load(getClass().getResource("../view/CadastroPaciente.fxml").openStream());
-			
+			root = loader.load(getClass().getResource("../view/CadastroPaciente.fxml").openStream());	
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();

@@ -47,10 +47,8 @@ public class UsuarioDao {
 				String query = "insert into pacientes (nome, email, cpf, telefone, endereco, senha) "
 						+ "values('" + nome + "', '" + email + "', '" + cpf + "', '" + telefone + "', '" + endereco + "', '" + senha + "')";
 				Statement st = bd.getConnection().createStatement();
-				ResultSet rs = st.executeQuery(query);
-				while(rs.next()) {
+				st.executeUpdate(query);
 					return true;
-				}
 				
 			}catch(Exception e) {
 				System.out.println("Erro: " + e.getStackTrace());

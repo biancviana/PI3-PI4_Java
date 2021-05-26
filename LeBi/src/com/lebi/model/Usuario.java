@@ -4,12 +4,12 @@ package com.lebi.model;
 import com.lebi.dao.UsuarioDao;
 
 public class Usuario {
-	private int id;
-	private String nome;
-	private String email;
-	private String telefone;
-	private String senha;
-	private String endereco;
+	protected int id;
+	protected String nome;
+	protected String email;
+	protected String telefone;
+	protected String senha;
+	protected String endereco;
 	
 	public Usuario(){}
 	
@@ -32,6 +32,9 @@ public class Usuario {
 	
 	public String getEndereco() {return endereco;}
 	public void setEndereco(String endereco) {this.endereco = endereco;}
+	
+	public String getSenha() {return senha;}
+	public void setSenha(String senha) {this.senha = senha;}
 	
 	UsuarioDao ud = new UsuarioDao();
 	
