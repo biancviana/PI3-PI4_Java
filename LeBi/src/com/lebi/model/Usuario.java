@@ -18,6 +18,14 @@ public class Usuario {
 		this.senha = senha;
 	}
 	
+	public Usuario(String nome, String telefone, String endereco, String senha, String email) {
+		this.nome = nome;
+		this.telefone = telefone;
+		this.endereco = endereco;
+		this.senha = senha;
+		this.email = email;
+	}
+	
 	public int getId() {return id;}
 	public void setId(int id) {this.id = id;}
 	
@@ -47,6 +55,10 @@ public class Usuario {
 			return user;
 		}
 		return null;
+	}
+	
+	public boolean cadastro() {
+			return false;	
 	}
 	
 

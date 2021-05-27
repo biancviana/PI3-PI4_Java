@@ -11,13 +11,8 @@ public class Paciente extends Usuario{
 	}
 	
 	public Paciente(String nome, String cpf, String telefone, String endereco, String senha, String email) {
-		this.nome = nome;
+		super(nome, telefone, endereco, senha, email);
 		this.cpf = cpf;
-		this.telefone = telefone;
-		this.endereco = endereco;
-		this.senha = senha;
-		this.email = email;
-
 	}
 		
 	public String getCpf() {return cpf;}

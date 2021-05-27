@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lebi.controller.PacienteController">
+   <children>
+      <TableView fx:id="tbConsultas" layoutX="101.0" layoutY="83.0" prefHeight="229.0" prefWidth="399.0">
+        <columns>
+          <TableColumn prefWidth="105.0" text="Especialista" />
+          <TableColumn prefWidth="134.0" text="Médico" />
+            <TableColumn minWidth="0.0" prefWidth="78.0" text="Dia" />
+            <TableColumn prefWidth="81.0" text="Horário" />
+        </columns>
+      </TableView>
+      <Label layoutX="180.0" layoutY="14.0" text="Minhas Consultas">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="337.0" text="Agendar:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <MenuButton fx:id="mbEspecialidade" layoutX="128.0" layoutY="335.0" mnemonicParsing="false" text="Especialidade">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </MenuButton>
+   </children>
+</Pane>
