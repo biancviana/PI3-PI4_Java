@@ -1,5 +1,6 @@
 package com.lebi.model;
 
+import com.lebi.dao.PacienteDao;
 import com.lebi.dao.UsuarioDao;
 
 public class Paciente extends Usuario{
@@ -18,6 +19,8 @@ public class Paciente extends Usuario{
 	public String getCpf() {return cpf;}
 	public void setCpf(String cpf) {this.cpf = cpf;}
 		
+	
+	
 	public boolean cadastro() {
 		UsuarioDao ud = new UsuarioDao();
 		Boolean paciente = ud.cadastrar(nome, cpf, telefone, endereco, senha, email);
@@ -29,6 +32,12 @@ public class Paciente extends Usuario{
 			return false;
 		}
 		
+	}
+	
+	public void escolhaEspecialidade() {
+		PacienteDao pd = new PacienteDao();
+		Medico medico = new Medico();
+		pd.escolhaEspecialidade(medico.getEspecialidade());
 	}
 
 }

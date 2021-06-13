@@ -28,10 +28,21 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <MenuButton fx:id="mbEspecialidade" layoutX="128.0" layoutY="335.0" mnemonicParsing="false" text="Especialidade">
+      <MenuButton fx:id="mbEspecialidade" layoutX="128.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#escolherEspecialidade" text="Especialidade">
         <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
+          <MenuItem mnemonicParsing="false" text="cardiologia" />
+          <MenuItem mnemonicParsing="false" text="clinico geral" />
+            <MenuItem mnemonicParsing="false" text="dermatologia" />
+            <MenuItem mnemonicParsing="false" text="endocrinologia" />
+            <MenuItem mnemonicParsing="false" text="gastroenterologia" />
+            <MenuItem mnemonicParsing="false" text="ginecologia" />
+            <MenuItem mnemonicParsing="false" text="neurologia" />
+            <MenuItem mnemonicParsing="false" text="oftalmologia" />
+            <MenuItem mnemonicParsing="false" text="oncologia" />
+            <MenuItem mnemonicParsing="false" text="ortopedia" />
+            <MenuItem mnemonicParsing="false" text="otorrinolaringologia" />
+            <MenuItem mnemonicParsing="false" text="pediatria" />
+            <MenuItem mnemonicParsing="false" text="pneumologia" />
         </items>
       </MenuButton>
    </children>

@@ -9,6 +9,8 @@ public class Medico extends Usuario{
 		super(nome, email);
 	}
 	
+	public Medico() {}
+	
 	public String getEspecialidade() {return especialidade;}
 	public void setEspecialidade(String especialidade) {this.especialidade = especialidade;}
 	
