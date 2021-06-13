@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.lebi.Main;
 import com.lebi.dao.BancoDeDados;
 
 import javafx.event.ActionEvent;
@@ -12,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -20,6 +22,8 @@ public class PacienteController implements Initializable{
 	
 	@FXML private TableView tbConsultas;
 	@FXML private MenuButton mbEspecialidade;
+	@FXML private Button btAgendar;
+	@FXML private Button btVoltar;
 	
 
 	@Override
@@ -30,7 +34,8 @@ public class PacienteController implements Initializable{
 	@FXML
 	public void escolherEspecialidade(ActionEvent event) {
 		Parent root = null;
-		Stage stage = (Stage) mbEspecialidade.getScene().getWindow();
+		//Stage stage = (Stage) mbEspecialidade.getScene().getWindow();
+		Stage stage = (Stage) btAgendar.getScene().getWindow();
 		System.out.println("teste");
 		FXMLLoader loader = new FXMLLoader();
 		try {
@@ -42,5 +47,14 @@ public class PacienteController implements Initializable{
 			e.printStackTrace();
 		}
 	}
+	
+	@FXML
+	public void voltarLogin()
+	{
+		Main principal = new Main();
+		principal.start(new Stage());
+	}
+	
+	
 
 }

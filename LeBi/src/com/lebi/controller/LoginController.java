@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.lebi.Main;
 import com.lebi.dao.BancoDeDados;
 import com.lebi.model.Paciente;
 import com.lebi.model.Usuario;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 
@@ -24,6 +27,7 @@ public class LoginController implements Initializable {
 	@FXML private TextField txSenha;	
 	@FXML private Button btLogar;
 	@FXML private Button btCadastrar;
+	@FXML private Button btSair;
 	
 	BancoDeDados bd = new BancoDeDados();
 
@@ -50,7 +54,9 @@ public class LoginController implements Initializable {
 				System.out.println("Logado");
 				
 			} catch (IOException e) {
-				e.printStackTrace();
+				e.printStackTrace();	
+				
+				
 			}
 
 			//DashController controller = (DashController) loader.getController();
@@ -59,6 +65,13 @@ public class LoginController implements Initializable {
 		}
 		else {
 			System.out.println("Usuário/senha inválido!");
+			
+			//O alert criado abaixo é como se fosse uma espécie de "janela", criada a partir dos set.
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText("ERRO!");
+			alert.setTitle("Login Inválido!");
+			alert.setContentText("Usuário/Senha inválidos! Tente novamente.");
+			alert.show();
 		}	
 	}
 	
@@ -77,6 +90,11 @@ public class LoginController implements Initializable {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	private void sairSistema() {
+	 Platform.exit();
 	}
 
 }

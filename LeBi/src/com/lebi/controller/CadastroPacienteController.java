@@ -3,6 +3,7 @@ package com.lebi.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.lebi.Main;
 import com.lebi.dao.BancoDeDados;
 import com.lebi.model.Paciente;
 
@@ -26,6 +27,7 @@ public class CadastroPacienteController implements Initializable{
 	@FXML TextField txEmail;
 	@FXML TextField txSenha;
 	@FXML Button btCadastrar;
+	@FXML Button btVoltar;
 	
 	BancoDeDados bd = new BancoDeDados();
 	
@@ -34,11 +36,20 @@ public class CadastroPacienteController implements Initializable{
 		Paciente paciente = new Paciente(txNome.getText(), txCpf.getText(), txTelefone.getText(), txEndereco.getText(), txSenha.getText(), txEmail.getText());
 		
 		if (paciente.cadastro()) {
-			System.out.println("Paciente cadastrado");
+			System.out.println("Paciente cadastrado!");
 		}
 		else {
-			System.out.println("Ocorreu um erro");
+			System.out.println("Ocorreu um erro!");
+			
+			
 		}
+	}
+	
+	@FXML
+	public void voltarLogin()
+	{
+		Main principal = new Main();
+		principal.start(new Stage());
 	}
 
 }
