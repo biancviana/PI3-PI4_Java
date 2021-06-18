@@ -51,7 +51,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button id="btLogar" fx:id="btAgendar" layoutX="190.0" layoutY="371.0" mnemonicParsing="false" onAction="#escolherEspecialidade" prefHeight="40.0" prefWidth="220.0" text="Agendar" />
+      <Button id="btAgendar" fx:id="btAgendar" layoutX="190.0" layoutY="371.0" mnemonicParsing="false" onAction="#escolherEspecialidade" prefHeight="40.0" prefWidth="220.0" text="Agendar" />
       <Button id="btCadastrar" fx:id="btVoltar" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#voltarLogin" prefHeight="27.0" prefWidth="81.0" text="Voltar">
          <font>
             <Font size="13.0" />
