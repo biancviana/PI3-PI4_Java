@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import com.lebi.Main;
 import com.lebi.dao.BancoDeDados;
 import com.lebi.model.Paciente;
@@ -43,6 +45,15 @@ public class LoginController implements Initializable {
 			Stage stage = (Stage) btLogar.getScene().getWindow();
 			FXMLLoader loader = new FXMLLoader();
 			
+			//Validando todos os campos do login como obrigatórios.
+			if (txLogin.getText().equals("") && txSenha.getText().equals(""))
+			{
+				JOptionPane.showMessageDialog(null, "Os campos [Usuário] e [Senha] são obrigatórios!", "AVISO", JOptionPane.WARNING_MESSAGE);
+				return;
+			}
+			
+			
+			//Se os campos não forem vazios, o cadastro do paciente é realizado. Se forem vazios, entra no if de cima.
 			try {
 				if(user instanceof Paciente) {
 					root = loader.load(getClass().getResource("../view/Paciente.fxml").openStream());
@@ -67,9 +78,9 @@ public class LoginController implements Initializable {
 			System.out.println("Usuário/senha inválido!");
 			
 			//O alert criado abaixo é como se fosse uma espécie de "janela", criada a partir dos set.
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText("ERRO!");
-			alert.setTitle("Login Inválido!");
+			Alert alert = new Alert(AlertType.ERROR);			
+			alert.setHeaderText("Login Inválido!");
+			alert.setTitle("ERRO AO LOGAR!");			
 			alert.setContentText("Usuário/Senha inválidos! Tente novamente.");
 			alert.show();
 		}	

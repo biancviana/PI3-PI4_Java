@@ -30,7 +30,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button id="btCadastrar" fx:id="btVoltar" layoutX="11.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#voltarLogin" prefHeight="27.0" prefWidth="81.0" text="Voltar">
+      <Button id="btVoltar" fx:id="btVoltar" layoutX="11.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#voltarLogin" prefHeight="27.0" prefWidth="81.0" text="Voltar">
          <font>
             <Font size="13.0" />
          </font>
