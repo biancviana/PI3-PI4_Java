@@ -61,6 +61,7 @@ public class LoginController implements Initializable {
 				
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
+				stage.setTitle("Tela do Paciente");
 				stage.show();
 				System.out.println("Logado");
 				

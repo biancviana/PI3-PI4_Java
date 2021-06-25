@@ -11,7 +11,6 @@ import com.lebi.model.Paciente;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -90,7 +89,7 @@ public class CadastroPacienteController implements Initializable{
 			Alert alert = new Alert(AlertType.INFORMATION);			
 			alert.setHeaderText("Paciente cadastrado com sucesso!");
 			alert.setTitle("CADASTRO REALIZADO!");		
-			alert.setContentText("Usuário/Senha inválidos! Tente novamente.");
+			alert.setContentText("Usuário/Senha validados! Prossiga.");
 			alert.show();
 		}
 		else {

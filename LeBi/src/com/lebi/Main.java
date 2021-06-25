@@ -15,6 +15,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root,600,500);
 			scene.getStylesheets().add(getClass().getResource("view/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Tela de Login");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
