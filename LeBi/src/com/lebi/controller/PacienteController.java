@@ -35,14 +35,12 @@ public class PacienteController implements Initializable{
 	@FXML
 	public void escolherEspecialidade(ActionEvent event) {
 		Parent root = null;
-		//Stage stage = (Stage) mbEspecialidade.getScene().getWindow();
 		Stage stage = (Stage) btAgendar.getScene().getWindow();
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			root = loader.load(getClass().getResource("../view/AgendaEspecialista.fxml").openStream());	
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
-			stage.setTitle("Tela de Agendamento");
 			stage.show();
 		}catch (IOException e) {
 			e.printStackTrace();

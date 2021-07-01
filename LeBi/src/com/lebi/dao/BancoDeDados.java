@@ -13,8 +13,8 @@ public class BancoDeDados {
 	public void conectar() {
 		String servidor = "jdbc:mysql://localhost:3306/lebi";
 		String usuario = "root";
-		//String senha = "Leh2019";
-		String senha = "1234";
+		String senha = "Leh2019";
+		//String senha = "1234";
 		String driver = "com.mysql.jdbc.Driver";
 		try {
 			Class.forName(driver);

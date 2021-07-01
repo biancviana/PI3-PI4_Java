@@ -33,7 +33,7 @@ CREATE  TABLE Medicos (
  
 CREATE TABLE Agenda (
 	id INT AUTO_INCREMENT PRIMARY KEY, 
-    horario time,
+    horario varchar(20),
 	dia varchar(20)
 );
 
@@ -51,7 +51,7 @@ CREATE TABLE consulta_paciente (
     email VARCHAR(100),
 	medico varchar (100),
     especialidade varchar (100),
-	horario time,
+	horario varchar (20),
 	dia varchar (20)
 );
 

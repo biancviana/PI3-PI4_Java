@@ -58,6 +58,7 @@ public class UsuarioDao {
 		else {
 			System.out.println("Não foi possível conectar ao banco de dados");		
 		}
+		bd.desconectar();
 		return false;
 			
 		
