@@ -6,9 +6,9 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
-import com.lebi.Main;
 import com.lebi.dao.BancoDeDados;
 import com.lebi.model.Paciente;
+import com.lebi.model.Sessao;
 import com.lebi.model.Usuario;
 
 import javafx.application.Platform;
@@ -56,7 +56,8 @@ public class LoginController implements Initializable {
 			//Se os campos não forem vazios, o cadastro do paciente é realizado. Se forem vazios, entra no if de cima.
 			try {
 				if(user instanceof Paciente) {
-					root = loader.load(getClass().getResource("../view/Paciente.fxml").openStream());
+					Sessao.getInstance().setEmail(txLogin.getText());
+					root = loader.load(getClass().getResource("../view/Paciente.fxml").openStream());			
 				}
 				
 				Scene scene = new Scene(root);

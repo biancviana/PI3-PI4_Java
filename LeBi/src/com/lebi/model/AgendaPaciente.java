@@ -1,29 +1,41 @@
 package com.lebi.model;
 
 public class AgendaPaciente {
-	private int id;
-	private Paciente paciente;
-	private Medico medico;
-	private AgendaMedico agenda_medico;
+	private String especialidade;
+	private String medico;
+	private String nome;
+	private String dia;
+	private String horario;
 	
-	public AgendaPaciente(int id, Paciente paciente, Medico medico, AgendaMedico agenda_medico) {
-		this.id = id;
-		this.paciente = paciente;
+	
+	public AgendaPaciente(String especialidade, String medico, String nome, String dia, String horario) {
+		
+		this.especialidade = especialidade;
 		this.medico = medico;
-		this.agenda_medico = agenda_medico;
+		this.nome = nome;
+		this.dia = dia;
+		this.horario = horario;
 	}
 	
-	public int getId() {return id;}
-	public void setId(int id) {this.id = id;}
+	public AgendaPaciente() {}
 	
-	public Paciente getPaciente() {return paciente;}
-	public void setPaciente(Paciente paciente) {this.paciente = paciente;}
+	public String getEspecialidade() {return especialidade;}
+	public void setEspecialidade(String especialidade) {this.especialidade = especialidade;}
 	
-	public Medico getMedico() {return medico;}
-	public void setMedico(Medico medico) {this.medico = medico;}
+	public String getMedico() {return medico;}
+	public void setMedico(String medico) {this.medico = medico;}
 	
-	public AgendaMedico getAgenda_medico() {return agenda_medico;}
-	public void setAgenda_medico(AgendaMedico agenda_medico) {this.agenda_medico = agenda_medico;}
+	public String getNome() {return nome;}
+	public void setNome(String nome) {this.nome = nome;}
+	
+	public String getDia() {return dia;}
+	public void setDia(String dia) {this.dia = dia;}
+	
+	public String getHorario() {return horario;}
+	public void setHorario(String horario) {this.horario = horario;}
+	
+	
+	
 	
 	
 }

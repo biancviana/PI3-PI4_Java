@@ -1,7 +1,5 @@
 package com.lebi.model;
 
-import java.util.Date;
-
 public class Agenda {
 	private Long id;
 	private String horario;

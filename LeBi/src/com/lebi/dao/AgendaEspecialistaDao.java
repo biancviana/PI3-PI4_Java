@@ -5,7 +5,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lebi.model.Agenda;
 import com.lebi.model.AgendaMedico;
 
 public class AgendaEspecialistaDao {

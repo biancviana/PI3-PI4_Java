@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
@@ -11,10 +12,10 @@
    <children>
       <TableView fx:id="tbConsultas" layoutX="101.0" layoutY="85.0" prefHeight="229.0" prefWidth="399.0">
         <columns>
-          <TableColumn prefWidth="105.0" text="Especialista" />
-          <TableColumn prefWidth="134.0" text="Médico" />
-            <TableColumn minWidth="0.0" prefWidth="78.0" text="Dia" />
-            <TableColumn prefWidth="81.0" text="Horário" />
+          <TableColumn fx:id="clEspecialidade" prefWidth="105.0" text="Especialista" />
+          <TableColumn fx:id="clMedico" prefWidth="134.0" text="Médico" />
+            <TableColumn fx:id="clDia" minWidth="0.0" prefWidth="78.0" text="Dia" />
+            <TableColumn fx:id="clHorario" prefWidth="81.0" text="Horário" />
         </columns>
       </TableView>
       <Label layoutX="180.0" layoutY="18.0" text="Minhas Consultas">
@@ -33,5 +34,6 @@
             <Font size="13.0" />
          </font>
       </Button>
+      <TextField fx:id="txUser" disable="true" layoutX="456.0" layoutY="13.0" prefHeight="21.0" prefWidth="130.0" />
    </children>
 </Pane>

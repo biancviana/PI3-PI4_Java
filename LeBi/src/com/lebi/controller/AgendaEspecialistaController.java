@@ -2,14 +2,12 @@ package com.lebi.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import com.lebi.dao.AgendaEspecialistaDao;
-import com.lebi.dao.BancoDeDados;
-import com.lebi.model.Agenda;
+import com.lebi.dao.PacienteDao;
 import com.lebi.model.AgendaMedico;
+import com.lebi.model.Sessao;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +17,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -34,17 +31,19 @@ public class AgendaEspecialistaController implements Initializable{
 	@FXML private TableColumn<AgendaMedico, String> clMedico = new TableColumn<AgendaMedico, String>("Nome");
 	@FXML private TableColumn<AgendaMedico, String> clDia  = new TableColumn<AgendaMedico, String>("Dia");
 	@FXML private TableColumn<AgendaMedico, String> clHorario  = new TableColumn<AgendaMedico, String>("Horário");
-	@FXML private Button btVoltar;
-	@FXML private TextField txEspecialidade, txMedico, txDia, txHorario;
+	@FXML private Button btVoltar, btAgendar;
+	@FXML private TextField txEspecialidade, txMedico, txDia, txHorario, txUser;
 	//@FXML private ComboBox<String> cbEspecialidade = new ComboBox<>();
 	
-	private List<String> especialidades = new ArrayList<String>();
-	private ObservableList<String> obsEspecialidades;
+	//private List<String> especialidades = new ArrayList<String>();
+	//private ObservableList<String> obsEspecialidades;
 	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		txUser.setText(Sessao.getInstance().getEmail());
 		initTable();
+		
 		//initComboBox();
 				
 	}
@@ -56,6 +55,7 @@ public class AgendaEspecialistaController implements Initializable{
 		cbEspecialidade.setItems(obsEspecialidades);
 	}*/
 		
+	@SuppressWarnings("unchecked")
 	public void initTable() {
 		tbAgendaEspecialista.setItems(atualizaTabela());
 		clEspecialidade.setCellValueFactory(new PropertyValueFactory<AgendaMedico, String>("especialidade"));
@@ -83,6 +83,17 @@ public class AgendaEspecialistaController implements Initializable{
 		
 		return consultaSelecionada;
 	}
+	
+	@FXML
+	public void cadastrarConsulta() {
+		PacienteDao consultaCadastrar = new PacienteDao();
+		boolean agendamento = consultaCadastrar.cadastrarConsulta(txUser.getText(), txEspecialidade.getText(), txMedico.getText(), txDia.getText(), txHorario.getText());
+		
+		if (agendamento) {
+			voltarPaciente();
+		}
+	}
+	
 	
 	@FXML
 	public void voltarPaciente()

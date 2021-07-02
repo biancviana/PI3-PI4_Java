@@ -1,6 +1,5 @@
 package com.lebi.model;
 
-import com.lebi.dao.PacienteDao;
 import com.lebi.dao.UsuarioDao;
 
 public class Paciente extends Usuario{
@@ -34,10 +33,5 @@ public class Paciente extends Usuario{
 		
 	}
 	
-	public void escolhaEspecialidade() {
-		PacienteDao pd = new PacienteDao();
-		Medico medico = new Medico();
-		pd.escolhaEspecialidade(medico.getEspecialidade());
-	}
 
 }
