@@ -31,9 +31,9 @@ public class PacienteController implements Initializable{
 	@FXML private TableColumn<AgendaPaciente, String> clMedico = new TableColumn<AgendaPaciente, String>("Médico");
 	@FXML private TableColumn<AgendaPaciente, String> clDia = new TableColumn<AgendaPaciente, String>("Dia");
 	@FXML private TableColumn<AgendaPaciente, String> clHorario = new TableColumn<AgendaPaciente, String>("Horário");
-	@FXML private Button btAgendar;
-	@FXML private Button btVoltar;
-	@FXML private TextField txUser;
+	
+	@FXML private Button btAgendar, btVoltar, btDesmarcar;
+	@FXML private TextField txUser, txEspecialista, txMedico, txDia, txHorario;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

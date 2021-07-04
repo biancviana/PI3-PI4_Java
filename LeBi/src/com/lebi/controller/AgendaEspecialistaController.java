@@ -11,12 +11,14 @@ import com.lebi.model.Sessao;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -31,29 +33,37 @@ public class AgendaEspecialistaController implements Initializable{
 	@FXML private TableColumn<AgendaMedico, String> clMedico = new TableColumn<AgendaMedico, String>("Nome");
 	@FXML private TableColumn<AgendaMedico, String> clDia  = new TableColumn<AgendaMedico, String>("Dia");
 	@FXML private TableColumn<AgendaMedico, String> clHorario  = new TableColumn<AgendaMedico, String>("Horário");
+	
+	@FXML private ComboBox<String> cbEspecialidade = new ComboBox<>();
+	
 	@FXML private Button btVoltar, btAgendar;
 	@FXML private TextField txEspecialidade, txMedico, txDia, txHorario, txUser;
-	//@FXML private ComboBox<String> cbEspecialidade = new ComboBox<>();
 	
-	//private List<String> especialidades = new ArrayList<String>();
-	//private ObservableList<String> obsEspecialidades;
-	
+		
+	String selecao = null;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		txUser.setText(Sessao.getInstance().getEmail());
 		initTable();
+		initComboBox();
 		
-		//initComboBox();
-				
+		cbEspecialidade.getSelectionModel().selectedItemProperty().addListener(
+				(observable, oldValue, newValue) -> initTable());
+		
 	}
 	
-	/*public void initComboBox() {		
-		especialidades.add("Cardiologia");
-		especialidades.add("Ortopedia");
-		obsEspecialidades = FXCollections.observableArrayList(especialidades);
-		cbEspecialidade.setItems(obsEspecialidades);
-	}*/
+	@FXML
+    void SelectComboBox(ActionEvent event) {
+		 selecao = cbEspecialidade.getSelectionModel().getSelectedItem().toString();	
+    }
+	
+	@SuppressWarnings("unchecked")
+	public void initComboBox() {		
+		ObservableList<String> especialidades = 
+		FXCollections.observableArrayList("cardiologia","clinico geral","dermatologia","endocrinologia","gastroenterologia","ginecologia","neurologia","oftalmologia","ortopedia","otorrinolaringologia","pneumologia");
+		cbEspecialidade.setItems(especialidades);
+	}
 		
 	@SuppressWarnings("unchecked")
 	public void initTable() {
@@ -66,9 +76,14 @@ public class AgendaEspecialistaController implements Initializable{
 		tbAgendaEspecialista.getColumns().setAll(clEspecialidade, clMedico, clDia, clHorario);
 	}
 	
-	public ObservableList<AgendaMedico> atualizaTabela(){
+	public ObservableList<AgendaMedico> atualizaTabela(){	
 		AgendaEspecialistaDao dao = new AgendaEspecialistaDao();
-		return FXCollections.observableArrayList(dao.listarAgenda());
+		if(selecao == null) {
+			return FXCollections.observableArrayList(dao.listarAgenda());
+		}
+		else {
+			return FXCollections.observableArrayList(dao.listaFiltrada(selecao));
+		}	
 	}
 	
 	@FXML

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="cbEspecialidade" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lebi.controller.AgendaEspecialistaController">
+<Pane fx:id="paneEspecialidade" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lebi.controller.AgendaEspecialistaController">
    <children>
       <TableView fx:id="tbAgendaEspecialista" layoutX="25.0" layoutY="92.0" onMouseClicked="#tbAgendaEspecialistaClicked" prefHeight="302.0" prefWidth="459.0">
         <columns>
@@ -29,7 +29,7 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <ComboBox fx:id="cbEspecialidade" layoutX="512.0" layoutY="92.0" prefWidth="150.0" promptText="Especialidade" />
+      <ComboBox fx:id="cbEspecialidade" layoutX="512.0" layoutY="92.0" onAction="#SelectComboBox" prefWidth="150.0" promptText="Especialidade" />
       <TextField fx:id="txMedico" disable="true" layoutX="513.0" layoutY="203.0" />
       <TextField fx:id="txDia" disable="true" layoutX="513.0" layoutY="237.0" />
       <TextField fx:id="txHorario" disable="true" layoutX="513.0" layoutY="270.0" />

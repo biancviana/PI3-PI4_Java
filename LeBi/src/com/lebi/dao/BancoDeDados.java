@@ -37,18 +37,6 @@ public class BancoDeDados {
 	}
 	
 	
-	public void listarAgenda() {
-		try {
-			String query = "SELECT * FROM agenda";
-			this.resultset = this.statement.executeQuery(query);
-			while(this.resultset.next()) {
-				System.out.println("ID: " + this.resultset.getString("id") + "- Horário: " + this.resultset.getString("horario") + "- Dia: " + this.resultset.getString("dia"));
-			}
-		} catch(Exception e) {
-			System.out.println("Erro: " + e.getMessage());
-		}
-	}
-	
 	public void desconectar() {
 		try {
 			this.connection.close();
