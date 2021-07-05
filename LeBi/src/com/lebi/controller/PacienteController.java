@@ -2,10 +2,13 @@ package com.lebi.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.lebi.Main;
+import com.lebi.dao.AgendaEspecialistaDao;
 import com.lebi.dao.PacienteDao;
+import com.lebi.model.AgendaMedico;
 import com.lebi.model.AgendaPaciente;
 import com.lebi.model.Sessao;
 
@@ -17,11 +20,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class PacienteController implements Initializable{
@@ -39,6 +45,9 @@ public class PacienteController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		txUser.setText(Sessao.getInstance().getEmail());
 		initTable();
+		
+//		tbConsultas.getSelectionModel().selectedItemProperty().addListener(
+//				(observable, oldValue, newValue) -> initTable());
 	}
 		
 	@SuppressWarnings("unchecked")
@@ -57,6 +66,7 @@ public class PacienteController implements Initializable{
 		PacienteDao dao = new PacienteDao();
 		return FXCollections.observableArrayList(dao.listarAgenda(txUser.getText()));
 	}
+
 	
 	@FXML
 	public void escolherEspecialidade(ActionEvent event) {
@@ -73,14 +83,41 @@ public class PacienteController implements Initializable{
 		}
 	}
 	
+	@FXML
+	public AgendaPaciente tbPacienteExcluirClicked(MouseEvent e) {
+		int index = tbConsultas.getSelectionModel().getSelectedIndex();
+		AgendaPaciente consultaSelecionada = (AgendaPaciente)tbConsultas.getItems().get(index);
+		
+		txEspecialista.setText(consultaSelecionada.getEspecialidade());
+		txMedico.setText(consultaSelecionada.getMedico());
+		txDia.setText(consultaSelecionada.getDia());
+		txHorario.setText(consultaSelecionada.getHorario());
+		
+		return consultaSelecionada;
+	}
+	
+	
+	@FXML
+	public void excluirConsulta() {
+		
+		PacienteDao consultaAgendadaExcluir = new PacienteDao();		
+		
+		boolean exclusao = consultaAgendadaExcluir.excluirConsultaAgendada(txMedico.getText());
+
+			
+		if (exclusao) {
+			//ver o que exatamente vai aqui.
+			}
+		
+		}
+		
 
 	@FXML
 	public void voltarMain()
 	{
 		Main principal = new Main();
 		principal.start(new Stage());
-	}
-	
+	}	
 	
 
 }

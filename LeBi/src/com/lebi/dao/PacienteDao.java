@@ -7,6 +7,9 @@ import java.util.List;
 
 import com.lebi.model.AgendaPaciente;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 public class PacienteDao {
 	
 	BancoDeDados bd = new BancoDeDados();
@@ -65,6 +68,32 @@ public class PacienteDao {
 		
 		bd.desconectar();		
 		return agenda;
+	}
+	
+	public boolean excluirConsultaAgendada(String medico) {
+		bd.conectar();
+		if(bd.estaConectado()) {
+		try {
+			String query = "delete from consulta_paciente where medico = '" + medico + "'";
+
+			 st = bd.getConnection().createStatement();
+			 st.executeUpdate(query);
+			 
+			Alert alert = new Alert(AlertType.CONFIRMATION);			
+			alert.setHeaderText("Consulta desmarcada!");
+			alert.setTitle("CONSULTA DESMARCADA COM SUCESSO!");			
+			alert.setContentText("Pronto, sua consulta foi desmarcada com sucesso!");
+			alert.show();
+			 
+		} catch(Exception e) {
+			System.out.println("Erro: " + e.getMessage());
+		}
+		} else {
+			System.out.println("Não foi possível conectar ao banco de dados");
+		}
+		
+		bd.desconectar();
+		return false;
 	}
 	
 	
