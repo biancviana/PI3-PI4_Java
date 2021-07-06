@@ -3,7 +3,7 @@ package com.lebi.model;
 
 import com.lebi.dao.UsuarioDao;
 
-public class Usuario {
+public class Usuario implements Autenticavel{
 	protected int id;
 	protected String nome;
 	protected String email;
@@ -44,8 +44,7 @@ public class Usuario {
 	public String getSenha() {return senha;}
 	public void setSenha(String senha) {this.senha = senha;}
 	
-	UsuarioDao ud = new UsuarioDao();
-	
+	UsuarioDao ud = new UsuarioDao();	
 	public Usuario login() {
 				
 		Usuario user = ud.login(email, senha);

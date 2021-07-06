@@ -19,7 +19,7 @@ public class Paciente extends Usuario{
 	public void setCpf(String cpf) {this.cpf = cpf;}
 		
 	
-	
+	@Override
 	public boolean cadastro() {
 		UsuarioDao ud = new UsuarioDao();
 		Boolean paciente = ud.cadastrar(nome, cpf, telefone, endereco, senha, email);
