@@ -12,6 +12,7 @@ import com.lebi.model.AgendaMedico;
 import com.lebi.model.AgendaPaciente;
 import com.lebi.model.Sessao;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,6 +34,7 @@ import javafx.stage.Stage;
 public class PacienteController implements Initializable{
 	
 	@FXML private TableView<AgendaPaciente> tbConsultas = new TableView<>();
+	@FXML private TableColumn<AgendaPaciente, Long> clCodigo = new TableColumn<AgendaPaciente, Long>("Código");
 	@FXML private TableColumn<AgendaPaciente, String> clEspecialidade = new TableColumn<AgendaPaciente, String>("Especialidade");
 	@FXML private TableColumn<AgendaPaciente, String> clMedico = new TableColumn<AgendaPaciente, String>("Médico");
 	@FXML private TableColumn<AgendaPaciente, String> clDia = new TableColumn<AgendaPaciente, String>("Dia");
@@ -40,26 +42,29 @@ public class PacienteController implements Initializable{
 	
 	@FXML private Button btAgendar, btVoltar, btDesmarcar;
 	@FXML private TextField txUser, txEspecialista, txMedico, txDia, txHorario;
+	
+	int index;
+	Long idConsulta;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		txUser.setText(Sessao.getInstance().getEmail());
+			
 		initTable();
 		
-//		tbConsultas.getSelectionModel().selectedItemProperty().addListener(
-//				(observable, oldValue, newValue) -> initTable());
 	}
 		
 	@SuppressWarnings("unchecked")
 	@FXML
 	public void initTable() {
 		tbConsultas.setItems(atualizaTabela());
+		clCodigo.setCellValueFactory(new PropertyValueFactory<AgendaPaciente, Long>("id"));
 		clEspecialidade.setCellValueFactory(new PropertyValueFactory<AgendaPaciente, String>("especialidade"));
 		clMedico.setCellValueFactory(new PropertyValueFactory<AgendaPaciente, String>("medico"));
 		clDia.setCellValueFactory(new PropertyValueFactory<AgendaPaciente, String>("dia"));
 		clHorario.setCellValueFactory(new PropertyValueFactory<AgendaPaciente, String>("horario"));
 		
-		tbConsultas.getColumns().setAll(clEspecialidade, clMedico, clDia, clHorario);
+		tbConsultas.getColumns().setAll(clCodigo, clEspecialidade, clMedico, clDia, clHorario);
 	}
 	
 	public ObservableList<AgendaPaciente> atualizaTabela(){
@@ -85,14 +90,15 @@ public class PacienteController implements Initializable{
 	
 	@FXML
 	public AgendaPaciente tbPacienteExcluirClicked(MouseEvent e) {
-		int index = tbConsultas.getSelectionModel().getSelectedIndex();
+		index = tbConsultas.getSelectionModel().getSelectedIndex();
 		AgendaPaciente consultaSelecionada = (AgendaPaciente)tbConsultas.getItems().get(index);
-		
+	
 		txEspecialista.setText(consultaSelecionada.getEspecialidade());
 		txMedico.setText(consultaSelecionada.getMedico());
 		txDia.setText(consultaSelecionada.getDia());
 		txHorario.setText(consultaSelecionada.getHorario());
 		
+		idConsulta = consultaSelecionada.getId();
 		return consultaSelecionada;
 	}
 	
@@ -100,15 +106,17 @@ public class PacienteController implements Initializable{
 	@FXML
 	public void excluirConsulta() {
 		
-		PacienteDao consultaAgendadaExcluir = new PacienteDao();		
-		
-		boolean exclusao = consultaAgendadaExcluir.excluirConsultaAgendada(txMedico.getText());
-
+		PacienteDao consultaAgendadaExcluir = new PacienteDao();			
+		boolean remover = consultaAgendadaExcluir.excluirConsultaAgendada(idConsulta);
+		if(remover) {
+			Alert alert = new Alert(AlertType.CONFIRMATION);			
+			alert.setHeaderText("Consulta desmarcada!");
+			alert.setTitle("CONSULTA DESMARCADA COM SUCESSO!");			
+			alert.setContentText("Pronto, sua consulta foi desmarcada com sucesso!");
+			alert.show();
 			
-		if (exclusao) {
-			//ver o que exatamente vai aqui.
-			}
-		
+			tbConsultas.getItems().remove(index);
+		}		
 		}
 		
 

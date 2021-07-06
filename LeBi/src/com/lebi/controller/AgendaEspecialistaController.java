@@ -91,6 +91,7 @@ public class AgendaEspecialistaController implements Initializable{
 		int index = tbAgendaEspecialista.getSelectionModel().getSelectedIndex();
 		AgendaMedico consultaSelecionada = (AgendaMedico)tbAgendaEspecialista.getItems().get(index);
 		
+		
 		txEspecialidade.setText(consultaSelecionada.getEspecialidade());
 		txMedico.setText(consultaSelecionada.getNome());
 		txDia.setText(consultaSelecionada.getDia());

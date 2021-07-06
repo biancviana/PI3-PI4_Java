@@ -46,19 +46,22 @@ public class PacienteDao {
 		bd.conectar();
 		if(bd.estaConectado()) {
 		try {
-			String query = "select * from consulta_paciente where email = '" + email + "'";
+			String query = "select id, especialidade, medico, dia, horario from consulta_paciente where email = '" + email + "'";
 			
 			 st = bd.getConnection().createStatement();
 			 rs = st.executeQuery(query);
 			
 			while(this.rs.next()) {
 				AgendaPaciente ag = new AgendaPaciente();
+				ag.setId(rs.getLong("id"));
 				ag.setEspecialidade(rs.getString("especialidade"));
 				ag.setMedico(rs.getString("medico"));
 				ag.setDia(rs.getString("dia"));
 				ag.setHorario(rs.getString("horario"));
-				agenda.add(ag);
+				agenda.add(ag);			
 			}
+			
+			
 		} catch(Exception e) {
 			System.out.println("Erro: " + e.getMessage());
 		}
@@ -70,20 +73,16 @@ public class PacienteDao {
 		return agenda;
 	}
 	
-	public boolean excluirConsultaAgendada(String medico) {
+	public boolean excluirConsultaAgendada(Long id) {
 		bd.conectar();
 		if(bd.estaConectado()) {
 		try {
-			String query = "delete from consulta_paciente where medico = '" + medico + "'";
+			String query = "delete from consulta_paciente where id = " + id;
 
 			 st = bd.getConnection().createStatement();
 			 st.executeUpdate(query);
-			 
-			Alert alert = new Alert(AlertType.CONFIRMATION);			
-			alert.setHeaderText("Consulta desmarcada!");
-			alert.setTitle("CONSULTA DESMARCADA COM SUCESSO!");			
-			alert.setContentText("Pronto, sua consulta foi desmarcada com sucesso!");
-			alert.show();
+			 	
+			return true;
 			 
 		} catch(Exception e) {
 			System.out.println("Erro: " + e.getMessage());

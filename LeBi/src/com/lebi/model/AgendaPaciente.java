@@ -6,6 +6,7 @@ public class AgendaPaciente {
 	private String nome;
 	private String dia;
 	private String horario;
+	private Long id;
 	
 	
 	public AgendaPaciente(String especialidade, String medico, String nome, String dia, String horario) {
@@ -33,6 +34,10 @@ public class AgendaPaciente {
 	
 	public String getHorario() {return horario;}
 	public void setHorario(String horario) {this.horario = horario;}
+
+	public Long getId() {return id;}
+
+	public void setId(Long id) {this.id = id;}
 	
 	
 	

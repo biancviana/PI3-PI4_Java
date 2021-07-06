@@ -8,14 +8,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lebi.controller.PacienteController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lebi.controller.PacienteController">
    <children>
-      <TableView fx:id="tbConsultas" layoutX="32.0" layoutY="138.0" onMouseClicked="#tbPacienteExcluirClicked" prefHeight="229.0" prefWidth="399.0">
+      <TableView fx:id="tbConsultas" layoutX="21.0" layoutY="138.0" onMouseClicked="#tbPacienteExcluirClicked" prefHeight="229.0" prefWidth="444.0">
         <columns>
-          <TableColumn fx:id="clEspecialidade" prefWidth="105.0" text="Especialista" />
-          <TableColumn fx:id="clMedico" prefWidth="134.0" text="Médico" />
-            <TableColumn fx:id="clDia" minWidth="0.0" prefWidth="78.0" text="Dia" />
-            <TableColumn fx:id="clHorario" prefWidth="81.0" text="Horário" />
+            <TableColumn fx:id="clCodigo" maxWidth="55.0" prefWidth="52.0" text="Código" />
+          <TableColumn fx:id="clEspecialidade" prefWidth="96.0" text="Especialista" />
+          <TableColumn fx:id="clMedico" prefWidth="152.0" text="Médico" />
+            <TableColumn fx:id="clDia" minWidth="0.0" prefWidth="86.0" text="Dia" />
+            <TableColumn fx:id="clHorario" prefWidth="56.0" text="Horário" />
         </columns>
       </TableView>
       <Label layoutX="178.0" layoutY="16.0" text="Minhas Consultas">
@@ -30,17 +31,17 @@
          </font>
       </Button>
       <TextField fx:id="txUser" disable="true" editable="false" layoutX="468.0" layoutY="13.0" prefHeight="21.0" prefWidth="130.0" />
-      <Button fx:id="btDesmarcar" layoutX="458.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#excluirConsulta" prefHeight="40.0" prefWidth="149.0" text="Desmarcar" />
+      <Button fx:id="btDesmarcar" layoutX="487.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#excluirConsulta" prefHeight="40.0" prefWidth="149.0" text="Desmarcar" />
       <Label layoutX="44.0" layoutY="414.0" text="Para agendar uma nova consulta, clique no botão abaixo:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txEspecialista" disable="true" editable="false" layoutX="454.0" layoutY="138.0" />
-      <TextField fx:id="txMedico" disable="true" editable="false" layoutX="454.0" layoutY="171.0" />
-      <TextField fx:id="txDia" disable="true" editable="false" layoutX="454.0" layoutY="205.0" />
-      <TextField fx:id="txHorario" disable="true" editable="false" layoutX="454.0" layoutY="240.0" />
-      <Label layoutX="463.0" layoutY="284.0" text="Selecione a consulta que" />
+      <TextField fx:id="txEspecialista" disable="true" editable="false" layoutX="483.0" layoutY="138.0" />
+      <TextField fx:id="txMedico" disable="true" editable="false" layoutX="483.0" layoutY="171.0" />
+      <TextField fx:id="txDia" disable="true" editable="false" layoutX="483.0" layoutY="205.0" />
+      <TextField fx:id="txHorario" disable="true" editable="false" layoutX="483.0" layoutY="240.0" />
+      <Label layoutX="492.0" layoutY="284.0" text="Selecione a consulta que" />
       <Label layoutX="483.0" layoutY="301.0" text="deseja desmarcar" />
    </children>
 </Pane>
