@@ -1,34 +1,51 @@
 package com.lebi.model;
 
+import javafx.beans.property.StringProperty;
+
 public class AgendaMedico {
 
-	private String especialidade;
-	private String nome;
-	private String dia;
-	private String horario;
-	
-		
-	public AgendaMedico(String especialidade, String nome, String dia, String horario) {
-		super();
-		this.especialidade = especialidade;
-		this.nome = nome;
-		this.dia = dia;
-		this.horario = horario;
+	private Medico medico;
+	private Agenda agenda;
+
+	public AgendaMedico(Medico medico, Agenda agenda) {
+		this.medico = medico;
+		this.agenda = agenda;
 	}
-	
-	public AgendaMedico() {}
 
-	public String getEspecialidade() {return especialidade;}
-	public void setEspecialidade(String especialidade) {this.especialidade = especialidade;}
+	public AgendaMedico() {
+	}
 
-	public String getNome() {return nome;}
-	public void setNome(String nome) {this.nome = nome;}
+	public Medico getMedico() {
+		return medico;
+	}
 
-	public String getDia() {return dia;}
-	public void setDia(String dia) {this.dia = dia;}
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
 
-	public String getHorario() {return horario;}
-	public void setHorario(String horario) {this.horario = horario;}
-	
-	
+	public Agenda getAgenda() {
+		return agenda;
+	}
+
+	public void setAgenda(Agenda agenda) {
+		this.agenda = agenda;
+	}
+
+	/* Método get utilizado pelo tableView ao exibir a agenda dos especialistas */
+
+	public StringProperty getNomeMedico() {
+		return medico.getNomeProperty();
+	}
+
+	public StringProperty getEspecialidade() {
+		return medico.getEspecialidade();
+	}
+
+	public StringProperty getDia() {
+		return agenda.getDia();
+	}
+
+	public StringProperty getHorario() {
+		return agenda.getHorario();
+	}
 }

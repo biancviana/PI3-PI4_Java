@@ -14,9 +14,9 @@
       <TableView fx:id="tbAgendaEspecialista" layoutX="25.0" layoutY="92.0" onMouseClicked="#tbAgendaEspecialistaClicked" prefHeight="302.0" prefWidth="459.0">
         <columns>
             <TableColumn id="clMedico" fx:id="clEspecialidade" maxWidth="120.0" prefWidth="120.0" text="Especialidade" />
-          <TableColumn id="clMedico" maxWidth="167.0" prefWidth="167.0" text="Médico" />
-          <TableColumn id="clDia" maxWidth="106.0" minWidth="0.0" prefWidth="106.0" text="Dia" />
-            <TableColumn id="clHorario" maxWidth="64.0" prefWidth="64.0" text="Horário" />
+          <TableColumn id="clMedico" fx:id="clMedico" maxWidth="167.0" prefWidth="167.0" text="Médico" />
+          <TableColumn id="clDia" fx:id="clDia" maxWidth="106.0" minWidth="0.0" prefWidth="106.0" text="Dia" />
+            <TableColumn id="clHorario" fx:id="clHorario" maxWidth="64.0" prefWidth="64.0" text="Horário" />
         </columns>
       </TableView>
       <Label layoutX="188.0" layoutY="30.0" text="Faça o seu agendamento">

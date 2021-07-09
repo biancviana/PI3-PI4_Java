@@ -1,10 +1,10 @@
 package com.lebi.model;
 
 public class Sessao {
-	
+
 	private static Sessao uniqueInstance;
 	private String email;
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -13,7 +13,8 @@ public class Sessao {
 		this.email = email;
 	}
 
-	private Sessao() {}
+	private Sessao() {
+	}
 
 	public static synchronized Sessao getInstance() {
 		if (uniqueInstance == null)
