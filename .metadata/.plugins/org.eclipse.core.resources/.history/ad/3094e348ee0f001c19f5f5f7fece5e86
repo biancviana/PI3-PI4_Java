@@ -1,0 +1,5 @@
+package com.lebi.dao.impl;
+
+public interface GeneralDao2 {
+
+}

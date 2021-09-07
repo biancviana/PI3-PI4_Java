@@ -1,0 +1,100 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema teste
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema teste
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS lebiDb;
+USE lebiDb ;
+
+-- -----------------------------------------------------
+-- Table `teste`.`agenda`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS agenda (
+  id INT NOT NULL AUTO_INCREMENT,
+  horario VARCHAR(20) NULL DEFAULT NULL,
+  dia VARCHAR(20) NULL DEFAULT NULL,
+  PRIMARY KEY (id));
+
+
+-- -----------------------------------------------------
+-- Table `teste`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS usuario (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  telefone VARCHAR(14) NOT NULL,
+  senha VARCHAR(100) NOT NULL,
+  PRIMARY KEY (id));
+
+
+-- -----------------------------------------------------
+-- Table `teste`.`medicos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS medicos (
+  idUsuario INT NOT NULL,
+  especialidade VARCHAR(100) NULL DEFAULT NULL,
+  CRM VARCHAR(10) NULL DEFAULT NULL,
+  PRIMARY KEY (idUsuario),
+  CONSTRAINT medicos_ibfk_1
+    FOREIGN KEY (idUsuario)
+    REFERENCES usuario (id));
+
+
+-- -----------------------------------------------------
+-- Table `teste`.`agenda_medico`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS agenda_medico (
+  id INT NOT NULL AUTO_INCREMENT,
+  idMedico INT NULL DEFAULT NULL,
+  idAgenda INT NULL DEFAULT NULL,
+  PRIMARY KEY (id),
+    FOREIGN KEY (idMedico) REFERENCES medicos (idUsuario),
+    FOREIGN KEY (idAgenda)REFERENCES agenda (id));
+
+
+-- -----------------------------------------------------
+-- Table `teste`.`consulta_paciente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS consulta_paciente (
+  id INT NOT NULL AUTO_INCREMENT,
+  email VARCHAR(100) NULL DEFAULT NULL,
+  medico VARCHAR(100) NULL DEFAULT NULL,
+  especialidade VARCHAR(100) NULL DEFAULT NULL,
+  horario VARCHAR(20) NULL DEFAULT NULL,
+  dia VARCHAR(20) NULL DEFAULT NULL,
+  PRIMARY KEY (id));
+
+
+-- -----------------------------------------------------
+-- Table `teste`.`pacientes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS pacientes (
+  idUsuario INT NOT NULL,
+  cpf VARCHAR(14) NOT NULL,
+  endereco VARCHAR(100) NULL DEFAULT NULL,
+  PRIMARY KEY (`idUsuario`),
+  CONSTRAINT pacientes_ibfk_1
+    FOREIGN KEY (idUsuario)
+    REFERENCES usuario (id));
+
+-- -----------------------------------------------------
+-- Placeholder table for view `teste`.`view_agenda_medico`
+-- -----------------------------------------------------
+create view view_agenda_medico as
+select u.nome 'nome', m.especialidade 'especialidade', a.dia 'dia', a.horario 'horario'
+from agenda_medico am
+inner join medicos m on m.idUsuario = am.idMedico
+inner join agenda a on a.id = am.idAgenda
+inner join usuario u on u.id = m.idUsuario;
