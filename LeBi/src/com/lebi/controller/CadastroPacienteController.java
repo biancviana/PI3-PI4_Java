@@ -13,7 +13,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
@@ -41,9 +43,21 @@ public class CadastroPacienteController implements Initializable {
 	Button btCadastrar;
 	@FXML
 	Button btVoltar;
+    @FXML
+    RadioButton rbMedico;
+    @FXML
+    RadioButton rbPaciente;
+    @FXML
+    ToggleGroup usuario;
 
 	BancoDeDados bd = new BancoDeDados();
 
+	@FXML
+	String pegarUsuarioSelecionado() {
+		RadioButton radio = (RadioButton) usuario.getSelectedToggle();
+		return radio.getText();
+	}
+	
 	@FXML
 	public void cadastrar() {
 		Paciente paciente = new Paciente(txNome.getText(), txCpf.getText(), txTelefone.getText(), txEndereco.getText(),

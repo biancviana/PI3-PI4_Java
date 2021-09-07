@@ -2,6 +2,8 @@ package com.lebi.model;
 
 import com.lebi.dao.UsuarioDao;
 
+import javafx.beans.property.StringProperty;
+
 public class Paciente extends Usuario {
 	private String cpf;
 

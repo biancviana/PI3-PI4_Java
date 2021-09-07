@@ -11,7 +11,7 @@ public class BancoDeDados {
 	public ResultSet resultset = null;
 
 	public void conectar() {
-		String servidor = "jdbc:mysql://localhost:3306/lebi";
+		String servidor = "jdbc:mysql://localhost:3306/teste";
 		String usuario = "root";
 		String senha = "Leh2019";
 		//String senha = "1234";

@@ -6,6 +6,8 @@ import java.sql.Statement;
 import com.lebi.model.Paciente;
 import com.lebi.model.Usuario;
 
+import javafx.beans.property.StringProperty;
+
 public class UsuarioDao {
 
 	BancoDeDados bd = new BancoDeDados();
@@ -16,7 +18,7 @@ public class UsuarioDao {
 		if(bd.estaConectado()) {
 		
 			try {
-				String query = "SELECT * FROM pacientes where email = '" + usuario + "' and senha = '" + senha + "'";
+				String query = "SELECT * FROM usuario where email = '" + usuario + "' and senha = '" + senha + "'";
 				Statement st = bd.getConnection().createStatement();
 				ResultSet rs = st.executeQuery(query);
 				while(rs.next()) {
@@ -40,8 +42,9 @@ public class UsuarioDao {
 	}
 	
 	
-	public boolean cadastrar(String nome, String cpf, String telefone, String endereco, String senha, String email ) {
+	public boolean cadastrar(StringProperty nome, String cpf, String telefone, String endereco, String senha, String email ) {
 		bd.conectar();
+		
 		if(bd.estaConectado()) {
 			try {
 				String query = "insert into pacientes (nome, email, cpf, telefone, endereco, senha) "

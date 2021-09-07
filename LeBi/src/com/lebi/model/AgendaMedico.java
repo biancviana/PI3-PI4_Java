@@ -4,6 +4,7 @@ import javafx.beans.property.StringProperty;
 
 public class AgendaMedico {
 
+	private Usuario usuario;
 	private Medico medico;
 	private Agenda agenda;
 
@@ -15,6 +16,14 @@ public class AgendaMedico {
 	public AgendaMedico() {
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 	public Medico getMedico() {
 		return medico;
 	}
@@ -33,8 +42,8 @@ public class AgendaMedico {
 
 	/* Método get utilizado pelo tableView ao exibir a agenda dos especialistas */
 
-	public StringProperty getNomeMedico() {
-		return medico.getNomeProperty();
+	public StringProperty getNome() {
+		return usuario.getNome();
 	}
 
 	public StringProperty getEspecialidade() {
@@ -48,4 +57,5 @@ public class AgendaMedico {
 	public StringProperty getHorario() {
 		return agenda.getHorario();
 	}
+
 }

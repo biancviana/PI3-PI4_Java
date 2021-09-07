@@ -2,15 +2,19 @@ package com.lebi.model;
 
 import com.lebi.dao.UsuarioDao;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Usuario implements Autenticavel {
 	protected int id;
-	protected String nome;
+	protected StringProperty nome;
 	protected String email;
 	protected String telefone;
 	protected String senha;
 	protected String endereco;
 
 	public Usuario() {
+		this.nome = new SimpleStringProperty("");
 	}
 
 	public Usuario(String email, String senha) {
@@ -19,7 +23,7 @@ public class Usuario implements Autenticavel {
 	}
 
 	public Usuario(String nome, String telefone, String endereco, String senha, String email) {
-		this.nome = nome;
+		this.nome.set(nome);
 		this.telefone = telefone;
 		this.endereco = endereco;
 		this.senha = senha;
@@ -34,12 +38,12 @@ public class Usuario implements Autenticavel {
 		this.id = id;
 	}
 
-	public String getNome() {
+	public StringProperty getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome.set(nome);
 	}
 
 	public String getEmail() {
