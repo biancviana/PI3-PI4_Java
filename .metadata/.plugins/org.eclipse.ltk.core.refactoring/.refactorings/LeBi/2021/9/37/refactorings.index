@@ -13,3 +13,9 @@
 1631043057048	Copy compilation unit
 1631043068297	Delete element
 1631043197784	Delete element
+1631057784873	Move compilation units
+1631057845152	Rename type 'AgendaEspecialistaDao'
+1631057872155	Rename type 'PacienteDao'
+1631057887285	Rename type 'UsuarioDao'
+1631057901733	Move compilation unit
+1631058037285	Move compilation unit
