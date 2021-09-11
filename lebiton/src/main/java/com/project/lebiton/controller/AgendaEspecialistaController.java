@@ -118,7 +118,7 @@ public class AgendaEspecialistaController implements Initializable {
 		try {
 
 			FXMLLoader root = new FXMLLoader(AgendaEspecialistaController.class.getResource("/com/project/lebiton/view/Paciente.fxml"));
-			Scene scene = new Scene(root.load());
+			Scene scene = new Scene(root.load(), 700, 540);
 			stage.setScene(scene);
 			stage.setTitle("Tela do Paciente");
 			stage.show();

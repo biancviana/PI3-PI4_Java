@@ -62,7 +62,7 @@ public class LoginController implements Initializable {
                     Sessao.getInstance().setEmail(txLogin.getText());
                     FXMLLoader root = new FXMLLoader(LoginController.class.getResource("/com/project/lebiton/view/Paciente.fxml"));
 
-                    Scene scene = new Scene(root.load(), 700, 500);
+                    Scene scene = new Scene(root.load(), 700, 540);
                     stage.setScene(scene);
                     stage.setTitle("Tela do Paciente");
                     stage.show();
