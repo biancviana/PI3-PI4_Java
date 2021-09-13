@@ -1,5 +1,0 @@
-package com.lebi.dao;
-
-public interface GeneralDao {
-
-}
