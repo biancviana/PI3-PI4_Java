@@ -1,71 +1,71 @@
 package com.project.lebiton.model;
 
 public class AgendaPaciente {
-	private String especialidade;
-	private String medico;
-	private String nome;
-	private String dia;
-	private String horario;
-	private Long id;
+    private String especialidade;
+    private String medico;
+    private String email;
+    private String dia;
+    private String horario;
+    private Long id;
 
-//	public AgendaPaciente(String especialidade, String medico, String nome, String dia, String horario) {
-//
-//		this.especialidade = especialidade;
-//		this.medico = medico;
-//		this.nome = nome;
-//		this.dia = dia;
-////		this.horario = horario;
-//	}
+    public AgendaPaciente(String especialidade, String medico, String dia, String email, String horario) {
 
-	public AgendaPaciente() {
-	}
+        this.especialidade = especialidade;
+        this.medico = medico;
+        this.email = email;
+        this.dia = dia;
+        this.horario = horario;
+    }
 
-	public String getEspecialidade() {
-		return especialidade;
-	}
+    public AgendaPaciente() {
+    }
 
-	public void setEspecialidade(String especialidade) {
-		this.especialidade = especialidade;
-	}
+    public String getEspecialidade() {
+        return especialidade;
+    }
 
-	public String getMedico() {
-		return medico;
-	}
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
+    }
 
-	public void setMedico(String medico) {
-		this.medico = medico;
-	}
+    public String getMedico() {
+        return medico;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setMedico(String medico) {
+        this.medico = medico;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getDia() {
-		return dia;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setDia(String dia) {
-		this.dia = dia;
-	}
+    public String getDia() {
+        return dia;
+    }
 
-	public String getHorario() {
-		return horario;
-	}
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
 
-	public void setHorario(String horario) {
-		this.horario = horario;
-	}
+    public String getHorario() {
+        return horario;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 }
