@@ -1,6 +1,5 @@
 package com.project.lebiton.controller;
 
-import com.project.lebiton.dao.BancoDeDados;
 import com.project.lebiton.model.Paciente;
 import com.project.lebiton.model.Sessao;
 import com.project.lebiton.model.Usuario;
@@ -16,10 +15,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -94,7 +91,7 @@ public class LoginController implements Initializable {
         Stage stage = (Stage) btCadastrar.getScene().getWindow();
 
         try {
-            FXMLLoader root =  new FXMLLoader(LoginController.class.getResource("/com/project/lebiton/view/CadastroPaciente.fxml"));
+            FXMLLoader root = new FXMLLoader(LoginController.class.getResource("/com/project/lebiton/view/CadastroPaciente.fxml"));
             Scene scene = new Scene(root.load());
             stage.setScene(scene);
             stage.show();

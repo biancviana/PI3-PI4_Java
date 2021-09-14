@@ -1,106 +1,97 @@
 package com.project.lebiton.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.project.lebiton.dao.connction.ConnectionFactory;
 import com.project.lebiton.model.Agenda;
 import com.project.lebiton.model.AgendaMedico;
 import com.project.lebiton.model.Medico;
 import com.project.lebiton.model.Usuario;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 public class AgendaEspecialistaDao {
 
-	BancoDeDados bd = new BancoDeDados();
-	public Statement st = null;
-	public ResultSet rs = null;
+    private Connection connection;
 
-	public List<AgendaMedico> listarAgenda() {
-		List<AgendaMedico> consultasMedico = new ArrayList<>();
+    public List<AgendaMedico> listarAgenda() {
+        List<AgendaMedico> consultasMedico = new ArrayList<>();
 
+        try {
+            connection = ConnectionFactory.getConnection();
+            ResultSet result;
+            PreparedStatement statement;
 
-		bd.conectar();
-		if (bd.estaConectado()) {
-			try {
-				String query = "select * from view_agenda_medico";
+            statement = connection.prepareStatement("SELECT * from view_agenda_medico");
+            result = statement.executeQuery();
 
-				st = bd.getConnection().createStatement();
-				rs = st.executeQuery(query);
+            while (result.next()) {
+                AgendaMedico ag = new AgendaMedico();
 
-				while (rs.next()) {
-					AgendaMedico ag = new AgendaMedico();
-					
-					Usuario usuario = new Usuario();
-					usuario.setNome(rs.getString("nome"));
+                Usuario usuario = new Usuario();
+                usuario.setNome(result.getString("nome"));
 
-					Medico medico = new Medico();
-					medico.setEspecialidade(rs.getString("especialidade"));
-					
-					ag.setUsuario(usuario);
-					ag.setMedico(medico);
+                Medico medico = new Medico();
+                medico.setEspecialidade(result.getString("especialidade"));
 
-					Agenda agenda = new Agenda();
-					agenda.setDia(rs.getString("dia"));
-					agenda.setHorario(rs.getString("horario"));
+                ag.setUsuario(usuario);
+                ag.setMedico(medico);
 
-					ag.setAgenda(agenda);
+                Agenda agenda = new Agenda();
+                agenda.setDia(result.getString("dia"));
+                agenda.setHorario(result.getString("horario"));
 
-					consultasMedico.add(ag);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
-			System.out.println("N�o foi poss�vel conectar ao banco de dados");
-		}
+                ag.setAgenda(agenda);
 
-		bd.desconectar();
-		return consultasMedico;
-	}
+                consultasMedico.add(ag);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-	public List<AgendaMedico> listaFiltrada(final String especialidade) {
-		List<AgendaMedico> consultasMedico = new ArrayList<>();
+        return consultasMedico;
+    }
 
-		bd.conectar();
-		if (bd.estaConectado()) {
-			try {
-				String query = "select * from view_agenda_medico "
-						+ "where especialidade = '" + especialidade + "'";
+    public List<AgendaMedico> listaFiltrada(final String especialidade) {
+        List<AgendaMedico> consultasMedico = new ArrayList<>();
 
-				st = bd.getConnection().createStatement();
-				rs = st.executeQuery(query);
+        try {
+            connection = ConnectionFactory.getConnection();
+            ResultSet result;
+            PreparedStatement statement;
 
-				while (this.rs.next()) {
-					AgendaMedico ag = new AgendaMedico();
+            statement = connection.prepareStatement("select * from view_agenda_medico where especialidade = ?");
+            statement.setString(1, especialidade);
 
-					Usuario usuario = new Usuario();
-					usuario.setNome(rs.getString("nome"));
-					
-					Medico medico = new Medico();
-					medico.setEspecialidade(rs.getString("especialidade"));
+            result = statement.executeQuery();
 
-					ag.setUsuario(usuario);
-					ag.setMedico(medico);
+            while (result.next()) {
+                AgendaMedico ag = new AgendaMedico();
 
-					Agenda agenda = new Agenda();
-					agenda.setDia(rs.getString("dia"));
-					agenda.setHorario(rs.getString("horario"));
+                Usuario usuario = new Usuario();
+                usuario.setNome(result.getString("nome"));
 
-					ag.setAgenda(agenda);
+                Medico medico = new Medico();
+                medico.setEspecialidade(result.getString("especialidade"));
 
-					consultasMedico.add(ag);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
-			System.out.println("N�o foi poss�vel conectar ao banco de dados");
-		}
+                ag.setUsuario(usuario);
+                ag.setMedico(medico);
 
-		bd.desconectar();
-		return consultasMedico;
-	}
+                Agenda agenda = new Agenda();
+                agenda.setDia(result.getString("dia"));
+                agenda.setHorario(result.getString("horario"));
+
+                ag.setAgenda(agenda);
+
+                consultasMedico.add(ag);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return consultasMedico;
+    }
 
 }
