@@ -124,5 +124,4 @@ public class AgendaEspecialistaController implements Initializable {
             e.printStackTrace();
         }
     }
-
 }

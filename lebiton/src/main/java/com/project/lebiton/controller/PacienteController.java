@@ -79,11 +79,8 @@ public class PacienteController implements Initializable {
         try {
             PacienteDao dao = new PacienteDao();
             lista = FXCollections.observableArrayList(dao.listarAgenda(txUser.getText()));
-
         } catch (Exception e) {
             System.out.println("Mais um erro: " + e.getMessage());
-
-        }
 
         return lista;
     }
