@@ -1,12 +1,9 @@
 package com.project.lebiton.controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.project.lebiton.dao.AgendaEspecialistaDao;
-import com.project.lebiton.model.AgendaMedico;
 import com.project.lebiton.dao.PacienteDao;
+import com.project.lebiton.model.AgendaMedico;
+import com.project.lebiton.model.AgendaPaciente;
 import com.project.lebiton.model.Sessao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,117 +12,116 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class AgendaEspecialistaController implements Initializable {
 
-	@FXML
-	private TableView<AgendaMedico> tbAgendaEspecialista = new TableView<>();
-	@FXML
-	private TableColumn<AgendaMedico, String> clEspecialidade = new TableColumn<AgendaMedico, String>("Especialidade");
-	@FXML
-	private TableColumn<AgendaMedico, String> clMedico = new TableColumn<AgendaMedico, String>("Nome");
-	@FXML
-	private TableColumn<AgendaMedico, String> clDia = new TableColumn<AgendaMedico, String>("Dia");
-	@FXML
-	private TableColumn<AgendaMedico, String> clHorario = new TableColumn<AgendaMedico, String>("Horário");
+    @FXML
+    private TableView<AgendaMedico> tbAgendaEspecialista = new TableView<>();
+    @FXML
+    private TableColumn<AgendaMedico, String> clEspecialidade = new TableColumn<AgendaMedico, String>("Especialidade");
+    @FXML
+    private TableColumn<AgendaMedico, String> clMedico = new TableColumn<AgendaMedico, String>("Nome");
+    @FXML
+    private TableColumn<AgendaMedico, String> clDia = new TableColumn<AgendaMedico, String>("Dia");
+    @FXML
+    private TableColumn<AgendaMedico, String> clHorario = new TableColumn<AgendaMedico, String>("Horário");
 
-	@FXML
-	private ComboBox<String> cbEspecialidade = new ComboBox<>();
+    @FXML
+    private ComboBox<String> cbEspecialidade = new ComboBox<>();
 
-	@FXML
-	private Button btVoltar, btAgendar;
-	@FXML
-	private TextField txEspecialidade, txMedico, txDia, txHorario, txUser;
+    @FXML
+    private Button btVoltar, btAgendar;
+    @FXML
+    private TextField txEspecialidade, txMedico, txDia, txHorario, txUser;
 
-	String selecao = null;
+    String selecao = null;
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		txUser.setText(Sessao.getInstance().getEmail());
-		initTable();
-		initComboBox();
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        txUser.setText(Sessao.getInstance().getEmail());
+        initTable();
+        initComboBox();
 
-		cbEspecialidade.getSelectionModel().selectedItemProperty()
-				.addListener((observable, oldValue, newValue) -> initTable());
-	}
+        cbEspecialidade.getSelectionModel().selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> initTable());
+    }
 
-	@FXML
-	void SelectComboBox(ActionEvent event) {
-		selecao = cbEspecialidade.getSelectionModel().getSelectedItem();
-	}
+    @FXML
+    void SelectComboBox(ActionEvent event) {
+        selecao = cbEspecialidade.getSelectionModel().getSelectedItem();
+    }
 
-	public void initComboBox() {
-		ObservableList<String> especialidades = FXCollections.observableArrayList("cardiologia", "clinico geral",
-				"dermatologia", "endocrinologia", "gastroenterologia", "ginecologia", "neurologia", "oftalmologia",
-				"ortopedia", "otorrinolaringologia", "pneumologia");
-		
-		cbEspecialidade.setItems(especialidades);
-	}
+    public void initComboBox() {
+        ObservableList<String> especialidades = FXCollections.observableArrayList("cardiologia", "clinico geral",
+                "dermatologia", "endocrinologia", "gastroenterologia", "ginecologia", "neurologia", "oftalmologia",
+                "ortopedia", "otorrinolaringologia", "pneumologia");
 
-	public void initTable() {
+        cbEspecialidade.setItems(especialidades);
+    }
 
-		clMedico.setCellValueFactory(cellData -> cellData.getValue().getNome());
-		clEspecialidade.setCellValueFactory(cellData -> cellData.getValue().getEspecialidade());
-		clDia.setCellValueFactory(cellData -> cellData.getValue().getDia());
-		clHorario.setCellValueFactory(cellData -> cellData.getValue().getHorario());
+    public void initTable() {
 
-		tbAgendaEspecialista.setItems(atualizaTabela());
-	}
+        clMedico.setCellValueFactory(cellData -> cellData.getValue().getNome());
+        clEspecialidade.setCellValueFactory(cellData -> cellData.getValue().getEspecialidade());
+        clDia.setCellValueFactory(cellData -> cellData.getValue().getDia());
+        clHorario.setCellValueFactory(cellData -> cellData.getValue().getHorario());
 
-	public ObservableList<AgendaMedico> atualizaTabela() {
-		AgendaEspecialistaDao dao = new AgendaEspecialistaDao();
-		if (selecao == null) {
-			return FXCollections.observableArrayList(dao.listarAgenda());
-		} else {
-			return FXCollections.observableArrayList(dao.listaFiltrada(selecao));
-		}
-	}
+        tbAgendaEspecialista.setItems(atualizaTabela());
+    }
 
-	@FXML
-	public AgendaMedico tbAgendaEspecialistaClicked(MouseEvent e) {
-		int index = tbAgendaEspecialista.getSelectionModel().getSelectedIndex();
-		AgendaMedico consultaSelecionada = (AgendaMedico) tbAgendaEspecialista.getItems().get(index);
+    public ObservableList<AgendaMedico> atualizaTabela() {
+        AgendaEspecialistaDao dao = new AgendaEspecialistaDao();
+        if (selecao == null) {
+            return FXCollections.observableArrayList(dao.listarAgenda());
+        } else {
+            return FXCollections.observableArrayList(dao.listaFiltrada(selecao));
+        }
+    }
 
-		txEspecialidade.setText(consultaSelecionada.getEspecialidade().get());
-		txMedico.setText(consultaSelecionada.getNome().get());
-		txDia.setText(consultaSelecionada.getDia().get());
-		txHorario.setText(consultaSelecionada.getHorario().get());
+    @FXML
+    public AgendaMedico tbAgendaEspecialistaClicked(MouseEvent e) {
+        int index = tbAgendaEspecialista.getSelectionModel().getSelectedIndex();
+        AgendaMedico consultaSelecionada = (AgendaMedico) tbAgendaEspecialista.getItems().get(index);
 
-		return consultaSelecionada;
-	}
+        txEspecialidade.setText(consultaSelecionada.getEspecialidade().get());
+        txMedico.setText(consultaSelecionada.getNome().get());
+        txDia.setText(consultaSelecionada.getDia().get());
+        txHorario.setText(consultaSelecionada.getHorario().get());
 
-	@FXML
-	public void cadastrarConsulta() {
-		PacienteDao consultaCadastrar = new PacienteDao();
-		boolean agendamento = consultaCadastrar.cadastrarConsulta(txUser.getText(), txEspecialidade.getText(),
-				txMedico.getText(), txDia.getText(), txHorario.getText());
+        return consultaSelecionada;
+    }
 
-		if (agendamento) {
-			voltarPaciente();
-		}
-	}
+    @FXML
+    public void cadastrarConsulta() {
+        PacienteDao consultaCadastrar = new PacienteDao();
+        boolean agendamento = consultaCadastrar.cadastrarConsulta(new AgendaPaciente(txEspecialidade.getText(),
+                txMedico.getText(), txDia.getText(), txUser.getText(), txHorario.getText()));
 
-	@FXML
-	public void voltarPaciente() {
-		Stage stage = (Stage) btVoltar.getScene().getWindow();
-		try {
+        if (agendamento) {
+            voltarPaciente();
+        }
+    }
 
-			FXMLLoader root = new FXMLLoader(AgendaEspecialistaController.class.getResource("/com/project/lebiton/view/Paciente.fxml"));
-			Scene scene = new Scene(root.load(), 700, 540);
-			stage.setScene(scene);
-			stage.setTitle("Tela do Paciente");
-			stage.show();
+    @FXML
+    public void voltarPaciente() {
+        Stage stage = (Stage) btVoltar.getScene().getWindow();
+        try {
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+            FXMLLoader root = new FXMLLoader(AgendaEspecialistaController.class.getResource("/com/project/lebiton/view/Paciente.fxml"));
+            Scene scene = new Scene(root.load(), 700, 540);
+            stage.setScene(scene);
+            stage.setTitle("Tela do Paciente");
+            stage.show();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

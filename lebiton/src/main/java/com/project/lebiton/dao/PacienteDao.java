@@ -1,96 +1,90 @@
 package com.project.lebiton.dao;
 
+import com.project.lebiton.dao.connction.ConnectionFactory;
+import com.project.lebiton.model.AgendaPaciente;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.project.lebiton.model.AgendaPaciente;
-
 public class PacienteDao {
 
-	BancoDeDados bd = new BancoDeDados();
-	public Statement st = null;
-	public ResultSet rs = null;
+    private Connection connection;
 
-	public boolean cadastrarConsulta(String email, String especialidade, String medico, String dia, String horario) {
-		bd.conectar();
-		if (bd.estaConectado()) {
-			try {
-				String query = "insert into consulta_paciente (email, medico, especialidade, horario, dia) "
-						+ "values ('" + email + "', '" + medico + "', '" + especialidade + "', '" + horario + "', '"
-						+ dia + "')";
+    public boolean cadastrarConsulta(AgendaPaciente agendaPaciente) {
+        try {
+            connection = ConnectionFactory.getConnection();
+            PreparedStatement statement;
 
-				st = bd.getConnection().createStatement();
-				st.executeUpdate(query);
-				return true;
+            statement = connection.prepareStatement("insert into consulta_paciente (especialidade, medico, email, dia, horario) values (?,?,?,?,?)");
+            statement.setString(1, agendaPaciente.getEspecialidade());
+            statement.setString(2, agendaPaciente.getMedico());
+            statement.setString(3, agendaPaciente.getEmail());
+            statement.setString(4, agendaPaciente.getDia());
+            statement.setString(5, agendaPaciente.getHorario());
 
-			} catch (Exception e) {
-				System.out.println("Erro: " + e.getStackTrace());
-				return false;
-			}
+            if (!statement.execute()) {
+                return true;
+            }
 
-		} else {
-			System.out.println("N�o foi poss�vel conectar ao banco de dados");
-		}
+            ConnectionFactory.closeConnection(connection, statement);
 
-		bd.desconectar();
-		return false;
-	}
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
 
-	public List<AgendaPaciente> listarAgenda(String email) {
-		List<AgendaPaciente> agenda = new ArrayList<>();
 
-		bd.conectar();
-		if (bd.estaConectado()) {
-			try {
-				String query = "select id, especialidade, medico, dia, horario from consulta_paciente where email = '"
-						+ email + "'";
+        return false;
+    }
 
-				st = bd.getConnection().createStatement();
-				rs = st.executeQuery(query);
+    public List<AgendaPaciente> listarAgenda(String email) {
+        List<AgendaPaciente> agenda = new ArrayList<>();
 
-				while (this.rs.next()) {
-					AgendaPaciente ag = new AgendaPaciente();
-					ag.setId(rs.getLong("id"));
-					ag.setEspecialidade(rs.getString("especialidade"));
-					ag.setMedico(rs.getString("medico"));
-					ag.setDia(rs.getString("dia"));
-					ag.setHorario(rs.getString("horario"));
-					agenda.add(ag);
-				}
+        try {
+            connection = ConnectionFactory.getConnection();
+            ResultSet result;
+            PreparedStatement statement;
 
-			} catch (Exception e) {
-				System.out.println("Erro: " + e.getMessage());
-			}
-		} else {
-			System.out.println("N�o foi poss�vel conectar ao banco de dados");
-		}
+            statement = connection.prepareStatement("SELECT id, especialidade, medico, dia, horario from consulta_paciente where email = ?");
+            statement.setString(1, email);
 
-		bd.desconectar();
-		return agenda;
-	}
+            result = statement.executeQuery();
 
-	public boolean excluirConsultaAgendada(Long id) {
-		bd.conectar();
-		if (bd.estaConectado()) {
-			try {
-				String query = "delete from consulta_paciente where id = " + id;
+            while (result.next()) {
+                AgendaPaciente ag = new AgendaPaciente();
+                ag.setId(result.getLong("id"));
+                ag.setEspecialidade(result.getString("especialidade"));
+                ag.setMedico(result.getString("medico"));
+                ag.setDia(result.getString("dia"));
+                ag.setHorario(result.getString("horario"));
+                agenda.add(ag);
+            }
 
-				st = bd.getConnection().createStatement();
-				st.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
 
-				return true;
+        return agenda;
+    }
 
-			} catch (Exception e) {
-				System.out.println("Erro bem aqui: " + e.getMessage());
-			}
-		} else {
-			System.out.println("N�o foi poss�vel conectar ao banco de dados");
-		}
+    public boolean excluirConsultaAgendada(Long id) {
+        try {
+            connection = ConnectionFactory.getConnection();
+            PreparedStatement statement;
 
-		bd.desconectar();
-		return false;
-	}
+            statement = connection.prepareStatement("delete from consulta_paciente where id = ?");
+            statement.setLong(1, id);
+
+            statement.executeUpdate();
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Erro bem aqui: " + e.getMessage());
+        }
+
+        return false;
+    }
 
 }
