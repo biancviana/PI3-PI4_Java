@@ -1,4 +1,4 @@
-package com.project.lebiton.model;
+package com.project.lebiton.model.impl;
 
 public class AgendaPaciente {
     private String especialidade;
@@ -8,7 +8,7 @@ public class AgendaPaciente {
     private String horario;
     private Long id;
 
-    public AgendaPaciente(String especialidade, String medico, String dia, String email, String horario) {
+    public AgendaPaciente(final String especialidade, final String medico, final String dia, final String email, final String horario) {
 
         this.especialidade = especialidade;
         this.medico = medico;
@@ -24,7 +24,7 @@ public class AgendaPaciente {
         return especialidade;
     }
 
-    public void setEspecialidade(String especialidade) {
+    public void setEspecialidade(final String especialidade) {
         this.especialidade = especialidade;
     }
 
@@ -32,7 +32,7 @@ public class AgendaPaciente {
         return medico;
     }
 
-    public void setMedico(String medico) {
+    public void setMedico(final String medico) {
         this.medico = medico;
     }
 
@@ -40,7 +40,7 @@ public class AgendaPaciente {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -48,7 +48,7 @@ public class AgendaPaciente {
         return dia;
     }
 
-    public void setDia(String dia) {
+    public void setDia(final String dia) {
         this.dia = dia;
     }
 
@@ -56,7 +56,7 @@ public class AgendaPaciente {
         return horario;
     }
 
-    public void setHorario(String horario) {
+    public void setHorario(final String horario) {
         this.horario = horario;
     }
 
@@ -64,7 +64,7 @@ public class AgendaPaciente {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
