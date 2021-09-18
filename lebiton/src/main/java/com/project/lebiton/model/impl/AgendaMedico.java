@@ -1,4 +1,4 @@
-package com.project.lebiton.model;
+package com.project.lebiton.model.impl;
 
 import javafx.beans.property.StringProperty;
 
@@ -8,7 +8,7 @@ public class AgendaMedico {
 	private Medico medico;
 	private Agenda agenda;
 
-	public AgendaMedico(Medico medico, Agenda agenda) {
+	public AgendaMedico(final Medico medico, final Agenda agenda) {
 		this.medico = medico;
 		this.agenda = agenda;
 	}
@@ -19,16 +19,16 @@ public class AgendaMedico {
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
-	public void setUsuario(Usuario usuario) {
+
+	public void setUsuario(final Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
 	public Medico getMedico() {
 		return medico;
 	}
 
-	public void setMedico(Medico medico) {
+	public void setMedico(final Medico medico) {
 		this.medico = medico;
 	}
 
@@ -36,7 +36,7 @@ public class AgendaMedico {
 		return agenda;
 	}
 
-	public void setAgenda(Agenda agenda) {
+	public void setAgenda(final Agenda agenda) {
 		this.agenda = agenda;
 	}
 
