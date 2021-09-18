@@ -1,7 +1,7 @@
-package com.project.lebiton.dao;
+package com.project.lebiton.dao.impl;
 
 import com.project.lebiton.dao.connction.ConnectionFactory;
-import com.project.lebiton.model.AgendaPaciente;
+import com.project.lebiton.model.impl.AgendaPaciente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,10 +13,10 @@ public class PacienteDao {
 
     private Connection connection;
 
-    public boolean cadastrarConsulta(AgendaPaciente agendaPaciente) {
+    public boolean cadastrarConsulta(final AgendaPaciente agendaPaciente) {
         try {
             connection = ConnectionFactory.getConnection();
-            PreparedStatement statement;
+            final PreparedStatement statement;
 
             statement = connection.prepareStatement("insert into consulta_paciente (especialidade, medico, email, dia, horario) values (?,?,?,?,?)");
             statement.setString(1, agendaPaciente.getEspecialidade());
@@ -31,7 +31,7 @@ public class PacienteDao {
 
             ConnectionFactory.closeConnection(connection, statement);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
 
@@ -39,13 +39,13 @@ public class PacienteDao {
         return false;
     }
 
-    public List<AgendaPaciente> listarAgenda(String email) {
-        List<AgendaPaciente> agenda = new ArrayList<>();
+    public List<AgendaPaciente> listarAgenda(final String email) {
+        final List<AgendaPaciente> agenda = new ArrayList<>();
 
         try {
             connection = ConnectionFactory.getConnection();
-            ResultSet result;
-            PreparedStatement statement;
+            final ResultSet result;
+            final PreparedStatement statement;
 
             statement = connection.prepareStatement("SELECT id, especialidade, medico, dia, horario from consulta_paciente where email = ?");
             statement.setString(1, email);
@@ -53,7 +53,7 @@ public class PacienteDao {
             result = statement.executeQuery();
 
             while (result.next()) {
-                AgendaPaciente ag = new AgendaPaciente();
+                final AgendaPaciente ag = new AgendaPaciente();
                 ag.setId(result.getLong("id"));
                 ag.setEspecialidade(result.getString("especialidade"));
                 ag.setMedico(result.getString("medico"));
@@ -62,17 +62,17 @@ public class PacienteDao {
                 agenda.add(ag);
             }
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
 
         return agenda;
     }
 
-    public boolean excluirConsultaAgendada(Long id) {
+    public boolean excluirConsultaAgendada(final Long id) {
         try {
             connection = ConnectionFactory.getConnection();
-            PreparedStatement statement;
+            final PreparedStatement statement;
 
             statement = connection.prepareStatement("delete from consulta_paciente where id = ?");
             statement.setLong(1, id);
@@ -80,7 +80,7 @@ public class PacienteDao {
             statement.executeUpdate();
             return true;
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             System.out.println("Erro bem aqui: " + e.getMessage());
         }
 

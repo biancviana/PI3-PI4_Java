@@ -1,8 +1,8 @@
 package com.project.lebiton.controller;
 
-import com.project.lebiton.dao.PacienteDao;
-import com.project.lebiton.model.AgendaPaciente;
-import com.project.lebiton.model.Sessao;
+import com.project.lebiton.dao.impl.PacienteDao;
+import com.project.lebiton.model.impl.AgendaPaciente;
+import com.project.lebiton.model.impl.Sessao;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -46,7 +46,7 @@ public class PacienteController implements Initializable {
     Long idConsulta;
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize(final URL arg0, final ResourceBundle arg1) {
         txUser.setText(Sessao.getInstance().getEmail());
 
         initTable();
@@ -67,7 +67,7 @@ public class PacienteController implements Initializable {
             tbConsultas.getColumns().setAll(clCodigo, clEspecialidade, clMedico, clDia, clHorario);
 
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             System.out.println("ERRO: " + e.getMessage());
         }
 
@@ -76,33 +76,35 @@ public class PacienteController implements Initializable {
     public ObservableList<AgendaPaciente> atualizaTabela() {
         ObservableList<AgendaPaciente> lista = null;
 
-        try {
-            PacienteDao dao = new PacienteDao();
-            lista = FXCollections.observableArrayList(dao.listarAgenda(txUser.getText()));
-        } catch (Exception e) {
-            System.out.println("Mais um erro: " + e.getMessage());
+        System.out.println("#################################: " + txUser.getText());
 
+        try {
+            final PacienteDao dao = new PacienteDao();
+            lista = FXCollections.observableArrayList(dao.listarAgenda(txUser.getText()));
+        } catch (final Exception e) {
+            System.out.println("Mais um erro: " + e.getMessage());
+        }
         return lista;
     }
 
     @FXML
-    public void escolherEspecialidade(ActionEvent event) {
-        Stage stage = (Stage) btAgendar.getScene().getWindow();
+    public void escolherEspecialidade(final ActionEvent event) {
+        final Stage stage = (Stage) btAgendar.getScene().getWindow();
         try {
-            FXMLLoader root = new FXMLLoader(PacienteController.class.getResource("/com/project/lebiton/view/AgendaEspecialista.fxml"));
-            Scene scene = new Scene(root.load(), 700, 540);
+            final FXMLLoader root = new FXMLLoader(PacienteController.class.getResource("/com/project/lebiton/view/AgendaEspecialista.fxml"));
+            final Scene scene = new Scene(root.load(), 700, 540);
             stage.setScene(scene);
             stage.show();
 
-        } catch (IOException e) {
+        } catch (final IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public AgendaPaciente tbPacienteExcluirClicked(MouseEvent e) {
+    public AgendaPaciente tbPacienteExcluirClicked(final MouseEvent e) {
         index = tbConsultas.getSelectionModel().getSelectedIndex();
-        AgendaPaciente consultaSelecionada = tbConsultas.getItems().get(index);
+        final AgendaPaciente consultaSelecionada = tbConsultas.getItems().get(index);
 
         txEspecialista.setText(consultaSelecionada.getEspecialidade());
         txMedico.setText(consultaSelecionada.getMedico());
@@ -116,10 +118,10 @@ public class PacienteController implements Initializable {
     @FXML
     public void excluirConsulta() {
 
-        PacienteDao consultaAgendadaExcluir = new PacienteDao();
-        boolean remover = consultaAgendadaExcluir.excluirConsultaAgendada(idConsulta);
+        final PacienteDao consultaAgendadaExcluir = new PacienteDao();
+        final boolean remover = consultaAgendadaExcluir.excluirConsultaAgendada(idConsulta);
         if (remover) {
-            Alert alert = new Alert(AlertType.CONFIRMATION);
+            final Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setHeaderText("Consulta desmarcada!");
             alert.setTitle("CONSULTA DESMARCADA COM SUCESSO!");
             alert.setContentText("Pronto, sua consulta foi desmarcada com sucesso!");
@@ -131,11 +133,11 @@ public class PacienteController implements Initializable {
 
     @FXML
     public void deslogarOnClicked() {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
+        final Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("MENSAGEM");
         alert.setContentText("Deseja realmente sair?");
 
-        Optional<ButtonType> result = alert.showAndWait();
+        final Optional<ButtonType> result = alert.showAndWait();
 
         if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
             Platform.exit();

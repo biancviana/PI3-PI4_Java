@@ -1,4 +1,4 @@
-package com.project.lebiton.model;
+package com.project.lebiton.model.impl;
 
 public class Sessao {
 
@@ -9,7 +9,7 @@ public class Sessao {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 

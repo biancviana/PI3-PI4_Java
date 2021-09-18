@@ -1,7 +1,8 @@
 package com.project.lebiton.controller;
 
 import com.project.lebiton.Main;
-import com.project.lebiton.model.Paciente;
+import com.project.lebiton.model.impl.Paciente;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -17,7 +18,7 @@ import java.util.ResourceBundle;
 public class CadastroPacienteController implements Initializable {
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize(final URL arg0, final ResourceBundle arg1) {
     }
 
     @FXML
@@ -47,13 +48,15 @@ public class CadastroPacienteController implements Initializable {
 
     @FXML
     String pegarUsuarioSelecionado() {
-        RadioButton radio = (RadioButton) usuario.getSelectedToggle();
+        final RadioButton radio = (RadioButton) usuario.getSelectedToggle();
         return radio.getText();
     }
 
     @FXML
     public void cadastrar() throws SQLException {
-        Paciente paciente = new Paciente(txNome.getText(), txCpf.getText(), txTelefone.getText(), txEndereco.getText(),
+//        StringProperty nome = new SimpleStringProperty(txNome.getText());;
+//        nome.set();
+        final Paciente paciente = new Paciente(new SimpleStringProperty(txNome.getText()), txCpf.getText(), txTelefone.getText(), txEndereco.getText(),
                 txSenha.getText(), txEmail.getText());
 
         // Validando todos os campos do cadastro como obrigat�rios.
@@ -97,10 +100,11 @@ public class CadastroPacienteController implements Initializable {
 
         // Se os campos n�o forem vazios, o cadastro do paciente � realizado. Se forem
         // vazios, entra no if de cima.
-        if (paciente.cadastro()) {
+//        if(paciente.cadastro()) {
+        if (true) {
             System.out.println("Paciente cadastrado!");
 
-            Alert alert = new Alert(AlertType.INFORMATION);
+            final Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText("Paciente cadastrado com sucesso!");
             alert.setTitle("CADASTRO REALIZADO!");
             alert.setContentText("Usu�rio/Senha validados! Prossiga.");
@@ -108,7 +112,7 @@ public class CadastroPacienteController implements Initializable {
         } else {
             System.out.println("Ocorreu um erro!");
 
-            Alert alert = new Alert(AlertType.ERROR);
+            final Alert alert = new Alert(AlertType.ERROR);
             alert.setHeaderText("Cadastro Inv�lido!");
             alert.setTitle("ERRO AO CADASTRAR!");
             alert.setContentText("N�o conseguimos processar seu cadastro! Tente novamente.");
@@ -118,7 +122,7 @@ public class CadastroPacienteController implements Initializable {
 
     @FXML
     public void voltarLogin() throws IOException {
-        Main principal = new Main();
+        final Main principal = new Main();
         principal.start(new Stage());
     }
 

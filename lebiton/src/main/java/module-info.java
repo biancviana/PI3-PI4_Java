@@ -9,4 +9,5 @@ module com.project.lebiton {
     exports com.project.lebiton.controller;
     exports com.project.lebiton.model;
     opens com.project.lebiton.controller to javafx.fxml;
+    exports com.project.lebiton.model.impl;
 }
