@@ -18,6 +18,18 @@ public abstract class Usuario {
 		this.senha = senha;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
 	public Usuario(final StringProperty nome, final String email, final String telefone, final String senha, final String endereco) {
 		this.nome = nome;
 		this.email = email;
