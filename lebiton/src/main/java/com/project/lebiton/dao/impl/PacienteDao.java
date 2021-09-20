@@ -2,6 +2,7 @@ package com.project.lebiton.dao.impl;
 
 import com.project.lebiton.dao.connction.ConnectionFactory;
 import com.project.lebiton.model.impl.AgendaPaciente;
+import com.project.lebiton.model.impl.Paciente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,32 @@ import java.util.List;
 public class PacienteDao {
 
     private Connection connection;
+    
+    public boolean createUser(final Paciente paciente) {
+        try {
+            connection = ConnectionFactory.getConnection();
+            PreparedStatement statement;
+
+            statement = connection.prepareStatement("call insertUserPaciente(?,?,?,?,?,?)");
+            statement.setString(1, paciente.getNome().get());
+            statement.setString(2, paciente.getEmail());
+            statement.setString(3, paciente.getTelefone());
+            statement.setString(4, paciente.getEndereco());
+            statement.setString(5, paciente.getSenha());        
+            statement.setString(6, paciente.getCpf());
+
+            if (!statement.execute()) {
+                return true;
+            }
+
+            ConnectionFactory.closeConnection(connection, statement);
+
+        } catch (final Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        return false;
+    }
 
     public boolean cadastrarConsulta(final AgendaPaciente agendaPaciente) {
         try {
