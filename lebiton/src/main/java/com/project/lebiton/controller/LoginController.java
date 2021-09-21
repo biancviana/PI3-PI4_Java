@@ -47,7 +47,7 @@ public class LoginController implements Initializable {
 
         // Validando todos os campos do login como obrigat�rios.
         if (txLogin.getText().equals("") && txSenha.getText().equals("")) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Os campos [Usu�rio] e [Senha] s�o obrigat�rios!", "AVISO",
+            javax.swing.JOptionPane.showMessageDialog(null, "Os campos [Usuário] e [Senha] são obrigatórios", "AVISO",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -74,8 +74,18 @@ public class LoginController implements Initializable {
             final Stage stage = (Stage) btLogar.getScene().getWindow();
             Sessao.getInstance().setEmail(txLogin.getText());
 
-            String tela = "Paciente.fxml";
-            if (user instanceof Paciente) {
+            if(txLogin.getText().equals("adm") && txSenha.getText().equals("adm")) {
+            	String tela = "HomeAdm.fxml";
+            	root = new FXMLLoader(LoginController.class.getResource("/com/project/lebiton/view/".concat(tela)));
+
+                final Scene scene = new Scene(root.load(), 700, 540);
+                stage.setScene(scene);
+                stage.setTitle("Administrador");
+                stage.show();
+            }
+            
+            else if (user instanceof Paciente) {
+            	String tela = "Paciente.fxml";
                 root = new FXMLLoader(LoginController.class.getResource("/com/project/lebiton/view/".concat(tela)));
 
                 final Scene scene = new Scene(root.load(), 700, 540);
@@ -84,14 +94,15 @@ public class LoginController implements Initializable {
                 stage.show();
 
             } else if(user instanceof Medico) {
-                tela = "Medico.fxml";
+            	String tela = "Medico.fxml";
                 root = new FXMLLoader(LoginController.class.getResource("/com/project/lebiton/view/".concat(tela)));
 
                 final Scene scene = new Scene(root.load(), 700, 540);
                 stage.setScene(scene);
                 stage.setTitle("Tela do Medico");
                 stage.show();
-            }
+                
+            } 
 
             System.out.println("Logado");
 
