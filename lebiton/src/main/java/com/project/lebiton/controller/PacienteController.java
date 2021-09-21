@@ -1,6 +1,7 @@
 package com.project.lebiton.controller;
 
-import com.project.lebiton.dao.impl.PacienteDao;
+import com.project.lebiton.dao.PacienteDaoInterface;
+import com.project.lebiton.dao.factory.FactoryPacienteDAO;
 import com.project.lebiton.model.impl.AgendaPaciente;
 import com.project.lebiton.model.impl.Sessao;
 import javafx.application.Platform;
@@ -76,13 +77,11 @@ public class PacienteController implements Initializable {
     public ObservableList<AgendaPaciente> atualizaTabela() {
         ObservableList<AgendaPaciente> lista = null;
 
-        System.out.println("#################################: " + txUser.getText());
-
         try {
-            final PacienteDao dao = new PacienteDao();
+            final PacienteDaoInterface dao = FactoryPacienteDAO.criarPacientendao();
             lista = FXCollections.observableArrayList(dao.listarAgenda(txUser.getText()));
         } catch (final Exception e) {
-            System.out.println("Mais um erro: " + e.getMessage());
+            System.out.println("Erro: " + e.getMessage());
         }
         return lista;
     }
@@ -118,8 +117,8 @@ public class PacienteController implements Initializable {
     @FXML
     public void excluirConsulta() {
 
-        final PacienteDao consultaAgendadaExcluir = new PacienteDao();
-        final boolean remover = consultaAgendadaExcluir.excluirConsultaAgendada(idConsulta);
+        final PacienteDaoInterface daoInterface = FactoryPacienteDAO.criarPacientendao();
+        final boolean remover = daoInterface.excluirConsultaAgendada(idConsulta);
         if (remover) {
             final Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setHeaderText("Consulta desmarcada!");

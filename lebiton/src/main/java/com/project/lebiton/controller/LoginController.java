@@ -36,7 +36,6 @@ public class LoginController implements Initializable {
     public Button btCadastrar;
 
     FXMLLoader root = null;
-    final LoginFacade facade = new LoginFacade();
 
     @Override
     public void initialize(final URL arg0, final ResourceBundle arg1) {
@@ -44,6 +43,7 @@ public class LoginController implements Initializable {
 
     @FXML
     public void logar(final ActionEvent actionEvent) {
+        final LoginFacade facade = new LoginFacade();
 
         // Validando todos os campos do login como obrigat�rios.
         if (txLogin.getText().equals("") && txSenha.getText().equals("")) {
@@ -65,6 +65,8 @@ public class LoginController implements Initializable {
                 alert.setTitle("ERRO AO LOGAR!");
                 alert.setContentText("Usu�rio/Senha inv�lidos! Tente novamente.");
                 alert.show();
+
+                return;
             }
 
             // Se os campos n�o forem vazios, o cadastro do paciente � realizado. Se forem
