@@ -3,6 +3,7 @@ package com.project.lebiton.controller;
 import com.project.lebiton.facade.LoginFacade;
 import com.project.lebiton.factory.UsuarioFactory;
 import com.project.lebiton.model.UsuarioInterface;
+import com.project.lebiton.model.impl.Administrador;
 import com.project.lebiton.model.impl.Medico;
 import com.project.lebiton.model.impl.Paciente;
 import com.project.lebiton.model.impl.Sessao;
@@ -35,17 +36,16 @@ public class LoginController implements Initializable {
     @FXML
     public Button btCadastrar;
 
-    FXMLLoader root = null;
+    final String VIEW_PATH = "/com/project/lebiton/view/";
 
     @Override
     public void initialize(final URL arg0, final ResourceBundle arg1) {
     }
 
     @FXML
-    public void logar(final ActionEvent actionEvent) {
+    public void logar(final ActionEvent actionEvent) throws IOException {
         final LoginFacade facade = new LoginFacade();
 
-        // Validando todos os campos do login como obrigat�rios.
         if (txLogin.getText().equals("") && txSenha.getText().equals("")) {
             javax.swing.JOptionPane.showMessageDialog(null, "Os campos [Usuário] e [Senha] são obrigatórios", "AVISO",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
@@ -54,75 +54,29 @@ public class LoginController implements Initializable {
 
         final UsuarioInterface user = UsuarioFactory.criar(txLogin.getText(), txSenha.getText());
 
-//            O alert criado abaixo �como se fosse uma esp�cie de "janela", criada a
-//            partir dos set.
-        try {
-            if (!facade.logar(user)) {
-                System.out.println("Usu�rio/senha inv�lido!");
+        if (!facade.logar(user)) {
+            System.out.println("Usu�rio/senha inv�lido!");
 
-                final Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText("Login Inv�lido!");
-                alert.setTitle("ERRO AO LOGAR!");
-                alert.setContentText("Usu�rio/Senha inv�lidos! Tente novamente.");
-                alert.show();
+            final Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Login Inv�lido!");
+            alert.setTitle("ERRO AO LOGAR!");
+            alert.setContentText("Usu�rio/Senha inv�lidos! Tente novamente.");
+            alert.show();
 
-                return;
-            }
-
-            // Se os campos n�o forem vazios, o cadastro do paciente � realizado. Se forem
-            // vazios, entra no if de cima.
-            final Stage stage = (Stage) btLogar.getScene().getWindow();
-            Sessao.getInstance().setEmail(txLogin.getText());
-
-            if(txLogin.getText().equals("adm") && txSenha.getText().equals("adm")) {
-            	String tela = "HomeAdm.fxml";
-            	root = new FXMLLoader(LoginController.class.getResource("/com/project/lebiton/view/".concat(tela)));
-
-                final Scene scene = new Scene(root.load(), 700, 540);
-                stage.setScene(scene);
-                stage.setTitle("Administrador");
-                stage.show();
-            }
-            
-            else if (user instanceof Paciente) {
-            	String tela = "Paciente.fxml";
-                root = new FXMLLoader(LoginController.class.getResource("/com/project/lebiton/view/".concat(tela)));
-
-                final Scene scene = new Scene(root.load(), 700, 540);
-                stage.setScene(scene);
-                stage.setTitle("Tela do Paciente");
-                stage.show();
-
-            } else if(user instanceof Medico) {
-            	String tela = "Medico.fxml";
-                root = new FXMLLoader(LoginController.class.getResource("/com/project/lebiton/view/".concat(tela)));
-
-                final Scene scene = new Scene(root.load(), 700, 540);
-                stage.setScene(scene);
-                stage.setTitle("Tela do Medico");
-                stage.show();
-                
-            } 
-
-            System.out.println("Logado");
-
-        } catch (final IOException e) {
-            e.printStackTrace();
-
+            return;
         }
+
+        this.criarTelaParaUsuario(user);
 
     }
 
     @FXML
     public void cadastrarPaciente(final ActionEvent actionEvent) {
-
         final Stage stage = (Stage) btCadastrar.getScene().getWindow();
 
         try {
-            final FXMLLoader root = new FXMLLoader(LoginController.class.getResource("/com/project/lebiton/view/CadastroPaciente.fxml"));
-            final Scene scene = new Scene(root.load());
-            stage.setScene(scene);
-            stage.show();
+            final FXMLLoader root = new FXMLLoader(LoginController.class.getResource(VIEW_PATH.concat("CadastroPaciente.fxml")));
+            this.abrirTela(stage, root, "Cadastrar Paciente");
         } catch (final IOException e) {
             e.printStackTrace();
         }
@@ -131,5 +85,34 @@ public class LoginController implements Initializable {
     @FXML
     public void sairSistema(final ActionEvent actionEvent) {
         Platform.exit();
+    }
+
+    private void criarTelaParaUsuario(final UsuarioInterface user) throws IOException {
+        final Stage stage = (Stage) btLogar.getScene().getWindow();
+        Sessao.getInstance().setEmail(txLogin.getText());
+        final FXMLLoader root;
+
+        if (user instanceof Administrador) {
+            root = new FXMLLoader(LoginController.class.getResource(VIEW_PATH.concat("HomeAdm.fxml")));
+            this.abrirTela(stage, root, "Tela do Administrador");
+
+        } else if (user instanceof Paciente) {
+            root = new FXMLLoader(LoginController.class.getResource(VIEW_PATH.concat("Paciente.fxml")));
+            this.abrirTela(stage, root, "Tela do Paciente");
+
+        } else if (user instanceof Medico) {
+            root = new FXMLLoader(LoginController.class.getResource(VIEW_PATH.concat("Medico.fxml")));
+            this.abrirTela(stage, root, "Tela do Medico");
+        }
+
+        System.out.println("Login efetuado com sucesso");
+
+    }
+
+    private void abrirTela(final Stage stage, final FXMLLoader root, final String page) throws IOException {
+        final Scene scene = new Scene(root.load(), 700, 540);
+        stage.setScene(scene);
+        stage.setTitle(page);
+        stage.show();
     }
 }
