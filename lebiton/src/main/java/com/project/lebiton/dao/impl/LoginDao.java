@@ -1,20 +1,18 @@
 package com.project.lebiton.dao.impl;
 
+import com.project.lebiton.dao.LoginDaoInterface;
+import com.project.lebiton.dao.connction.ConnectionFactory;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.project.lebiton.dao.UsuarioRepository;
-import com.project.lebiton.dao.connction.ConnectionFactory;
-import com.project.lebiton.model.UsuarioInterface;
 
-
-public class LoginDao implements UsuarioRepository{
+public class LoginDao implements LoginDaoInterface {
 	
 	private Connection connection;
 	
-	@Override
     public boolean login(final String usuario, final String senha) {
         try {
             connection = ConnectionFactory.getConnection();
@@ -39,11 +37,5 @@ public class LoginDao implements UsuarioRepository{
 
         return false;
     }
-
-	@Override
-	public boolean createUser(UsuarioInterface usuario) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

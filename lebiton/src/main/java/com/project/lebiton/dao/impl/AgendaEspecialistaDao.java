@@ -1,5 +1,6 @@
 package com.project.lebiton.dao.impl;
 
+import com.project.lebiton.dao.AgendarEspecialistaDaoInterface;
 import com.project.lebiton.dao.connction.ConnectionFactory;
 import com.project.lebiton.factory.UsuarioFactory;
 import com.project.lebiton.model.UsuarioInterface;
@@ -14,11 +15,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AgendaEspecialistaDao {
+public class AgendaEspecialistaDao implements AgendarEspecialistaDaoInterface {
 
     private Connection connection;
 
-    public List<AgendaMedico> listarAgenda() {
+    public List<AgendaMedico> listar() {
         final List<AgendaMedico> consultasMedico = new ArrayList<>();
 
         try {

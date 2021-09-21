@@ -1,7 +1,8 @@
 package com.project.lebiton.controller;
 
 import com.project.lebiton.Main;
-import com.project.lebiton.dao.impl.PacienteDao;
+import com.project.lebiton.dao.PacienteDaoInterface;
+import com.project.lebiton.dao.factory.FactoryPacienteDAO;
 import com.project.lebiton.model.impl.Paciente;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -95,11 +96,11 @@ public class CadastroPacienteController implements Initializable {
             return;
         }
 
-        PacienteDao user = new PacienteDao();
+        final PacienteDaoInterface dao = FactoryPacienteDAO.criarPacientendao();
         // Se os campos n�o forem vazios, o cadastro do paciente � realizado. Se forem
         // vazios, entra no if de cima.
 //        if(paciente.cadastro()) {
-        if (user.createUser(paciente)) {
+        if (dao.createUser(paciente)) {
             System.out.println("Paciente cadastrado!");
 
             final Alert alert = new Alert(AlertType.INFORMATION);
