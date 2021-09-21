@@ -41,14 +41,6 @@ public class CadastroPacienteController implements Initializable {
     Button btCadastrar;
     @FXML
     Button btVoltar;
-    @FXML
-    ToggleGroup usuario;
-
-    @FXML
-    String pegarUsuarioSelecionado() {
-        final RadioButton radio = (RadioButton) usuario.getSelectedToggle();
-        return radio.getText();
-    }
 
     @FXML
     public void cadastrar() throws SQLException {
