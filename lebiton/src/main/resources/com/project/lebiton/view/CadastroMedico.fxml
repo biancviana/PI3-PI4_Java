@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="663.0" prefWidth="544.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.lebiton.controller.CadastroMedicoController">
+   <children>
+      <Label layoutX="102.0" layoutY="84.0" text="Nome:" />
+      <Label layoutX="102.0" layoutY="265.0" text="Especialidade" />
+      <Label layoutX="102.0" layoutY="146.0" text="Data de Nascimento:" />
+      <Label layoutX="102.0" layoutY="323.0" text="Telefone:" />
+      <Label layoutX="102.0" layoutY="201.0" text="CRM" />
+      <TextField fx:id="txNome" layoutX="102.0" layoutY="101.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txDataNascimento" layoutX="102.0" layoutY="162.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txCpf" layoutX="102.0" layoutY="218.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txEndereco" layoutX="102.0" layoutY="281.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txTelefone" layoutX="102.0" layoutY="339.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txEmail" layoutX="102.0" layoutY="449.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txSenha" layoutX="102.0" layoutY="509.0" prefHeight="34.0" prefWidth="340.0" />
+      <Button fx:id="btCadastrar" layoutX="102.0" layoutY="574.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="340.0" text="Cadastrar" />
+      <Separator layoutY="403.0" prefHeight="9.0" prefWidth="544.0" />
+      <Label layoutX="186.0" layoutY="21.0" text="Faça seu cadastro">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button id="btVoltar" fx:id="btVoltar" layoutX="21.0" layoutY="24.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="81.0" text="Voltar">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="102.0" layoutY="428.0" text="E-mail:" />
+      <Label layoutX="102.0" layoutY="488.0" text="Senha:" />
+   </children>
+</Pane>
