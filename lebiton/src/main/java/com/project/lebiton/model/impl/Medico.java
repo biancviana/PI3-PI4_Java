@@ -1,5 +1,7 @@
 package com.project.lebiton.model.impl;
 
+import com.project.lebiton.dao.LoginDaoInterface;
+import com.project.lebiton.dao.factory.FactoryLoginDAO;
 import com.project.lebiton.model.UsuarioInterface;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -33,11 +35,7 @@ public class Medico extends Usuario implements UsuarioInterface {
 
 	@Override
 	public boolean logar() {
-		return false;
-	}
-
-	@Override
-	public boolean cadastrar() {
-		return false;
+		final LoginDaoInterface dao = FactoryLoginDAO.criarLogindao();
+		return dao.login(this.email, this.senha);
 	}
 }

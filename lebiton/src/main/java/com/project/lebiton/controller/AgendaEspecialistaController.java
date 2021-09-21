@@ -1,7 +1,9 @@
 package com.project.lebiton.controller;
 
-import com.project.lebiton.dao.impl.AgendaEspecialistaDao;
-import com.project.lebiton.dao.impl.PacienteDao;
+import com.project.lebiton.dao.AgendarEspecialistaDaoInterface;
+import com.project.lebiton.dao.PacienteDaoInterface;
+import com.project.lebiton.dao.factory.FactoryAgendarEspecialistalDAO;
+import com.project.lebiton.dao.factory.FactoryPacienteDAO;
 import com.project.lebiton.model.impl.AgendaMedico;
 import com.project.lebiton.model.impl.AgendaPaciente;
 import com.project.lebiton.model.impl.Sessao;
@@ -77,9 +79,11 @@ public class AgendaEspecialistaController implements Initializable {
     }
 
     public ObservableList<AgendaMedico> atualizaTabela() {
-        final AgendaEspecialistaDao dao = new AgendaEspecialistaDao();
+        final AgendarEspecialistaDaoInterface dao = FactoryAgendarEspecialistalDAO.
+                criarAgendarEspecialistaDao();
+
         if (selecao == null) {
-            return FXCollections.observableArrayList(dao.listarAgenda());
+            return FXCollections.observableArrayList(dao.listar());
         } else {
             return FXCollections.observableArrayList(dao.listaFiltrada(selecao));
         }
@@ -100,8 +104,8 @@ public class AgendaEspecialistaController implements Initializable {
 
     @FXML
     public void cadastrarConsulta() {
-        final PacienteDao consultaCadastrar = new PacienteDao();
-        final boolean agendamento = consultaCadastrar.cadastrarConsulta(new AgendaPaciente(txEspecialidade.getText(),
+        final PacienteDaoInterface dao = FactoryPacienteDAO.criarPacientendao();
+        final boolean agendamento = dao.cadastrarConsulta(new AgendaPaciente(txEspecialidade.getText(),
                 txMedico.getText(), txDia.getText(), txUser.getText(), txHorario.getText()));
 
         if (agendamento) {
