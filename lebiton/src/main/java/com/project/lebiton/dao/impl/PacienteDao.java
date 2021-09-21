@@ -1,5 +1,6 @@
 package com.project.lebiton.dao.impl;
 
+import com.project.lebiton.dao.PacienteDaoInterface;
 import com.project.lebiton.dao.connction.ConnectionFactory;
 import com.project.lebiton.model.impl.AgendaPaciente;
 import com.project.lebiton.model.impl.Paciente;
@@ -10,14 +11,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PacienteDao {
+public class PacienteDao implements PacienteDaoInterface {
 
     private Connection connection;
     
     public boolean createUser(final Paciente paciente) {
         try {
             connection = ConnectionFactory.getConnection();
-            PreparedStatement statement;
+            final PreparedStatement statement;
 
             statement = connection.prepareStatement("call insertUserPaciente(?,?,?,?,?,?)");
             statement.setString(1, paciente.getNome().get());
