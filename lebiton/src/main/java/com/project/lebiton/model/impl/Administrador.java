@@ -15,9 +15,9 @@ public class Administrador extends Usuario implements UsuarioInterface{
 		super(email, senha);
 	}
 	
-	public Administrador(final StringProperty nome, final String telefone, final String endereco,
+	public Administrador(final StringProperty nome, final String telefone,
             final String senha, final String email) {
-			super(nome, telefone, endereco, senha, email);
+			super(nome, telefone, senha, email);
 	}
 
 	@Override
