@@ -18,8 +18,8 @@ public class Medico extends Usuario implements UsuarioInterface {
 	public Medico() {}
 
 
-	public Medico(final StringProperty nome, final String email, final String telefone, final String senha, final String endereco, final StringProperty especialidade, final StringProperty crm) {
-		super(nome, email, telefone, senha, endereco);
+	public Medico(final StringProperty nome, final String email, final String telefone, final String senha, final StringProperty especialidade, final StringProperty crm) {
+		super(nome, email, telefone, senha);
 		this.especialidade = especialidade;
 		this.crm = crm;
 	}
@@ -37,5 +37,9 @@ public class Medico extends Usuario implements UsuarioInterface {
 	public boolean logar() {
 		final LoginDaoInterface dao = FactoryLoginDAO.criarLogindao();
 		return dao.login(this.email, this.senha);
+	}
+
+	public StringProperty getCrm() {
+		return crm;
 	}
 }

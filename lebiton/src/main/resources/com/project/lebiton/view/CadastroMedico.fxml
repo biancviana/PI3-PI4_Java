@@ -7,33 +7,33 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="663.0" prefWidth="544.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.lebiton.controller.CadastroMedicoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="708.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.lebiton.controller.CadastroMedicoController">
    <children>
-      <Label layoutX="102.0" layoutY="84.0" text="Nome:" />
-      <Label layoutX="102.0" layoutY="265.0" text="Especialidade" />
-      <Label layoutX="102.0" layoutY="146.0" text="Data de Nascimento:" />
-      <Label layoutX="102.0" layoutY="323.0" text="Telefone:" />
-      <Label layoutX="102.0" layoutY="201.0" text="CRM" />
-      <TextField fx:id="txNome" layoutX="102.0" layoutY="101.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txDataNascimento" layoutX="102.0" layoutY="162.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txCpf" layoutX="102.0" layoutY="218.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txEndereco" layoutX="102.0" layoutY="281.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txTelefone" layoutX="102.0" layoutY="339.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txEmail" layoutX="102.0" layoutY="449.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txSenha" layoutX="102.0" layoutY="509.0" prefHeight="34.0" prefWidth="340.0" />
-      <Button fx:id="btCadastrar" layoutX="102.0" layoutY="574.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="340.0" text="Cadastrar" />
-      <Separator layoutY="403.0" prefHeight="9.0" prefWidth="544.0" />
-      <Label layoutX="186.0" layoutY="21.0" text="Faça seu cadastro">
+      <Label layoutX="142.0" layoutY="115.0" text="Nome:" />
+      <Label layoutX="142.0" layoutY="291.0" text="Especialidade:" />
+      <Label layoutX="142.0" layoutY="177.0" text="Data de Nascimento:" />
+      <Label layoutX="142.0" layoutY="349.0" text="Telefone:" />
+      <Label layoutX="142.0" layoutY="232.0" text="CRM" />
+      <TextField fx:id="txNome" layoutX="142.0" layoutY="132.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txDataNascimento" layoutX="142.0" layoutY="193.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txCrm" layoutX="142.0" layoutY="249.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txEspecialidade" layoutX="142.0" layoutY="307.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txTelefone" layoutX="142.0" layoutY="365.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txEmail" layoutX="142.0" layoutY="476.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txSenha" layoutX="142.0" layoutY="536.0" prefHeight="34.0" prefWidth="340.0" />
+      <Button fx:id="btCadastrar" layoutX="142.0" layoutY="601.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="34.0" prefWidth="340.0" text="Cadastrar" />
+      <Separator layoutX="-1.0" layoutY="421.0" prefHeight="7.0" prefWidth="626.0" />
+      <Label layoutX="225.0" layoutY="40.0" text="Faça seu cadastro">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button id="btVoltar" fx:id="btVoltar" layoutX="21.0" layoutY="24.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="81.0" text="Voltar">
+      <Button id="btVoltar" fx:id="btVoltar" layoutX="19.0" layoutY="43.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="81.0" text="Voltar">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Label layoutX="102.0" layoutY="428.0" text="E-mail:" />
-      <Label layoutX="102.0" layoutY="488.0" text="Senha:" />
+      <Label layoutX="142.0" layoutY="455.0" text="E-mail:" />
+      <Label layoutX="142.0" layoutY="515.0" text="Senha:" />
    </children>
 </Pane>

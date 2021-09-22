@@ -19,9 +19,9 @@ public class Paciente extends Usuario implements UsuarioInterface {
         super(email, senha);
     }
 
-    public Paciente(final StringProperty nome, final String cpf, final String telefone, final String endereco,
+    public Paciente(final StringProperty nome, final String cpf, final String telefone,
                     final String senha, final String email) {
-        super(nome, telefone, endereco, senha, email);
+        super(nome, telefone, senha, email);
         this.cpf = cpf;
     }
 
