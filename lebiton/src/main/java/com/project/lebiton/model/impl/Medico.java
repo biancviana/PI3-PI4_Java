@@ -38,4 +38,8 @@ public class Medico extends Usuario implements UsuarioInterface {
 		final LoginDaoInterface dao = FactoryLoginDAO.criarLogindao();
 		return dao.login(this.email, this.senha);
 	}
+
+	public StringProperty getCrm() {
+		return crm;
+	}
 }
