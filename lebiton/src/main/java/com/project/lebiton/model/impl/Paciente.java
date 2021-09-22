@@ -18,7 +18,8 @@ public class Paciente extends Usuario implements UsuarioInterface {
 
     public Paciente(final StringProperty nome, final String cpf, final String telefone,
                     final String senha, final String email) {
-        super(nome, telefone, senha, email);
+
+        super(nome, email, telefone, senha);
         this.cpf = cpf;
     }
 
@@ -70,6 +71,8 @@ public class Paciente extends Usuario implements UsuarioInterface {
             return this;
         }
 
-        public Paciente build() { return new Paciente(nome, cpf, telefone, senha, email); }
+        public Paciente build() {
+            return new Paciente(nome, cpf, telefone, senha, email);
+        }
     }
 }

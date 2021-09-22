@@ -108,8 +108,8 @@ public class CadastroPacienteController implements Initializable {
                 .nome(txNome.getText())
                 .cpf(txCpf.getText())
                 .telefone(txTelefone.getText())
-                .senha(txSenha.getText())
                 .email(txEmail.getText())
+                .senha(txSenha.getText())
                 .build();
     }
 
