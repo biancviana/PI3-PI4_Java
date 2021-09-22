@@ -2,11 +2,13 @@ package com.project.lebiton.controller;
 
 import com.project.lebiton.facade.LoginFacade;
 import com.project.lebiton.factory.UsuarioFactory;
+import com.project.lebiton.handleError.ErrorHandle;
 import com.project.lebiton.model.UsuarioInterface;
 import com.project.lebiton.model.impl.Administrador;
 import com.project.lebiton.model.impl.Medico;
 import com.project.lebiton.model.impl.Paciente;
 import com.project.lebiton.model.impl.Sessao;
+import com.project.lebiton.utils.RequestField;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +23,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -43,22 +48,20 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    public void logar(final ActionEvent actionEvent) throws IOException {
+    public void logar(final ActionEvent actionEvent) throws Exception {
+
+        //Verifica se campos são validos
+        ErrorHandle.checkFields(setFieldList());
+
         final LoginFacade facade = new LoginFacade();
 
-        if (txLogin.getText().equals("") && txSenha.getText().equals("")) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Os campos [Usuário] e [Senha] são obrigatórios", "AVISO",
-                    javax.swing.JOptionPane.WARNING_MESSAGE);
-            return;
-        }
 
         final UsuarioInterface user = UsuarioFactory.criar(txLogin.getText(), txSenha.getText());
 
         if (facade.logar(user)) {
-        	this.criarTelaParaUsuario(user);
-        }
-        else {
-        	System.out.println("Usuário/senha inválido!");
+            this.criarTelaParaUsuario(user);
+        } else {
+            System.out.println("Usuário/senha inválido!");
 
             final Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Login Inválido!");
@@ -112,5 +115,22 @@ public class LoginController implements Initializable {
         stage.setScene(scene);
         stage.setTitle(page);
         stage.show();
+    }
+
+    private List<RequestField> setFieldList() {
+        final RequestField field = new RequestField();
+        final List<RequestField> request = new ArrayList<>();
+
+        final List<String> key = Arrays.asList("login", "senha");
+        final List<String> value = Arrays.asList(txLogin.getText(), txSenha.getText());
+
+        for (int i = 0; i <= key.size(); i++) {
+            field.setKey(key.get(i));
+            field.setKey(value.get(i));
+
+            request.add(field);
+        }
+
+        return request;
     }
 }
