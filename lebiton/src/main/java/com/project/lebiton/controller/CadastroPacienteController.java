@@ -4,11 +4,12 @@ import com.project.lebiton.Main;
 import com.project.lebiton.dao.PacienteDaoInterface;
 import com.project.lebiton.dao.factory.FactoryPacienteDAO;
 import com.project.lebiton.model.impl.Paciente;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -42,12 +43,7 @@ public class CadastroPacienteController implements Initializable {
 
     @FXML
     public void cadastrar() throws SQLException {
-//        StringProperty nome = new SimpleStringProperty(txNome.getText());;
-//        nome.set();
-        final Paciente paciente = new Paciente(new SimpleStringProperty(txNome.getText()), txCpf.getText(), txTelefone.getText(),
-                txSenha.getText(), txEmail.getText());
 
-        // Validando todos os campos do cadastro como obrigat�rios.
         if (txNome.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo [Nome] � obrigat�rio!", "AVISO", JOptionPane.WARNING_MESSAGE);
             return;
@@ -81,10 +77,8 @@ public class CadastroPacienteController implements Initializable {
         }
 
         final PacienteDaoInterface dao = FactoryPacienteDAO.criarPacientendao();
-        // Se os campos n�o forem vazios, o cadastro do paciente � realizado. Se forem
-        // vazios, entra no if de cima.
-//        if(paciente.cadastro()) {
-        if (dao.createUser(paciente)) {
+
+        if (dao.createUser(this.setPacienteBuilder())) {
             System.out.println("Paciente cadastrado!");
 
             final Alert alert = new Alert(AlertType.INFORMATION);
@@ -107,6 +101,16 @@ public class CadastroPacienteController implements Initializable {
     public void voltarLogin() throws IOException {
         final Main principal = new Main();
         principal.start(new Stage());
+    }
+
+    private Paciente setPacienteBuilder() {
+        return new Paciente.Builder()
+                .nome(txNome.getText())
+                .cpf(txCpf.getText())
+                .telefone(txTelefone.getText())
+                .senha(txSenha.getText())
+                .email(txEmail.getText())
+                .build();
     }
 
 }

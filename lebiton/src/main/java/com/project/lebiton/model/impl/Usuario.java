@@ -17,22 +17,12 @@ public abstract class Usuario {
 		this.senha = senha;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-
 	public Usuario(final StringProperty nome, final String email, final String telefone, final String senha) {
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
 		this.senha = senha;
 	}
-
 
 	public StringProperty getNome() {
 		return nome;
@@ -51,5 +41,14 @@ public abstract class Usuario {
 		this.senha = senha;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(final String email) { this.email = email;}
+
+	public String getTelefone() {
+		return telefone;
+	}
 
 }
