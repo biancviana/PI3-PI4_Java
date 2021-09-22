@@ -83,12 +83,13 @@ public class CadastroMedicoController implements Initializable {
     }
 
     private List<RequestField> setFieldList() {
+        final RequestField field = new RequestField();
         final List<RequestField> request = new ArrayList<>();
+
         final List<String> key = Arrays.asList("nome", "data de Nascimento", "cpf", "telefone", "email", "senha");
         final List<String> value = Arrays.asList(txNome.getText(), txDataNascimento.getText(), txCrm.getText(), txEspecialidade.getText(), txTelefone.getText(), txEmail.getText(), txSenha.getText());
 
-        for (int i = 0; i < key.size(); i++) {
-            final RequestField field = new RequestField();
+        for (int i = 0; i <= key.size(); i++) {
             field.setKey(key.get(i));
             field.setKey(value.get(i));
 
