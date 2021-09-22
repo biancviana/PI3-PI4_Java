@@ -20,13 +20,12 @@ public class PacienteDao implements PacienteDaoInterface {
             connection = ConnectionFactory.getConnection();
             final PreparedStatement statement;
 
-            statement = connection.prepareStatement("call insertUserPaciente(?,?,?,?,?,?)");
+            statement = connection.prepareStatement("call insertUserPaciente(?,?,?,?,?)");
             statement.setString(1, paciente.getNome().get());
             statement.setString(2, paciente.getEmail());
             statement.setString(3, paciente.getTelefone());
-            statement.setString(4, paciente.getEndereco());
-            statement.setString(5, paciente.getSenha());        
-            statement.setString(6, paciente.getCpf());
+            statement.setString(4, paciente.getSenha());        
+            statement.setString(5, paciente.getCpf());
 
             if (!statement.execute()) {
                 return true;

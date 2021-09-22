@@ -1,0 +1,29 @@
+-- Procedure cadastrar paciente
+ DELIMITER //
+create procedure insertUserPaciente(nome varchar(100), user_email varchar(100), telefone varchar(14), senha varchar(100), cpf varchar(14))
+begin
+	declare idUser INT;
+    
+    insert into usuario (nome, email, telefone, senha) values (nome,user_email,telefone,senha);
+    
+    select id from usuario where email = user_email into idUser;
+    
+    insert into pacientes (idUsuario, cpf) values (idUser, cpf);
+    
+    END//
+DELIMITER ;
+
+-- Procedure cadastrar medico
+DELIMITER //
+create procedure insertUserMedico(nome varchar(100), user_email varchar(100), telefone varchar(14), senha varchar(100), CRM varchar(10), especialidade varchar(100))
+begin
+	declare idUser INT;
+    
+    insert into usuario (nome, email, telefone, senha) values (nome,user_email,telefone,senha);
+    
+    select id from usuario where email = user_email into idUser;
+    
+    insert into medicos (idUsuario, CRM, especialidade) values (idUser, CRM, especialidade);
+    
+    END//
+DELIMITER ;

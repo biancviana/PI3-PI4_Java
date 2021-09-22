@@ -9,7 +9,6 @@ public abstract class Usuario {
 	protected String email;
 	protected String telefone;
 	protected String senha;
-	protected String endereco;
 
 	public Usuario() {}
 
@@ -26,16 +25,12 @@ public abstract class Usuario {
 		return telefone;
 	}
 
-	public String getEndereco() {
-		return endereco;
-	}
 
-	public Usuario(final StringProperty nome, final String email, final String telefone, final String senha, final String endereco) {
+	public Usuario(final StringProperty nome, final String email, final String telefone, final String senha) {
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
 		this.senha = senha;
-		this.endereco = endereco;
 	}
 
 

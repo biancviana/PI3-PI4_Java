@@ -54,20 +54,18 @@ public class LoginController implements Initializable {
 
         final UsuarioInterface user = UsuarioFactory.criar(txLogin.getText(), txSenha.getText());
 
-        if (!facade.logar(user)) {
-            System.out.println("Usu�rio/senha inv�lido!");
+        if (facade.logar(user)) {
+        	this.criarTelaParaUsuario(user);
+        }
+        else {
+        	System.out.println("Usuário/senha inválido!");
 
             final Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Login Inv�lido!");
+            alert.setHeaderText("Login Inválido!");
             alert.setTitle("ERRO AO LOGAR!");
-            alert.setContentText("Usu�rio/Senha inv�lidos! Tente novamente.");
+            alert.setContentText("Usuário/Senha inválidos! Tente novamente.");
             alert.show();
-
-            return;
         }
-
-        this.criarTelaParaUsuario(user);
-
     }
 
     @FXML

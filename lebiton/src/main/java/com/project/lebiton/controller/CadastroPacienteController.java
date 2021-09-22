@@ -30,8 +30,6 @@ public class CadastroPacienteController implements Initializable {
     @FXML
     TextField txCpf;
     @FXML
-    TextField txEndereco;
-    @FXML
     TextField txTelefone;
     @FXML
     TextField txEmail;
@@ -46,7 +44,7 @@ public class CadastroPacienteController implements Initializable {
     public void cadastrar() throws SQLException {
 //        StringProperty nome = new SimpleStringProperty(txNome.getText());;
 //        nome.set();
-        final Paciente paciente = new Paciente(new SimpleStringProperty(txNome.getText()), txCpf.getText(), txTelefone.getText(), txEndereco.getText(),
+        final Paciente paciente = new Paciente(new SimpleStringProperty(txNome.getText()), txCpf.getText(), txTelefone.getText(),
                 txSenha.getText(), txEmail.getText());
 
         // Validando todos os campos do cadastro como obrigat�rios.
@@ -68,12 +66,6 @@ public class CadastroPacienteController implements Initializable {
 
         if (txTelefone.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo [Telefone] � obrigat�rio!", "AVISO",
-                    JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        if (txEndereco.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "O campo [Endere�o] � obrigat�rio!", "AVISO",
                     JOptionPane.WARNING_MESSAGE);
             return;
         }
