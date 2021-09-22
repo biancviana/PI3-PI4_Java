@@ -26,6 +26,4 @@ public class Administrador extends Usuario implements UsuarioInterface{
 		return dao.login(this.email, this.senha);
 	}
 
-	
-	
 }
