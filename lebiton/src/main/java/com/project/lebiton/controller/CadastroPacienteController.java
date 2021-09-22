@@ -3,7 +3,9 @@ package com.project.lebiton.controller;
 import com.project.lebiton.Main;
 import com.project.lebiton.dao.PacienteDaoInterface;
 import com.project.lebiton.dao.factory.FactoryPacienteDAO;
+import com.project.lebiton.handleError.ErrorHandle;
 import com.project.lebiton.model.impl.Paciente;
+import com.project.lebiton.utils.RequestField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -12,10 +14,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CadastroPacienteController implements Initializable {
@@ -42,39 +45,10 @@ public class CadastroPacienteController implements Initializable {
     Button btVoltar;
 
     @FXML
-    public void cadastrar() throws SQLException {
+    public void cadastrar() throws Exception {
 
-        if (txNome.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "O campo [Nome] � obrigat�rio!", "AVISO", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        if (txDataNascimento.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "O campo [Data de Nascimento] � obrigat�rio!", "AVISO",
-                    JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        if (txCpf.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "O campo [CPF] � obrigat�rio!", "AVISO", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        if (txTelefone.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "O campo [Telefone] � obrigat�rio!", "AVISO",
-                    JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        if (txSenha.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "O campo [Senha] � obrigat�rio!", "AVISO", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        if (txEmail.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "O campo [Email] � obrigat�rio!", "AVISO", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+        //Verifica se campos são validos
+        ErrorHandle.checkFields(setFieldList());
 
         final PacienteDaoInterface dao = FactoryPacienteDAO.criarPacientendao();
 
@@ -111,6 +85,23 @@ public class CadastroPacienteController implements Initializable {
                 .email(txEmail.getText())
                 .senha(txSenha.getText())
                 .build();
+    }
+
+    private List<RequestField> setFieldList() {
+        final RequestField field = new RequestField();
+        final List<RequestField> request = new ArrayList<>();
+
+        final List<String> key = Arrays.asList("nome", "data de Nascimento", "cpf", "telefone", "email", "senha");
+        final List<String> value = Arrays.asList(txNome.getText(), txDataNascimento.getText(), txCpf.getText(), txTelefone.getText(), txEmail.getText(), txSenha.getText());
+
+        for (int i = 0; i <= key.size(); i++) {
+            field.setKey(key.get(i));
+            field.setKey(value.get(i));
+
+            request.add(field);
+        }
+
+        return request;
     }
 
 }
