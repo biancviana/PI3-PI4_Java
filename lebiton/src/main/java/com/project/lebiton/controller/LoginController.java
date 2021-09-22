@@ -55,7 +55,6 @@ public class LoginController implements Initializable {
 
         final LoginFacade facade = new LoginFacade();
 
-
         final UsuarioInterface user = UsuarioFactory.criar(txLogin.getText(), txSenha.getText());
 
         if (facade.logar(user)) {
@@ -118,15 +117,14 @@ public class LoginController implements Initializable {
     }
 
     private List<RequestField> setFieldList() {
-        final RequestField field = new RequestField();
         final List<RequestField> request = new ArrayList<>();
-
         final List<String> key = Arrays.asList("login", "senha");
         final List<String> value = Arrays.asList(txLogin.getText(), txSenha.getText());
 
-        for (int i = 0; i <= key.size(); i++) {
+        for (int i = 0; i < key.size(); i++) {
+            final RequestField field = new RequestField();
             field.setKey(key.get(i));
-            field.setKey(value.get(i));
+            field.setValue(value.get(i));
 
             request.add(field);
         }
