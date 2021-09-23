@@ -55,7 +55,6 @@ public class LoginController implements Initializable {
 
         final LoginFacade facade = new LoginFacade();
 
-
         final UsuarioInterface user = UsuarioFactory.criar(txLogin.getText(), txSenha.getText());
 
         if (facade.logar(user)) {
