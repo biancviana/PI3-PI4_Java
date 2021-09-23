@@ -125,7 +125,7 @@ public class LoginController implements Initializable {
         for (int i = 0; i < key.size(); i++) {
             final RequestField field = new RequestField();
             field.setKey(key.get(i));
-            field.setKey(value.get(i));
+            field.setValue(value.get(i));
 
             request.add(field);
         }
