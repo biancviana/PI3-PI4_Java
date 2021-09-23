@@ -25,5 +25,6 @@ public class ErrorHandle {
         alert.setTitle("Campo Invalido!");
         alert.setContentText("Preencha todos os campos obrigatórios");
         alert.show();
+
     }
 }
