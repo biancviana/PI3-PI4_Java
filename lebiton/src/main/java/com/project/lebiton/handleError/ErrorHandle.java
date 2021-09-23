@@ -22,4 +22,14 @@ public class ErrorHandle {
             }
         }
     }
+
+    private static void showMessage(final RequestField field) {
+        final Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setHeaderText("Campo ".concat(field.getKey()).concat(" obrigatório"));
+        alert.setTitle("Campo Invalido!");
+        alert.setContentText("Preencha todos os campos obrigatórios");
+        alert.show();
+
+    }
 }
