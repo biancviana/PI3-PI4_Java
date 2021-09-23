@@ -7,7 +7,9 @@ import com.project.lebiton.handleError.ErrorHandle;
 import com.project.lebiton.model.impl.Paciente;
 import com.project.lebiton.utils.RequestField;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -58,23 +60,33 @@ public class CadastroPacienteController implements Initializable {
             final Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText("Paciente cadastrado com sucesso!");
             alert.setTitle("CADASTRO REALIZADO!");
-            alert.setContentText("Usu�rio/Senha validados! Prossiga.");
+            alert.setContentText("Usuário/Senha validados! Volte para a tela inicial e prossiga.");
             alert.show();
         } else {
             System.out.println("Ocorreu um erro!");
 
             final Alert alert = new Alert(AlertType.ERROR);
-            alert.setHeaderText("Cadastro Inv�lido!");
+            alert.setHeaderText("Cadastro Inválido!");
             alert.setTitle("ERRO AO CADASTRAR!");
-            alert.setContentText("N�o conseguimos processar seu cadastro! Tente novamente.");
+            alert.setContentText("Não conseguimos processar seu cadastro! Tente novamente.");
             alert.show();
         }
     }
 
     @FXML
-    public void voltarLogin() throws IOException {
-        final Main principal = new Main();
-        principal.start(new Stage());
+    public void voltarLogin() {
+    	final Stage stage = (Stage) btVoltar.getScene().getWindow();
+        try {
+
+            final FXMLLoader root = new FXMLLoader(CadastroPacienteController.class.getResource("/com/project/lebiton/view/Login.fxml"));
+            final Scene scene = new Scene(root.load(), 700, 540);
+            stage.setScene(scene);
+            stage.setTitle("Tela de Login");
+            stage.show();
+
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private Paciente setPacienteBuilder() {
