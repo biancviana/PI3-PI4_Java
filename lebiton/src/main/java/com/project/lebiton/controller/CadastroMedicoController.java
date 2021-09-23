@@ -1,17 +1,22 @@
 package com.project.lebiton.controller;
 
+import com.project.lebiton.Main;
 import com.project.lebiton.dao.MedicoDaoInterface;
 import com.project.lebiton.dao.factory.FactoryMedicoDAO;
 import com.project.lebiton.handleError.ErrorHandle;
 import com.project.lebiton.model.impl.Medico;
 import com.project.lebiton.utils.RequestField;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,9 +61,9 @@ public class CadastroMedicoController implements Initializable {
             System.out.println("Paciente cadastrado!");
 
             final Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setHeaderText("Paciente cadastrado com sucesso!");
+            alert.setHeaderText("Médico cadastrado com sucesso!");
             alert.setTitle("CADASTRO REALIZADO!");
-            alert.setContentText("Usuário/Senha validados! Prossiga.");
+            alert.setContentText("Usuário/Senha validados! Volte para a tela inicial e prossiga.");
             alert.show();
         } else {
             System.out.println("Ocorreu um erro!");
@@ -96,6 +101,22 @@ public class CadastroMedicoController implements Initializable {
         }
 
         return request;
+    }
+    
+    @FXML
+    public void voltarHome() {
+    	final Stage stage = (Stage) btVoltar.getScene().getWindow();
+        try {
+
+            final FXMLLoader root = new FXMLLoader(CadastroMedicoController.class.getResource("/com/project/lebiton/view/HomeAdm.fxml"));
+            final Scene scene = new Scene(root.load(), 700, 540);
+            stage.setScene(scene);
+            stage.setTitle("Tela do Administrador");
+            stage.show();
+
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
