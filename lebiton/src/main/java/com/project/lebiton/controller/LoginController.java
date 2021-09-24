@@ -24,7 +24,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -118,13 +118,15 @@ public class LoginController implements Initializable {
 
     private List<RequestField> setFieldList() {
         final List<RequestField> request = new ArrayList<>();
-        final List<String> key = Arrays.asList("login", "senha");
-        final List<String> value = Arrays.asList(txLogin.getText(), txSenha.getText());
+        final LinkedHashMap<String, String> map = new LinkedHashMap<>();
 
-        for (int i = 0; i < key.size(); i++) {
+        map.put("login", txLogin.getText());
+        map.put("senha", txSenha.getText());
+
+        for (final String key : map.keySet()) {
             final RequestField field = new RequestField();
-            field.setKey(key.get(i));
-            field.setValue(value.get(i));
+            field.setKey(key);
+            field.setValue(map.get(key));
 
             request.add(field);
         }

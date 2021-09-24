@@ -13,7 +13,7 @@ public class ErrorHandle {
         for (final RequestField field : fields) {
             if (field.getValue() == null || field.getValue().isEmpty()) {
                 showMessage(field);
-                throw new CampoInvalidoException("Campo ".concat(field.getKey()).concat("  Obrigatório"));
+                throw new CampoInvalidoException("Campo ".concat(field.getKey()).concat(" obrigatório").toUpperCase());
             }
         }
     }
@@ -21,7 +21,7 @@ public class ErrorHandle {
     private static void showMessage(final RequestField field) {
         final Alert alert = new Alert(Alert.AlertType.ERROR);
 
-        alert.setHeaderText("Campo ".concat(field.getKey()).concat(" obrigatório"));
+        alert.setHeaderText("Campo ".concat(field.getKey()).concat(" obrigatório").toUpperCase());
         alert.setTitle("Campo Invalido!");
         alert.setContentText("Preencha todos os campos obrigatórios");
         alert.show();
