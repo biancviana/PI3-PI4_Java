@@ -1,6 +1,5 @@
 package com.project.lebiton.controller;
 
-import com.project.lebiton.Main;
 import com.project.lebiton.dao.PacienteDaoInterface;
 import com.project.lebiton.dao.factory.FactoryPacienteDAO;
 import com.project.lebiton.handleError.ErrorHandle;
@@ -19,7 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -75,7 +74,7 @@ public class CadastroPacienteController implements Initializable {
 
     @FXML
     public void voltarLogin() {
-    	final Stage stage = (Stage) btVoltar.getScene().getWindow();
+        final Stage stage = (Stage) btVoltar.getScene().getWindow();
         try {
 
             final FXMLLoader root = new FXMLLoader(CadastroPacienteController.class.getResource("/com/project/lebiton/view/Login.fxml"));
@@ -101,13 +100,19 @@ public class CadastroPacienteController implements Initializable {
 
     private List<RequestField> setFieldList() {
         final List<RequestField> request = new ArrayList<>();
-        final List<String> key = Arrays.asList("nome", "data de Nascimento", "cpf", "telefone", "email", "senha");
-        final List<String> value = Arrays.asList(txNome.getText(), txDataNascimento.getText(), txCpf.getText(), txTelefone.getText(), txEmail.getText(), txSenha.getText());
+        final LinkedHashMap<String, String> map = new LinkedHashMap<>();
 
-        for (int i = 0; i < key.size(); i++) {
+        map.put("nome", txNome.getText());
+        map.put("data nascimento", txDataNascimento.getText());
+        map.put("cpf", txCpf.getText());
+        map.put("telefone", txTelefone.getText());
+        map.put("email", txEmail.getText());
+        map.put("senha", txSenha.getText());
+
+        for (final String key : map.keySet()) {
             final RequestField field = new RequestField();
-            field.setKey(key.get(i));
-            field.setValue(value.get(i));
+            field.setKey(key);
+            field.setValue(map.get(key));
 
             request.add(field);
         }
