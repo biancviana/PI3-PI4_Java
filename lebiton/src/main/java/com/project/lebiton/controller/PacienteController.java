@@ -4,6 +4,7 @@ import com.project.lebiton.dao.PacienteDaoInterface;
 import com.project.lebiton.dao.factory.FactoryPacienteDAO;
 import com.project.lebiton.model.impl.AgendaPaciente;
 import com.project.lebiton.model.impl.Sessao;
+import com.project.lebiton.utils.Message;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -116,15 +117,12 @@ public class PacienteController implements Initializable {
 
     @FXML
     public void excluirConsulta() {
-
         final PacienteDaoInterface daoInterface = FactoryPacienteDAO.criarPacientendao();
         final boolean remover = daoInterface.excluirConsultaAgendada(idConsulta);
+
         if (remover) {
-            final Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setHeaderText("Consulta desmarcada!");
-            alert.setTitle("CONSULTA DESMARCADA COM SUCESSO!");
-            alert.setContentText("Pronto, sua consulta foi desmarcada com sucesso!");
-            alert.show();
+            Message.showAlert("CONSULTA DESMARCADA COM SUCESSO!", "Consulta desmarcada!",
+                    "Sua consulta foi desmarcada com sucesso!", AlertType.CONFIRMATION);
 
             tbConsultas.getItems().remove(index);
         }

@@ -2,14 +2,15 @@ package com.project.lebiton.controller;
 
 import com.project.lebiton.dao.PacienteDaoInterface;
 import com.project.lebiton.dao.factory.FactoryPacienteDAO;
+import com.project.lebiton.exceptions.CadastroInvalidoException;
 import com.project.lebiton.handleError.ErrorHandle;
 import com.project.lebiton.model.impl.Paciente;
+import com.project.lebiton.utils.Message;
 import com.project.lebiton.utils.RequestField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -53,22 +54,19 @@ public class CadastroPacienteController implements Initializable {
 
         final PacienteDaoInterface dao = FactoryPacienteDAO.criarPacientendao();
 
-        if (dao.createUser(this.setPacienteBuilder())) {
-            System.out.println("Paciente cadastrado!");
-
-            final Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setHeaderText("Paciente cadastrado com sucesso!");
-            alert.setTitle("CADASTRO REALIZADO!");
-            alert.setContentText("Usuário/Senha validados! Volte para a tela inicial e prossiga.");
-            alert.show();
-        } else {
+        if (!dao.createUser(this.setPacienteBuilder())) {
             System.out.println("Ocorreu um erro!");
 
-            final Alert alert = new Alert(AlertType.ERROR);
-            alert.setHeaderText("Cadastro Inválido!");
-            alert.setTitle("ERRO AO CADASTRAR!");
-            alert.setContentText("Não conseguimos processar seu cadastro! Tente novamente.");
-            alert.show();
+            Message.showAlert("ERRO AO CADASTRAR!", "Cadastro Inválido!",
+                    "Não conseguimos processar seu cadastro! Tente novamente.", AlertType.ERROR);
+
+            throw new CadastroInvalidoException("Não foi possivel realizar o cadastro");
+
+        } else {
+            System.out.println("Paciente cadastrado!");
+
+            Message.showAlert("CADASTRO REALIZADO!", "Paciente cadastrado com sucesso!",
+                    "Usuário/Senha validados! Volte para a tela inicial e prossiga.", AlertType.INFORMATION);
         }
     }
 
