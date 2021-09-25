@@ -58,15 +58,15 @@ public class CadastroPacienteController implements Initializable {
             final Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText("Paciente cadastrado com sucesso!");
             alert.setTitle("CADASTRO REALIZADO!");
-            alert.setContentText("Usu�rio/Senha validados! Prossiga.");
+            alert.setContentText("Usuário/Senha validados! Prossiga.");
             alert.show();
         } else {
             System.out.println("Ocorreu um erro!");
 
             final Alert alert = new Alert(AlertType.ERROR);
-            alert.setHeaderText("Cadastro Inv�lido!");
+            alert.setHeaderText("Cadastro Inválido!");
             alert.setTitle("ERRO AO CADASTRAR!");
-            alert.setContentText("N�o conseguimos processar seu cadastro! Tente novamente.");
+            alert.setContentText("Não conseguimos processar seu cadastro! Tente novamente.");
             alert.show();
         }
     }
