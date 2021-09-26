@@ -61,10 +61,9 @@ public class CadastroPacienteController implements Initializable {
                     "Não conseguimos processar seu cadastro! Tente novamente.", AlertType.ERROR);
 
             throw new CadastroInvalidoException("Não foi possivel realizar o cadastro");
-
         } else {
             System.out.println("Paciente cadastrado!");
-
+          
             Message.showAlert("CADASTRO REALIZADO!", "Paciente cadastrado com sucesso!",
                     "Usuário/Senha validados! Volte para a tela inicial e prossiga.", AlertType.INFORMATION);
         }
