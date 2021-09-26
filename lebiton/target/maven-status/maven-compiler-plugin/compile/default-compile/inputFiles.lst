@@ -1,39 +1,3 @@
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\handleError\ErrorHandle.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\controller\PacienteController.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\facade\LoginFacade.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\controller\LoginController.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\impl\PacienteDao.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\MedicoDaoInterface.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\AgendarEspecialistaDaoInterface.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\Main.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\controller\HomeAdmController.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\model\impl\Administrador.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\controller\CadastroMedicoController.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\impl\LoginDao.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\model\impl\AgendaPaciente.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\connction\ConnectionFactory.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\factory\FactoryMedicoDAO.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\PacienteDaoInterface.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\model\impl\Usuario.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\controller\CadastroPacienteController.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\model\impl\Medico.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\factory\FactoryPacienteDAO.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\utils\RequestField.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\model\impl\Paciente.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\model\impl\Agenda.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\controller\AgendaEspecialistaController.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\factory\FactoryLoginDAO.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\impl\MedicoDao.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\impl\AgendaEspecialistaDao.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\factory\UsuarioFactory.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\model\impl\AgendaMedico.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\factory\FactoryAgendarEspecialistalDAO.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\LoginDaoInterface.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\model\impl\Sessao.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\model\UsuarioInterface.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\module-info.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\dao\impl\UsuarioDao.java
-C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\lebiton\exceptions\CampoInvalidoException.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/controller/CadastroMedicoController.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/model/impl/Medico.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/factory/UsuarioFactory.java
@@ -51,6 +15,7 @@ C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/controller/CadastroPacienteController.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/dao/LoginDaoInterface.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/model/impl/Usuario.java
+/home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/exceptions/ImpossivelEfetuarLoginException.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/handleError/ErrorHandle.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/dao/PacienteDaoInterface.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/dao/connction/ConnectionFactory.java
@@ -58,12 +23,14 @@ C:\Users\letic\eclipse-workspace\PI3-PI4_Java\lebiton\src\main\java\com\project\
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/controller/PacienteController.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/utils/RequestField.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/dao/impl/AgendaEspecialistaDao.java
+/home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/exceptions/CadastroInvalidoException.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/model/impl/AgendaMedico.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/dao/factory/FactoryMedicoDAO.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/model/impl/AgendaPaciente.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/model/impl/Agenda.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/Main.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/model/impl/Sessao.java
+/home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/controller/MedicoController.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/dao/factory/FactoryLoginDAO.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/model/impl/Administrador.java
 /home/ewerton/Área de Trabalho/Faculdade/PI3-PI4_Java/lebiton/src/main/java/com/project/lebiton/model/impl/Paciente.java
