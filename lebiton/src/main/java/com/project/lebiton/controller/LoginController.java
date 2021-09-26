@@ -109,7 +109,7 @@ public class LoginController implements Initializable {
     }
 
     private void abrirTela(final Stage stage, final FXMLLoader root, final String page) throws IOException {
-        final Scene scene = new Scene(root.load(), 700, 540);
+        final Scene scene = new Scene(root.load());
         stage.setScene(scene);
         stage.setTitle(page);
         stage.show();

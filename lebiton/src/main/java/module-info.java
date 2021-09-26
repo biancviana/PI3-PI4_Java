@@ -2,7 +2,6 @@ module com.project.lebiton {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires java.desktop;
 
     opens com.project.lebiton to javafx.fxml;
     exports com.project.lebiton;

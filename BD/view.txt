@@ -1,0 +1,8 @@
+-- View para exibir os horários de atendimento do médico
+create view horarios_atendimento_medico as
+select u.email as email, a.dia as dia, a.horario as horario from agenda a
+inner join agenda_medico am on a.id = am.idAgenda
+inner join medicos m on m.idUsuario = am.idMedico
+inner join usuario u on u.id = m.idUsuario;
+
+-- View para exibir o horário de atendimento de todos os médicos
