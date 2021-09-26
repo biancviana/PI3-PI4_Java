@@ -8,9 +8,8 @@ public class ConnectionFactory {
     private static final String USER = "root";
     //private static final String PASSWORD = "abc123.A";
     private static final String PASSWORD = "Leh2019";
-    //private static final String PASSWORD = = "1234";
-
-
+    private static final String PASSWORD = "1234";
+  
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }

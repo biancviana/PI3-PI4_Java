@@ -13,7 +13,7 @@
       <Label layoutX="142.0" layoutY="291.0" text="Especialidade:" />
       <Label layoutX="142.0" layoutY="177.0" text="Data de Nascimento:" />
       <Label layoutX="142.0" layoutY="349.0" text="Telefone:" />
-      <Label layoutX="142.0" layoutY="232.0" text="CRM" />
+      <Label layoutX="142.0" layoutY="232.0" text="CRM:" />
       <TextField fx:id="txNome" layoutX="142.0" layoutY="132.0" prefHeight="34.0" prefWidth="340.0" />
       <TextField fx:id="txDataNascimento" layoutX="142.0" layoutY="193.0" prefHeight="34.0" prefWidth="340.0" />
       <TextField fx:id="txCrm" layoutX="142.0" layoutY="249.0" prefHeight="34.0" prefWidth="340.0" />
@@ -28,7 +28,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button id="btVoltar" fx:id="btVoltar" layoutX="19.0" layoutY="43.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="81.0" text="Voltar">
+      <Button id="btVoltar" fx:id="btVoltar" layoutX="19.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#voltarHome" prefHeight="27.0" prefWidth="81.0" text="Voltar">
          <font>
             <Font size="13.0" />
          </font>

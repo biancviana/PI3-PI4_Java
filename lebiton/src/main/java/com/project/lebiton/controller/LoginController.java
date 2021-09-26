@@ -1,5 +1,6 @@
 package com.project.lebiton.controller;
 
+import com.project.lebiton.exceptions.ImpossivelEfetuarLoginException;
 import com.project.lebiton.facade.LoginFacade;
 import com.project.lebiton.factory.UsuarioFactory;
 import com.project.lebiton.handleError.ErrorHandle;
@@ -8,6 +9,7 @@ import com.project.lebiton.model.impl.Administrador;
 import com.project.lebiton.model.impl.Medico;
 import com.project.lebiton.model.impl.Paciente;
 import com.project.lebiton.model.impl.Sessao;
+import com.project.lebiton.utils.Message;
 import com.project.lebiton.utils.RequestField;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -24,7 +26,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -50,25 +52,21 @@ public class LoginController implements Initializable {
     @FXML
     public void logar(final ActionEvent actionEvent) throws Exception {
 
-        //Verifica se campos são validos
         ErrorHandle.checkFields(setFieldList());
 
         final LoginFacade facade = new LoginFacade();
-
-
         final UsuarioInterface user = UsuarioFactory.criar(txLogin.getText(), txSenha.getText());
 
-        if (facade.logar(user)) {
-            this.criarTelaParaUsuario(user);
-        } else {
+        if (!facade.logar(user)) {
             System.out.println("Usuário/senha inválido!");
 
-            final Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Login Inválido!");
-            alert.setTitle("ERRO AO LOGAR!");
-            alert.setContentText("Usuário/Senha inválidos! Tente novamente.");
-            alert.show();
+            Message.showAlert("ERRO AO LOGAR!", "Login Inválido!",
+                    "Usuário/Senha inválidos! Tente novamente.", Alert.AlertType.ERROR);
+
+            throw new ImpossivelEfetuarLoginException("Login ou senha invalido");
         }
+
+        this.criarTelaParaUsuario(user);
     }
 
     @FXML
@@ -119,13 +117,15 @@ public class LoginController implements Initializable {
 
     private List<RequestField> setFieldList() {
         final List<RequestField> request = new ArrayList<>();
-        final List<String> key = Arrays.asList("login", "senha");
-        final List<String> value = Arrays.asList(txLogin.getText(), txSenha.getText());
+        final LinkedHashMap<String, String> map = new LinkedHashMap<>();
 
-        for (int i = 0; i < key.size(); i++) {
+        map.put("login", txLogin.getText());
+        map.put("senha", txSenha.getText());
+
+        for (final String key : map.keySet()) {
             final RequestField field = new RequestField();
-            field.setKey(key.get(i));
-            field.setValue(value.get(i));
+            field.setKey(key);
+            field.setValue(map.get(key));
 
             request.add(field);
         }
