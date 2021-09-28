@@ -29,15 +29,15 @@ public class PacienteController implements Initializable {
     @FXML
     private TableView<AgendaPaciente> tbConsultas = new TableView<>();
     @FXML
-    private TableColumn<AgendaPaciente, Long> clCodigo = new TableColumn<AgendaPaciente, Long>("Código");
+    private TableColumn<AgendaPaciente, Long> clCodigo = new TableColumn<>("Código");
     @FXML
-    private TableColumn<AgendaPaciente, String> clEspecialidade = new TableColumn<AgendaPaciente, String>("Especialidade");
+    private TableColumn<AgendaPaciente, String> clEspecialidade = new TableColumn<>("Especialidade");
     @FXML
-    private TableColumn<AgendaPaciente, String> clMedico = new TableColumn<AgendaPaciente, String>("Médico");
+    private TableColumn<AgendaPaciente, String> clMedico = new TableColumn<>("Médico");
     @FXML
-    private TableColumn<AgendaPaciente, String> clDia = new TableColumn<AgendaPaciente, String>("Dia");
+    private TableColumn<AgendaPaciente, String> clDia = new TableColumn<>("Dia");
     @FXML
-    private TableColumn<AgendaPaciente, String> clHorario = new TableColumn<AgendaPaciente, String>("Horário");
+    private TableColumn<AgendaPaciente, String> clHorario = new TableColumn<>("Horário");
 
     @FXML
     private Button btAgendar;
@@ -67,7 +67,6 @@ public class PacienteController implements Initializable {
 
 
             tbConsultas.getColumns().setAll(clCodigo, clEspecialidade, clMedico, clDia, clHorario);
-
 
         } catch (final Exception e) {
             System.out.println("ERRO: " + e.getMessage());

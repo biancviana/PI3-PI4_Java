@@ -1,6 +1,7 @@
 package com.project.lebiton.handleError;
 
 import com.project.lebiton.exceptions.CampoInvalidoException;
+import com.project.lebiton.utils.Message;
 import com.project.lebiton.utils.RequestField;
 import javafx.scene.control.Alert;
 
@@ -12,19 +13,13 @@ public class ErrorHandle {
 
         for (final RequestField field : fields) {
             if (field.getValue() == null || field.getValue().isEmpty()) {
-                showMessage(field);
-                throw new CampoInvalidoException("Campo ".concat(field.getKey()).concat(" obrigatório").toUpperCase());
+
+                Message.showAlert("Campo Invalido!", "Campo ".concat(field.getKey()).concat(" obrigatório").toUpperCase(),
+                        "Preencha todos os campos obrigatórios", Alert.AlertType.ERROR);
+
+                throw new CampoInvalidoException("Campo ".concat(field.getKey()).concat(" obrigatório"));
             }
         }
     }
 
-    private static void showMessage(final RequestField field) {
-        final Alert alert = new Alert(Alert.AlertType.ERROR);
-
-        alert.setHeaderText("Campo ".concat(field.getKey()).concat(" obrigatório").toUpperCase());
-        alert.setTitle("Campo Invalido!");
-        alert.setContentText("Preencha todos os campos obrigatórios");
-        alert.show();
-
-    }
 }
