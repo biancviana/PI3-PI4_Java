@@ -15,7 +15,7 @@
    <center>
       <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="599.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="380.0" prefWidth="620.0">
                <children>
                   <TextField id="txLogin" fx:id="txLogin" layoutX="201.0" layoutY="157.0" prefHeight="40.0" prefWidth="220.0" promptText="Digite seu usuário" />
                   <PasswordField id="txSenha" fx:id="txSenha" layoutX="201.0" layoutY="218.0" prefHeight="39.0" prefWidth="219.0" promptText="Digite sua senha" />
@@ -25,19 +25,19 @@
                         <Font size="13.0" />
                      </font>
                   </Button>
-                  <ImageView fx:id="imUser" fitHeight="24.0" fitWidth="24.0" layoutX="168.0" layoutY="165.0">
-                     <image>
-                        <Image url="@../../../../../../../img/user.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imPass" fitHeight="25.0" fitWidth="24.0" layoutX="168.0" layoutY="225.0">
-                     <image>
-                        <Image url="@../../../../../../../img/padlock.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="129.0" fitWidth="599.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="93.0" fitWidth="620.0" AnchorPane.leftAnchor="0.0">
                      <image>
                         <Image url="@../img/logo_size_invert.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="167.0" layoutY="165.0">
+                     <image>
+                        <Image url="@../img/user.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="26.0" layoutX="166.0" layoutY="227.0">
+                     <image>
+                        <Image url="@../img/padlock.png" />
                      </image>
                   </ImageView>
                </children>
