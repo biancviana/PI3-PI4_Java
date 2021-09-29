@@ -1,8 +1,10 @@
 package com.project.lebiton.utils;
 
+import javafx.scene.control.TextField;
+
 public class RequestField {
     private String key;
-    private String value;
+    private TextField value;
 
     public String getKey() {
         return key;
@@ -12,11 +14,11 @@ public class RequestField {
         this.key = key;
     }
 
-    public String getValue() {
+    public TextField getValue() {
         return value;
     }
 
-    public void setValue(final String value) {
+    public void setValue(final TextField value) {
         this.value = value;
     }
 }

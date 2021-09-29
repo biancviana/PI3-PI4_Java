@@ -60,6 +60,8 @@ public class LoginController implements Initializable {
         if (!facade.logar(user)) {
             System.out.println("Usuário/senha inválido!");
 
+            marcarCamposInvalidos();
+
             Message.showAlert("ERRO AO LOGAR!", "Login Inválido!",
                     "Usuário/Senha inválidos! Tente novamente.", Alert.AlertType.ERROR);
 
@@ -67,6 +69,11 @@ public class LoginController implements Initializable {
         }
 
         this.criarTelaParaUsuario(user);
+    }
+
+    private void marcarCamposInvalidos() {
+        txLogin.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+        txSenha.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
     }
 
     @FXML
@@ -117,10 +124,10 @@ public class LoginController implements Initializable {
 
     private List<RequestField> setFieldList() {
         final List<RequestField> request = new ArrayList<>();
-        final LinkedHashMap<String, String> map = new LinkedHashMap<>();
+        final LinkedHashMap<String, TextField> map = new LinkedHashMap<>();
 
-        map.put("login", txLogin.getText());
-        map.put("senha", txSenha.getText());
+        map.put("login", txLogin);
+        map.put("senha", txSenha);
 
         for (final String key : map.keySet()) {
             final RequestField field = new RequestField();
