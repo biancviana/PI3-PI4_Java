@@ -86,15 +86,15 @@ public class CadastroMedicoController implements Initializable {
 
     private List<RequestField> setFieldList() {
         final List<RequestField> request = new ArrayList<>();
-        final LinkedHashMap<String, String> map = new LinkedHashMap<>();
+        final LinkedHashMap<String, TextField> map = new LinkedHashMap<>();
 
-        map.put("nome", txNome.getText());
-        map.put("data nascimento", txDataNascimento.getText());
-        map.put("crm", txCrm.getText());
-        map.put("especialidade", txEspecialidade.getText());
-        map.put("telefone", txTelefone.getText());
-        map.put("email", txEmail.getText());
-        map.put("senha", txSenha.getText());
+        map.put("nome", txNome);
+        map.put("data nascimento", txDataNascimento);
+        map.put("crm", txCrm);
+        map.put("especialidade", txEspecialidade);
+        map.put("telefone", txTelefone);
+        map.put("email", txEmail);
+        map.put("senha", txSenha);
 
         for (final String key : map.keySet()) {
             final RequestField field = new RequestField();
