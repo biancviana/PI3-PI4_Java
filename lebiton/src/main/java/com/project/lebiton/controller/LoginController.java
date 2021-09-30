@@ -4,6 +4,7 @@ import com.project.lebiton.exceptions.ImpossivelEfetuarLoginException;
 import com.project.lebiton.facade.LoginFacade;
 import com.project.lebiton.factory.UsuarioFactory;
 import com.project.lebiton.handleError.ErrorHandle;
+import com.project.lebiton.handleError.MarkFieldError;
 import com.project.lebiton.model.UsuarioInterface;
 import com.project.lebiton.model.impl.Administrador;
 import com.project.lebiton.model.impl.Medico;
@@ -25,10 +26,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class LoginController implements Initializable {
 
@@ -60,7 +58,7 @@ public class LoginController implements Initializable {
         if (!facade.logar(user)) {
             System.out.println("Usuário/senha inválido!");
 
-            marcarCamposInvalidos();
+            MarkFieldError.markInvalidField(Arrays.asList(txLogin, txSenha));
 
             Message.showAlert("ERRO AO LOGAR!", "Login Inválido!",
                     "Usuário/Senha inválidos! Tente novamente.", Alert.AlertType.ERROR);
@@ -69,11 +67,6 @@ public class LoginController implements Initializable {
         }
 
         this.criarTelaParaUsuario(user);
-    }
-
-    private void marcarCamposInvalidos() {
-        txLogin.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
-        txSenha.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
     }
 
     @FXML
