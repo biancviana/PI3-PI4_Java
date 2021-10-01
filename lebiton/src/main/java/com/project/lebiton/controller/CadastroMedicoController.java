@@ -73,6 +73,23 @@ public class CadastroMedicoController implements Initializable {
         }
     }
 
+    @FXML
+    public void voltarHome() {
+        final Stage stage = (Stage) btVoltar.getScene().getWindow();
+        try {
+
+            final FXMLLoader root = new FXMLLoader(CadastroMedicoController.class.getResource("/com/project/lebiton/view/HomeAdm.fxml"));
+            final Scene scene = new Scene(root.load(), 700, 540);
+            stage.setScene(scene);
+            stage.setTitle("Tela do Administrador");
+            stage.show();
+
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     private Medico setMedicoBuider() {
         return new Medico.Builder()
                 .nome(txNome.getText())
@@ -106,21 +123,4 @@ public class CadastroMedicoController implements Initializable {
 
         return request;
     }
-
-    @FXML
-    public void voltarHome() {
-        final Stage stage = (Stage) btVoltar.getScene().getWindow();
-        try {
-
-            final FXMLLoader root = new FXMLLoader(CadastroMedicoController.class.getResource("/com/project/lebiton/view/HomeAdm.fxml"));
-            final Scene scene = new Scene(root.load(), 700, 540);
-            stage.setScene(scene);
-            stage.setTitle("Tela do Administrador");
-            stage.show();
-
-        } catch (final IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }
