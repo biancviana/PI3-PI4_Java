@@ -1,5 +1,6 @@
 package com.project.lebiton.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -13,7 +14,9 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -21,6 +24,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
 public class MedicoController implements Initializable{
 	@FXML
@@ -36,6 +40,8 @@ public class MedicoController implements Initializable{
 
     @FXML
     private Button btAgenda, btDeslogar;
+    
+    FXMLLoader root = null;
 
 
 	@Override
@@ -73,8 +79,21 @@ public class MedicoController implements Initializable{
         final Optional<ButtonType> result = alert.showAndWait();
 
         if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-            Platform.exit();
+	        if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+	        	
+	        	final Stage stage = (Stage) btDeslogar.getScene().getWindow();
+	        	
+	        	try {
+	                root = new FXMLLoader(MedicoController.class.getResource("/com/project/lebiton/view/Login.fxml"));
+	                final Scene scene = new Scene(root.load());
+	                stage.setScene(scene);
+	                stage.setTitle("Login");
+	                stage.show();
+	            } catch (final IOException e) {
+	                e.printStackTrace();
+	            }
         }
     }
 
+}
 }
