@@ -40,9 +40,11 @@ public class PacienteController implements Initializable {
     private TableColumn<AgendaPaciente, String> clHorario = new TableColumn<>("Horário");
 
     @FXML
-    private Button btAgendar;
+    private Button btAgendar, btDeslogar;
     @FXML
     private TextField txUser, txEspecialista, txMedico, txDia, txHorario;
+    
+    FXMLLoader root = null;
 
     int index;
     Long idConsulta;
@@ -136,7 +138,18 @@ public class PacienteController implements Initializable {
         final Optional<ButtonType> result = alert.showAndWait();
 
         if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-            Platform.exit();
+        	
+        	final Stage stage = (Stage) btDeslogar.getScene().getWindow();
+        	
+        	try {
+                root = new FXMLLoader(PacienteController.class.getResource("/com/project/lebiton/view/Login.fxml"));
+                final Scene scene = new Scene(root.load());
+                stage.setScene(scene);
+                stage.setTitle("Login");
+                stage.show();
+            } catch (final IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
