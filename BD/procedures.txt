@@ -27,3 +27,24 @@ begin
     
     END//
 DELIMITER ;
+
+-- Procedure para cadastrar consulta
+ DELIMITER //
+create procedure createConsulta(nomeMedico varchar(100), emailPaciente varchar(100), horario varchar(20), dia varchar(20))
+begin
+	declare idPaciente INT;
+    declare idMedico int;
+    declare emailMedico varchar(100);
+    
+    select idUsuario from pacientes p
+    inner join  usuario u on p.idUsuario = u.id
+    where email = emailPaciente into idPaciente;
+    
+    select idUsuario, u.email from medicos m
+    inner join  usuario u on m.idUsuario = u.id
+    where nome = nomeMedico into idMedico, emailMedico;
+
+    insert into consulta (idPaciente, emailPaciente, emailMedico, idMedico, horario, dia) values (idPaciente,emailPaciente,emailMedico,idMedico,horario,dia);
+    
+    END//
+DELIMITER ;
