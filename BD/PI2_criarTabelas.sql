@@ -62,14 +62,18 @@ CREATE TABLE IF NOT EXISTS agenda_medico (
 -- -----------------------------------------------------
 -- Table `teste`.`consulta_paciente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS consulta_paciente (
-  id INT NOT NULL AUTO_INCREMENT,
-  email VARCHAR(100) NULL DEFAULT NULL,
-  medico VARCHAR(100) NULL DEFAULT NULL,
-  especialidade VARCHAR(100) NULL DEFAULT NULL,
-  horario VARCHAR(20) NULL DEFAULT NULL,
-  dia VARCHAR(20) NULL DEFAULT NULL,
-  PRIMARY KEY (id));
+drop table consulta_paciente;
+CREATE TABLE IF NOT EXISTS consulta (
+id INT NOT NULL AUTO_INCREMENT,
+idPaciente INT NOT NULL,
+emailPaciente varchar(100),
+emailMedico varchar(100),
+idMedico INT NOT NULL,
+horario VARCHAR(20) NULL DEFAULT NULL,
+dia VARCHAR(20) NULL DEFAULT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (idMedico) REFERENCES medicos (idUsuario),
+FOREIGN KEY (idPaciente)REFERENCES pacientes (idUsuario));
 
 
 -- -----------------------------------------------------

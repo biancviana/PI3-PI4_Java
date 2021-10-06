@@ -66,7 +66,11 @@ public class MedicoDao implements MedicoDaoInterface{
 		
 		return agenda;
 	}
-	
+
+	//Select que será utilizado para exibir as consultas dos médicos NÃO REMOVER
+//    select c.id, u.nome, horario, dia
+//    from consulta c
+//    inner join usuario u on c.idPaciente = u.id;
 	
 
 }

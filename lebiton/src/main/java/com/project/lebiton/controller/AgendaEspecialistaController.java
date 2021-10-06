@@ -5,7 +5,7 @@ import com.project.lebiton.dao.PacienteDaoInterface;
 import com.project.lebiton.dao.factory.FactoryAgendarEspecialistalDAO;
 import com.project.lebiton.dao.factory.FactoryPacienteDAO;
 import com.project.lebiton.model.impl.AgendaMedico;
-import com.project.lebiton.model.impl.AgendaPaciente;
+import com.project.lebiton.model.impl.Consulta;
 import com.project.lebiton.model.impl.Sessao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -105,8 +105,8 @@ public class AgendaEspecialistaController implements Initializable {
     @FXML
     public void cadastrarConsulta() {
         final PacienteDaoInterface dao = FactoryPacienteDAO.criarPacientendao();
-        final boolean agendamento = dao.cadastrarConsulta(new AgendaPaciente(txEspecialidade.getText(),
-                txMedico.getText(), txDia.getText(), txUser.getText(), txHorario.getText()));
+        final boolean agendamento = dao.cadastrarConsulta(new Consulta(txMedico.getText(),
+                txDia.getText(), txUser.getText(), txHorario.getText()));
 
         if (agendamento) {
             voltarPaciente();

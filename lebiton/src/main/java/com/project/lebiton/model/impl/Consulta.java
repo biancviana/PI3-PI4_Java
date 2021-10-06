@@ -1,23 +1,33 @@
 package com.project.lebiton.model.impl;
 
-public class AgendaPaciente {
+public class Consulta {
     private String especialidade;
     private String medico;
-    private String email;
+    private String emailPaciente;
+    private String emailMedico;
     private String dia;
     private String horario;
     private Long id;
 
-    public AgendaPaciente(final String especialidade, final String medico, final String dia, final String email, final String horario) {
+    public Consulta(final String especialidade, final String medico, final String dia, final String emailPaciente, final String emailMedico, final String horario) {
 
         this.especialidade = especialidade;
         this.medico = medico;
-        this.email = email;
+        this.emailPaciente = emailPaciente;
+        this.emailMedico = emailMedico;
         this.dia = dia;
         this.horario = horario;
     }
 
-    public AgendaPaciente() {
+    public Consulta(final String medico, final String dia, final String emailPaciente, final String horario) {
+
+        this.medico = medico;
+        this.emailPaciente = emailPaciente;
+        this.dia = dia;
+        this.horario = horario;
+    }
+
+    public Consulta() {
     }
 
     public String getEspecialidade() {
@@ -36,12 +46,12 @@ public class AgendaPaciente {
         this.medico = medico;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailPaciente() {
+        return emailPaciente;
     }
 
-    public void setEmail(final String email) {
-        this.email = email;
+    public void setEmailPaciente(final String email) {
+        this.emailPaciente = emailPaciente;
     }
 
     public String getDia() {
@@ -66,6 +76,14 @@ public class AgendaPaciente {
 
     public void setId(final Long id) {
         this.id = id;
+    }
+
+    public String getEmailMedico() {
+        return emailMedico;
+    }
+
+    public void setEmailMedico(String emailMedico) {
+        this.emailMedico = emailMedico;
     }
 
 }
