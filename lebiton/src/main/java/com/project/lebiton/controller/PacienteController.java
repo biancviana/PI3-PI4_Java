@@ -2,7 +2,7 @@ package com.project.lebiton.controller;
 
 import com.project.lebiton.dao.PacienteDaoInterface;
 import com.project.lebiton.dao.factory.FactoryPacienteDAO;
-import com.project.lebiton.model.impl.AgendaPaciente;
+import com.project.lebiton.model.impl.Consulta;
 import com.project.lebiton.model.impl.Sessao;
 import com.project.lebiton.utils.Message;
 import javafx.application.Platform;
@@ -27,17 +27,17 @@ import java.util.ResourceBundle;
 public class PacienteController implements Initializable {
 
     @FXML
-    private TableView<AgendaPaciente> tbConsultas = new TableView<>();
+    private TableView<Consulta> tbConsultas = new TableView<>();
     @FXML
-    private TableColumn<AgendaPaciente, Long> clCodigo = new TableColumn<>("Código");
+    private TableColumn<Consulta, Long> clCodigo = new TableColumn<>("Código");
     @FXML
-    private TableColumn<AgendaPaciente, String> clEspecialidade = new TableColumn<>("Especialidade");
+    private TableColumn<Consulta, String> clEspecialidade = new TableColumn<>("Especialidade");
     @FXML
-    private TableColumn<AgendaPaciente, String> clMedico = new TableColumn<>("Médico");
+    private TableColumn<Consulta, String> clMedico = new TableColumn<>("Médico");
     @FXML
-    private TableColumn<AgendaPaciente, String> clDia = new TableColumn<>("Dia");
+    private TableColumn<Consulta, String> clDia = new TableColumn<>("Dia");
     @FXML
-    private TableColumn<AgendaPaciente, String> clHorario = new TableColumn<>("Horário");
+    private TableColumn<Consulta, String> clHorario = new TableColumn<>("Horário");
 
     @FXML
     private Button btAgendar;
@@ -74,8 +74,8 @@ public class PacienteController implements Initializable {
 
     }
 
-    public ObservableList<AgendaPaciente> atualizaTabela() {
-        ObservableList<AgendaPaciente> lista = null;
+    public ObservableList<Consulta> atualizaTabela() {
+        ObservableList<Consulta> lista = null;
 
         try {
             final PacienteDaoInterface dao = FactoryPacienteDAO.criarPacientendao();
@@ -101,9 +101,9 @@ public class PacienteController implements Initializable {
     }
 
     @FXML
-    public AgendaPaciente tbPacienteExcluirClicked(final MouseEvent e) {
+    public Consulta tbPacienteExcluirClicked(final MouseEvent e) {
         index = tbConsultas.getSelectionModel().getSelectedIndex();
-        final AgendaPaciente consultaSelecionada = tbConsultas.getItems().get(index);
+        final Consulta consultaSelecionada = tbConsultas.getItems().get(index);
 
         txEspecialista.setText(consultaSelecionada.getEspecialidade());
         txMedico.setText(consultaSelecionada.getMedico());
