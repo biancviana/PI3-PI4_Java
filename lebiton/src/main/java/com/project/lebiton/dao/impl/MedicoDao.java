@@ -9,6 +9,7 @@ import java.util.List;
 import com.project.lebiton.dao.MedicoDaoInterface;
 import com.project.lebiton.dao.connction.ConnectionFactory;
 import com.project.lebiton.model.impl.Agenda;
+import com.project.lebiton.model.impl.Consulta;
 import com.project.lebiton.model.impl.Medico;
 
 public class MedicoDao implements MedicoDaoInterface{
@@ -67,10 +68,36 @@ public class MedicoDao implements MedicoDaoInterface{
 		return agenda;
 	}
 
-	//Select que será utilizado para exibir as consultas dos médicos NÃO REMOVER
-//    select c.id, u.nome, horario, dia
-//    from consulta c
-//    inner join usuario u on c.idPaciente = u.id;
-	
+    @Override
+    public List<Consulta> listarConsultas(final String email) {
+        final List<Consulta> consulta = new ArrayList<>();
+
+        try {
+            connection = ConnectionFactory.getConnection();
+            final ResultSet result;
+            final PreparedStatement statement;
+
+            statement = connection.prepareStatement("select c.id, u.nome, horario, dia " +
+                    "from consulta c " +
+                    "inner join usuario u on c.idPaciente = u.id " +
+                    "where emailMedico = ? ");
+            statement.setString(1, email);
+
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                final Consulta cs = new Consulta();
+                cs.setId((result.getLong("id")));
+                cs.setPaciente(result.getString("nome"));
+                cs.setDia(result.getString("dia"));
+                cs.setHorario(result.getString("horario"));
+                consulta.add(cs);
+            }
+        }catch (final Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        return consulta;
+    }
 
 }
