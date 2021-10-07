@@ -3,16 +3,18 @@ package com.project.lebiton.model.impl;
 public class Consulta {
     private String especialidade;
     private String medico;
+    private String paciente;
     private String emailPaciente;
     private String emailMedico;
     private String dia;
     private String horario;
     private Long id;
 
-    public Consulta(final String especialidade, final String medico, final String dia, final String emailPaciente, final String emailMedico, final String horario) {
+    public Consulta(final String especialidade, final String medico, final String paciente, final String dia, final String emailPaciente, final String emailMedico, final String horario) {
 
         this.especialidade = especialidade;
         this.medico = medico;
+        this.paciente = paciente;
         this.emailPaciente = emailPaciente;
         this.emailMedico = emailMedico;
         this.dia = dia;
@@ -86,4 +88,11 @@ public class Consulta {
         this.emailMedico = emailMedico;
     }
 
+    public String getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(String paciente) {
+        this.paciente = paciente;
+    }
 }
