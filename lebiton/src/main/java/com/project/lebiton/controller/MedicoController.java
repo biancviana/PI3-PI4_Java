@@ -13,6 +13,7 @@ import com.project.lebiton.model.impl.Sessao;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -69,7 +70,21 @@ public class MedicoController implements Initializable{
         }		
 		return lista;
 	}
-	
+
+	@FXML
+	public void visualizarConsultas(final ActionEvent event) {
+		final Stage stage = (Stage) btAgenda.getScene().getWindow();
+		try {
+			final FXMLLoader root = new FXMLLoader(MedicoConsultasController.class.getResource("/com/project/lebiton/view/MedicoConsultas.fxml"));
+			final Scene scene = new Scene(root.load());
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (final IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	@FXML
     public void deslogarOnClicked() {
         final Alert alert = new Alert(AlertType.CONFIRMATION);

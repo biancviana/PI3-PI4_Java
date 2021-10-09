@@ -76,7 +76,7 @@ public class PacienteDao implements PacienteDaoInterface {
             statement = connection.prepareStatement("select c.id, m.especialidade, u.nome, dia, horario " +
                     "from consulta c " +
                     "inner join usuario u on c.idMedico = u.id " +
-                    "inner join medicos m on c.idMedico = m.idUsuario where emailPaciente = ?");
+                    "inner join medicos m on c.idMedico = m.idUsuario where emailPaciente = ? ");
             statement.setString(1, email);
 
             result = statement.executeQuery();

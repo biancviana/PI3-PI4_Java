@@ -2,9 +2,9 @@ com\project\lebiton\exceptions\ImpossivelEfetuarLoginException.class
 com\project\lebiton\controller\LoginController.class
 com\project\lebiton\controller\AgendaEspecialistaController.class
 com\project\lebiton\dao\impl\PacienteDao.class
-com\project\lebiton\model\impl\AgendaPaciente.class
 com\project\lebiton\handleError\MarkFieldError.class
 com\project\lebiton\dao\connction\ConnectionFactory.class
+com\project\lebiton\dao\factory\FactoryCadastroDiasAgendaDAO.class
 com\project\lebiton\dao\impl\AgendaEspecialistaDao.class
 com\project\lebiton\Main.class
 com\project\lebiton\model\impl\Usuario.class
@@ -15,6 +15,7 @@ com\project\lebiton\model\impl\Administrador.class
 com\project\lebiton\controller\CadastroDiasAgendaController.class
 com\project\lebiton\dao\factory\FactoryPacienteDAO.class
 com\project\lebiton\factory\UsuarioFactory.class
+com\project\lebiton\dao\CadastrarDiasAgendaDaoInterface.class
 com\project\lebiton\handleError\ErrorHandle.class
 com\project\lebiton\model\impl\Medico$Builder.class
 com\project\lebiton\dao\impl\UsuarioDao.class
@@ -25,6 +26,7 @@ com\project\lebiton\exceptions\CampoInvalidoException.class
 com\project\lebiton\facade\LoginFacade.class
 com\project\lebiton\utils\RequestField.class
 com\project\lebiton\dao\factory\FactoryMedicoDAO.class
+com\project\lebiton\dao\impl\CadastroDiasAgendaDao.class
 com\project\lebiton\model\impl\Sessao.class
 com\project\lebiton\dao\impl\LoginDao.class
 com\project\lebiton\model\impl\Medico.class
@@ -32,6 +34,7 @@ module-info.class
 com\project\lebiton\controller\MedicoController.class
 com\project\lebiton\exceptions\CadastroInvalidoException.class
 com\project\lebiton\dao\MedicoDaoInterface.class
+com\project\lebiton\model\impl\Agenda$Builder.class
 com\project\lebiton\model\impl\Paciente.class
 com\project\lebiton\dao\impl\MedicoDao.class
 com\project\lebiton\dao\factory\FactoryAgendarEspecialistalDAO.class
