@@ -1,9 +1,7 @@
 package com.project.lebiton.model.impl;
 
-import com.project.lebiton.dao.LoginDaoInterface;
-import com.project.lebiton.dao.MedicoDaoInterface;
-import com.project.lebiton.dao.factory.FactoryLoginDAO;
-import com.project.lebiton.dao.factory.FactoryMedicoDAO;
+import com.project.lebiton.dao.GeneralUsuarioDaoInterface;
+import com.project.lebiton.dao.factory.FactoryGeneralUsuarioDAO;
 import com.project.lebiton.model.UsuarioInterface;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -49,16 +47,15 @@ public class Medico extends Usuario implements UsuarioInterface {
 
     @Override
     public boolean logar() {
-        final LoginDaoInterface dao = FactoryLoginDAO.criarLogindao();
+        final GeneralUsuarioDaoInterface dao = FactoryGeneralUsuarioDAO.criarGeneralUsuariodao();
         return dao.login(this.email, this.senha);
     }
 
     @Override
-    public boolean createUser(UsuarioInterface usuario) {
-        final MedicoDaoInterface dao = FactoryMedicoDAO.criarMedicodao();
-        return dao.createUser((Medico) usuario);
+    public boolean createUser(UsuarioInterface usuario) throws Exception {
+        final GeneralUsuarioDaoInterface dao = FactoryGeneralUsuarioDAO.criarGeneralUsuariodao();
+        return dao.createUser(usuario);
     }
-
 
     public static class Builder {
         protected StringProperty nome;

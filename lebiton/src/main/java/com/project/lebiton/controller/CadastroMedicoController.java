@@ -1,10 +1,9 @@
 package com.project.lebiton.controller;
 
-import com.project.lebiton.dao.MedicoDaoInterface;
-import com.project.lebiton.dao.factory.FactoryMedicoDAO;
 import com.project.lebiton.exceptions.CadastroInvalidoException;
 import com.project.lebiton.handleError.ErrorHandle;
 import com.project.lebiton.model.impl.Medico;
+import com.project.lebiton.utils.CleanField;
 import com.project.lebiton.utils.Message;
 import com.project.lebiton.utils.RequestField;
 import javafx.fxml.FXML;
@@ -51,9 +50,9 @@ public class CadastroMedicoController implements Initializable {
 
     @FXML
     public void cadastrar() throws Exception {
+        List<RequestField> lista = setFieldList();
 
-        //Verifica se campos são validos
-        ErrorHandle.checkFields(setFieldList());
+        ErrorHandle.checkFields(lista);
 
         Medico medico = setMedicoBuider();
 
@@ -70,6 +69,8 @@ public class CadastroMedicoController implements Initializable {
 
             Message.showAlert("CADASTRO REALIZADO!", "Médico cadastrado com sucesso!",
                     "Usuário/Senha validados! Volte para a tela inicial e prossiga.", AlertType.INFORMATION);
+
+            CleanField.cleanFieldList(lista);
         }
     }
 
@@ -123,4 +124,5 @@ public class CadastroMedicoController implements Initializable {
 
         return request;
     }
+
 }
