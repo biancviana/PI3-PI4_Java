@@ -21,7 +21,9 @@ public class ErrorHandle {
                         "Preencha todos os campos obrigatórios", Alert.AlertType.ERROR);
 
                 throw new CampoInvalidoException("Campo ".concat(field.getKey()).concat(" obrigatório"));
-            } else { field.getValue().setStyle("-fx-border-color: black ; -fx-border-width: 1px ;"); }
+            } else {
+                field.getValue().setStyle("-fx-border-color: black ; -fx-border-width: 1px ;");
+            }
         }
     }
 

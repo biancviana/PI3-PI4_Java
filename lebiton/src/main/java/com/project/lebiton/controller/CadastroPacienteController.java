@@ -1,12 +1,9 @@
 package com.project.lebiton.controller;
 
-import com.project.lebiton.dao.PacienteDaoInterface;
-import com.project.lebiton.dao.factory.FactoryPacienteDAO;
 import com.project.lebiton.exceptions.CadastroInvalidoException;
-import com.project.lebiton.factory.UsuarioFactory;
 import com.project.lebiton.handleError.ErrorHandle;
-import com.project.lebiton.model.UsuarioInterface;
 import com.project.lebiton.model.impl.Paciente;
+import com.project.lebiton.utils.CleanField;
 import com.project.lebiton.utils.Message;
 import com.project.lebiton.utils.RequestField;
 import javafx.fxml.FXML;
@@ -50,12 +47,11 @@ public class CadastroPacienteController implements Initializable {
 
     @FXML
     public void cadastrar() throws Exception {
+        List<RequestField> lista = setFieldList();
 
-        //Verifica se campos são validos
-        ErrorHandle.checkFields(setFieldList());
+        ErrorHandle.checkFields(lista);
 
         Paciente paciente = setPacienteBuilder();
-
         if (!paciente.createUser(paciente)) {
             System.out.println("Ocorreu um erro!");
 
@@ -65,9 +61,11 @@ public class CadastroPacienteController implements Initializable {
             throw new CadastroInvalidoException("Não foi possivel realizar o cadastro");
         } else {
             System.out.println("Paciente cadastrado!");
-          
+
             Message.showAlert("CADASTRO REALIZADO!", "Paciente cadastrado com sucesso!",
                     "Usuário/Senha validados! Volte para a tela inicial e prossiga.", AlertType.INFORMATION);
+
+            CleanField.cleanFieldList(lista);
         }
     }
 
