@@ -10,8 +10,6 @@ public interface MedicoDaoInterface {
 	boolean createUser(final Medico medico);
 
 	 List<Agenda> listarHorarios(final String email);
-
 	List<Consulta> listarConsultas(final String email);
-
 
 }

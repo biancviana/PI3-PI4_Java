@@ -55,9 +55,9 @@ public class CadastroMedicoController implements Initializable {
         //Verifica se campos são validos
         ErrorHandle.checkFields(setFieldList());
 
-        final MedicoDaoInterface dao = FactoryMedicoDAO.criarMedicodao();
+        Medico medico = setMedicoBuider();
 
-        if (!dao.createUser(this.setMedicoBuider())) {
+        if (!medico.createUser(medico)) {
             System.out.println("Ocorreu um erro!");
 
             Message.showAlert("ERRO AO CADASTRAR!", "Cadastro Inválido!",

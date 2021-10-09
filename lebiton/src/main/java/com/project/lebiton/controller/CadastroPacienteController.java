@@ -3,7 +3,9 @@ package com.project.lebiton.controller;
 import com.project.lebiton.dao.PacienteDaoInterface;
 import com.project.lebiton.dao.factory.FactoryPacienteDAO;
 import com.project.lebiton.exceptions.CadastroInvalidoException;
+import com.project.lebiton.factory.UsuarioFactory;
 import com.project.lebiton.handleError.ErrorHandle;
+import com.project.lebiton.model.UsuarioInterface;
 import com.project.lebiton.model.impl.Paciente;
 import com.project.lebiton.utils.Message;
 import com.project.lebiton.utils.RequestField;
@@ -52,9 +54,9 @@ public class CadastroPacienteController implements Initializable {
         //Verifica se campos são validos
         ErrorHandle.checkFields(setFieldList());
 
-        final PacienteDaoInterface dao = FactoryPacienteDAO.criarPacientendao();
+        Paciente paciente = setPacienteBuilder();
 
-        if (!dao.createUser(this.setPacienteBuilder())) {
+        if (!paciente.createUser(paciente)) {
             System.out.println("Ocorreu um erro!");
 
             Message.showAlert("ERRO AO CADASTRAR!", "Cadastro Inválido!",

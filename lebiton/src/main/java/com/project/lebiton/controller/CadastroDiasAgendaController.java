@@ -85,12 +85,6 @@ public class CadastroDiasAgendaController implements Initializable {
 
         return request;
     }
-
-	
-	
-    
-    
-    
     
     @FXML
     public void voltarHome() {
