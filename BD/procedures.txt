@@ -48,3 +48,22 @@ begin
     
     END//
 DELIMITER ;
+
+-- Procedure para cadastrar agenda do Médico
+  DELIMITER //
+create procedure createAgendaMedico(nomeMedico varchar(100), horarioP varchar(20), diaP varchar(20))
+begin
+    declare medico int;
+    declare agenda int;
+    
+    select idUsuario from medicos m
+    inner join  usuario u on m.idUsuario = u.id
+    where nome = nomeMedico into medico;
+    
+    select id from agenda
+    where horario = horarioP
+    and dia = diaP into agenda;
+
+    insert into agenda_medico (idMedico, idAgenda) values (medico,agenda);
+    END//
+DELIMITER ;

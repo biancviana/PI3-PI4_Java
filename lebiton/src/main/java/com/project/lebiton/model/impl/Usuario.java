@@ -24,6 +24,10 @@ public abstract class Usuario {
 		this.senha = senha;
 	}
 
+	public Usuario (final StringProperty nome){
+		this.nome = nome;
+	}
+
 	public StringProperty getNome() {
 		return nome;
 	}

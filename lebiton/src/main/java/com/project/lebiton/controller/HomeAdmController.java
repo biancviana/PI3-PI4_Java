@@ -21,9 +21,7 @@ import com.project.lebiton.Main;
 public class HomeAdmController implements Initializable{
 
 	@FXML
-	private Button btCadastrar, btDeslogar;
-	@FXML
-	private Button btCadastroDias;
+	private Button btCadastrar, btDeslogar, btCadastroDias, btAgendaMedico;
 	
 	FXMLLoader root = null;
 	
@@ -62,6 +60,22 @@ public class HomeAdmController implements Initializable{
             e.printStackTrace();
         }
     }
+
+	@FXML
+	public void cadastrarAgendaMedico(final ActionEvent actionEvent) {
+
+		final Stage stage = (Stage) btAgendaMedico.getScene().getWindow();
+
+		try {
+			root = new FXMLLoader(HomeAdmController.class.getResource("/com/project/lebiton/view/CadastroAgendaMedico.fxml"));
+			final Scene scene = new Scene(root.load());
+			stage.setScene(scene);
+			stage.setTitle("Cadastro Agenda Médico");
+			stage.show();
+		} catch (final IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	 @FXML
 	    public void deslogarOnClicked() {
