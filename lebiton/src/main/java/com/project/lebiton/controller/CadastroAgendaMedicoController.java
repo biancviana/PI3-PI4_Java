@@ -2,9 +2,7 @@ package com.project.lebiton.controller;
 
 import com.project.lebiton.dao.factory.FactoryAdministradorDAO;
 import com.project.lebiton.dao.AdministradorDaoInterface;
-import com.project.lebiton.factory.UsuarioFactory;
 import com.project.lebiton.handleError.ErrorHandle;
-import com.project.lebiton.model.UsuarioInterface;
 import com.project.lebiton.model.impl.*;
 import com.project.lebiton.utils.Message;
 import com.project.lebiton.utils.RequestField;
@@ -176,7 +174,7 @@ public class CadastroAgendaMedicoController implements Initializable {
         try {
 
             final FXMLLoader root = new FXMLLoader(CadastroMedicoController.class.getResource("/com/project/lebiton/view/HomeAdm.fxml"));
-            final Scene scene = new Scene(root.load(), 700, 540);
+            final Scene scene = new Scene(root.load());
             stage.setScene(scene);
             stage.setTitle("Tela do Administrador");
             stage.show();
@@ -185,6 +183,4 @@ public class CadastroAgendaMedicoController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
 }
