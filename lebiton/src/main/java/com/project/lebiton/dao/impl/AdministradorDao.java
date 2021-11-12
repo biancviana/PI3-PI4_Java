@@ -5,6 +5,7 @@ import com.project.lebiton.dao.connction.ConnectionFactory;
 import com.project.lebiton.model.impl.Agenda;
 import com.project.lebiton.model.impl.AgendaMedico;
 import com.project.lebiton.model.impl.Medico;
+import com.project.lebiton.model.impl.Paciente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,7 +25,7 @@ public class AdministradorDao implements AdministradorDaoInterface {
             final ResultSet result;
             final PreparedStatement statement;
 
-            statement = connection.prepareStatement("select u.nome, especialidade\n" +
+            statement = connection.prepareStatement("select u.nome, especialidade, crm\n" +
                     "from medicos m\n" +
                     "inner join usuario u on u.id = m.idUsuario " );
             result = statement.executeQuery();
@@ -33,6 +34,7 @@ public class AdministradorDao implements AdministradorDaoInterface {
                 final Medico md = new Medico();
                 md.setNome(result.getString("nome"));
                 md.setEspecialidade(result.getString("especialidade"));
+                md.setCrm(result.getString("crm"));
                 medico.add(md);
             }
         }catch (final Exception e) {
@@ -64,6 +66,31 @@ public class AdministradorDao implements AdministradorDaoInterface {
             System.out.println("Erro: " + e.getMessage());
         }
         return agenda;
+    }
+
+    @Override
+    public List<Paciente> listarPacientes() {
+        final List<Paciente> paciente = new ArrayList<Paciente>();
+
+        try {
+            connection = ConnectionFactory.getConnection();
+            final ResultSet result;
+            final PreparedStatement statement;
+
+            statement = connection.prepareStatement("select nome from usuario\n" +
+                    "where email like '%@paciente.com%'\n" );
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                final Paciente p = new Paciente();
+                p.setNome(result.getString("nome"));
+                paciente.add(p);
+            }
+        }catch (final Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        return paciente;
     }
 
     @Override
