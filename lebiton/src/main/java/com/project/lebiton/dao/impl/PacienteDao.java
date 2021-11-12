@@ -22,8 +22,9 @@ public class PacienteDao implements PacienteDaoInterface {
             statement = connection.prepareStatement("call createConsulta(?,?,?,?)");
             statement.setString(1, consulta.getMedico());
             statement.setString(2, consulta.getEmailPaciente());
-            statement.setString(3, consulta.getDia());
-            statement.setString(4, consulta.getHorario());
+            statement.setString(3, consulta.getHorario());
+            statement.setString(4, consulta.getDia());
+
 
             if (!statement.execute()) {
                 return true;

@@ -64,11 +64,10 @@ public class PacienteController implements Initializable {
             clCodigo.setCellValueFactory(new PropertyValueFactory<>("id"));
             clEspecialidade.setCellValueFactory(new PropertyValueFactory<>("especialidade"));
             clMedico.setCellValueFactory(new PropertyValueFactory<>("medico"));
-            clDia.setCellValueFactory(new PropertyValueFactory<>("dia"));
             clHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
+            clDia.setCellValueFactory(new PropertyValueFactory<>("dia"));
 
-
-            tbConsultas.getColumns().setAll(clCodigo, clEspecialidade, clMedico, clDia, clHorario);
+            tbConsultas.getColumns().setAll(clCodigo, clEspecialidade, clMedico,clHorario, clDia );
 
         } catch (final Exception e) {
             System.out.println("ERRO: " + e.getMessage());
