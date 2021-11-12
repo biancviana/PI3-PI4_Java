@@ -32,6 +32,11 @@ public class Medico extends Usuario implements UsuarioInterface {
         this.especialidade.set(especialidade);
     }
 
+    public void setCrm(final String crm) {
+        this.crm = new SimpleStringProperty("");
+        this.crm.set(crm);
+    }
+
     public StringProperty getEspecialidade() {
         return especialidade;
     }

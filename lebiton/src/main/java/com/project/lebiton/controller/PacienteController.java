@@ -5,7 +5,6 @@ import com.project.lebiton.dao.factory.FactoryPacienteDAO;
 import com.project.lebiton.model.impl.Consulta;
 import com.project.lebiton.model.impl.Sessao;
 import com.project.lebiton.utils.Message;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

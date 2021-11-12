@@ -75,7 +75,7 @@ public class CadastroPacienteController implements Initializable {
         try {
 
             final FXMLLoader root = new FXMLLoader(CadastroPacienteController.class.getResource("/com/project/lebiton/view/Login.fxml"));
-            final Scene scene = new Scene(root.load(), 700, 540);
+            final Scene scene = new Scene(root.load());
             stage.setScene(scene);
             stage.setTitle("Tela de Login");
             stage.show();
@@ -116,5 +116,4 @@ public class CadastroPacienteController implements Initializable {
 
         return request;
     }
-
 }

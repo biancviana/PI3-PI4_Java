@@ -11,7 +11,6 @@ import com.project.lebiton.dao.CadastrarDiasAgendaDaoInterface;
 import com.project.lebiton.dao.factory.FactoryCadastroDiasAgendaDAO;
 import com.project.lebiton.handleError.ErrorHandle;
 import com.project.lebiton.model.impl.Agenda;
-import com.project.lebiton.model.impl.Paciente;
 import com.project.lebiton.utils.Message;
 import com.project.lebiton.utils.RequestField;
 
@@ -25,47 +24,47 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class CadastroDiasAgendaController implements Initializable {
-    
-	@Override
+
+    @Override
     public void initialize(final URL arg0, final ResourceBundle arg1) {
-    }	
-	
+    }
+
     @FXML
     TextField txDia;
     @FXML
     TextField txHorario;
-	@FXML
+    @FXML
     Button btVoltar;
-	@FXML
+    @FXML
     Button btCadastrarDias;
-	
-	@FXML 
-	public void cadastrarDiasAgenda() throws Exception {
-		
-		//Verifica se campos são validos
+
+    @FXML
+    public void cadastrarDiasAgenda() throws Exception {
+
+        //Verifica se campos são validos
         ErrorHandle.checkFields(setFieldList());
-        
+
         final CadastrarDiasAgendaDaoInterface dao = FactoryCadastroDiasAgendaDAO.criarCadastroDiasAgendadao();
-        
+
         if (!dao.cadastrarDiasAgenda(this.setDiasAgenda())) {
-        	System.out.println("Ocorreu um erro!");
-        	
+            System.out.println("Ocorreu um erro!");
+
             Message.showAlert("ERRO AO CADASTRAR!", "Cadastro Inválido!",
-                    "Não conseguimos processar seu cadastro! Tente novamente.", AlertType.ERROR);  	
-        	} else {
-                System.out.println("Horário e Dia cadastrados!");
-                
-                Message.showAlert("CADASTRO REALIZADO!", "Horário e Dia cadastrados com sucesso!",
-                        "Dia/Horário validados!", AlertType.INFORMATION);
-            }       
-        
+                    "Não conseguimos processar seu cadastro! Tente novamente.", AlertType.ERROR);
+        } else {
+            System.out.println("Horário e Dia cadastrados!");
+
+            Message.showAlert("CADASTRO REALIZADO!", "Horário e Dia cadastrados com sucesso!",
+                    "Dia/Horário validados!", AlertType.INFORMATION);
         }
-	
-	private Agenda setDiasAgenda() {
+
+    }
+
+    private Agenda setDiasAgenda() {
         return new Agenda.Builder()
-        		.horario(txHorario.getText())
-        		.dia(txDia.getText())
-        		.build();        
+                .horario(txHorario.getText())
+                .dia(txDia.getText())
+                .build();
     }
 
     private List<RequestField> setFieldList() {
@@ -85,14 +84,14 @@ public class CadastroDiasAgendaController implements Initializable {
 
         return request;
     }
-    
+
     @FXML
     public void voltarHome() {
         final Stage stage = (Stage) btVoltar.getScene().getWindow();
         try {
 
             final FXMLLoader root = new FXMLLoader(CadastroMedicoController.class.getResource("/com/project/lebiton/view/HomeAdm.fxml"));
-            final Scene scene = new Scene(root.load(), 700, 540);
+            final Scene scene = new Scene(root.load());
             stage.setScene(scene);
             stage.setTitle("Tela do Administrador");
             stage.show();
@@ -101,9 +100,4 @@ public class CadastroDiasAgendaController implements Initializable {
             e.printStackTrace();
         }
     }
-    
-    
-    
-    
-
 }

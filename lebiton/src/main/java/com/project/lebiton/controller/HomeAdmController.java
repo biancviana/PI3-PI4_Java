@@ -16,20 +16,18 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import com.project.lebiton.Main;
+public class HomeAdmController implements Initializable {
 
-public class HomeAdmController implements Initializable{
+    @FXML
+    private Button btCadastrar, btDeslogar, btCadastroDias, btAgendaMedico, btVisualizarUser;
 
-	@FXML
-	private Button btCadastrar, btDeslogar, btCadastroDias, btAgendaMedico;
-	
-	FXMLLoader root = null;
-	
-	@Override
-	public void initialize(final URL arg0, final ResourceBundle arg1) {
-	}
-	
-	@FXML
+    FXMLLoader root = null;
+
+    @Override
+    public void initialize(final URL arg0, final ResourceBundle arg1) {
+    }
+
+    @FXML
     public void cadastrarMedico(final ActionEvent actionEvent) {
 
         final Stage stage = (Stage) btCadastrar.getScene().getWindow();
@@ -44,8 +42,8 @@ public class HomeAdmController implements Initializable{
             e.printStackTrace();
         }
     }
-	
-	@FXML
+
+    @FXML
     public void cadastrarDiasAgenda(final ActionEvent actionEvent) {
 
         final Stage stage = (Stage) btCadastroDias.getScene().getWindow();
@@ -61,44 +59,60 @@ public class HomeAdmController implements Initializable{
         }
     }
 
-	@FXML
-	public void cadastrarAgendaMedico(final ActionEvent actionEvent) {
+    @FXML
+    public void cadastrarAgendaMedico(final ActionEvent actionEvent) {
 
-		final Stage stage = (Stage) btAgendaMedico.getScene().getWindow();
+        final Stage stage = (Stage) btAgendaMedico.getScene().getWindow();
 
-		try {
-			root = new FXMLLoader(HomeAdmController.class.getResource("/com/project/lebiton/view/CadastroAgendaMedico.fxml"));
-			final Scene scene = new Scene(root.load());
-			stage.setScene(scene);
-			stage.setTitle("Cadastro Agenda Médico");
-			stage.show();
-		} catch (final IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	 @FXML
-	    public void deslogarOnClicked() {
-	        final Alert alert = new Alert(AlertType.CONFIRMATION);
-	        alert.setTitle("MENSAGEM");
-	        alert.setContentText("Deseja realmente sair?");
+        try {
+            root = new FXMLLoader(HomeAdmController.class.getResource("/com/project/lebiton/view/CadastroAgendaMedico.fxml"));
+            final Scene scene = new Scene(root.load());
+            stage.setScene(scene);
+            stage.setTitle("Cadastro Agenda Médico");
+            stage.show();
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	        final Optional<ButtonType> result = alert.showAndWait();
+    @FXML
+    public void visualizarUsuarios(final ActionEvent actionEvent) {
 
-	        if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-	        	
-	        	final Stage stage = (Stage) btDeslogar.getScene().getWindow();
-	        	
-	        	try {
-	                root = new FXMLLoader(PacienteController.class.getResource("/com/project/lebiton/view/Login.fxml"));
-	                final Scene scene = new Scene(root.load());
-	                stage.setScene(scene);
-	                stage.setTitle("Login");
-	                stage.show();
-	            } catch (final IOException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	 }
+        final Stage stage = (Stage) btVisualizarUser.getScene().getWindow();
+
+        try {
+            root = new FXMLLoader(HomeAdmController.class.getResource("/com/project/lebiton/view/ExibirUsuarios.fxml"));
+            final Scene scene = new Scene(root.load());
+            stage.setScene(scene);
+            stage.setTitle("Exibição de usuáruis");
+            stage.show();
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void deslogarOnClicked() {
+        final Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("MENSAGEM");
+        alert.setContentText("Deseja realmente sair?");
+
+        final Optional<ButtonType> result = alert.showAndWait();
+
+        if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+
+            final Stage stage = (Stage) btDeslogar.getScene().getWindow();
+
+            try {
+                root = new FXMLLoader(PacienteController.class.getResource("/com/project/lebiton/view/Login.fxml"));
+                final Scene scene = new Scene(root.load());
+                stage.setScene(scene);
+                stage.setTitle("Login");
+                stage.show();
+            } catch (final IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }
