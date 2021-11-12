@@ -80,7 +80,7 @@ public class CadastroMedicoController implements Initializable {
         try {
 
             final FXMLLoader root = new FXMLLoader(CadastroMedicoController.class.getResource("/com/project/lebiton/view/HomeAdm.fxml"));
-            final Scene scene = new Scene(root.load(), 700, 540);
+            final Scene scene = new Scene(root.load());
             stage.setScene(scene);
             stage.setTitle("Tela do Administrador");
             stage.show();

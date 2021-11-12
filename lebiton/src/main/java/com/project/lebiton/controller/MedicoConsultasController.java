@@ -91,7 +91,4 @@ public class MedicoConsultasController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
-
 }
