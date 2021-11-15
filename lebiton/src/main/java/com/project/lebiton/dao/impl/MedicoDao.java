@@ -4,6 +4,7 @@ import com.project.lebiton.dao.MedicoDaoInterface;
 import com.project.lebiton.dao.connction.ConnectionFactory;
 import com.project.lebiton.model.impl.Agenda;
 import com.project.lebiton.model.impl.Consulta;
+import com.project.lebiton.model.impl.Paciente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -60,9 +61,16 @@ public class MedicoDao implements MedicoDaoInterface {
             while (result.next()) {
                 final Consulta cs = new Consulta();
                 cs.setId((result.getLong("id")));
-                cs.setPaciente(result.getString("nome"));
-                cs.setDia(result.getString("dia"));
-                cs.setHorario(result.getString("horario"));
+
+                final Paciente paciente = new Paciente();
+                paciente.setNome(result.getString("nome"));
+                cs.setPaciente(paciente);
+
+                final Agenda agenda = new Agenda();
+                agenda.setDia(result.getString("dia"));
+                agenda.setHorario(result.getString("horario"));
+                cs.setAgenda(agenda);
+
                 consulta.add(cs);
             }
         } catch (final Exception e) {

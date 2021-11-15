@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class HomeAdmController implements Initializable {
 
     @FXML
-    private Button btCadastrar, btDeslogar, btCadastroDias, btAgendaMedico, btVisualizarUser;
+    private Button btCadastrar, btDeslogar, btCadastroDias, btAgendaMedico, btVisualizarUser, btConsultas;
 
     FXMLLoader root = null;
 
