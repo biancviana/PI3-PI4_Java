@@ -1,98 +1,102 @@
 package com.project.lebiton.model.impl;
 
+import javafx.beans.property.StringProperty;
+
 public class Consulta {
-    private String especialidade;
-    private String medico;
-    private String paciente;
-    private String emailPaciente;
-    private String emailMedico;
-    private String dia;
-    private String horario;
     private Long id;
+    private Medico medico;
+    private Paciente paciente;
+    private Agenda agenda;
 
-    public Consulta(final String especialidade, final String medico, final String paciente, final String dia, final String emailPaciente, final String emailMedico, final String horario) {
-
-        this.especialidade = especialidade;
+    public Consulta(Paciente paciente, Medico medico, Agenda agenda) {
         this.medico = medico;
         this.paciente = paciente;
-        this.emailPaciente = emailPaciente;
-        this.emailMedico = emailMedico;
-        this.dia = dia;
-        this.horario = horario;
-    }
-
-    public Consulta(final String medico, final String dia, final String emailPaciente, final String horario) {
-
-        this.medico = medico;
-        this.emailPaciente = emailPaciente;
-        this.dia = dia;
-        this.horario = horario;
+        this.agenda = agenda;
     }
 
     public Consulta() {
     }
 
-    public String getEspecialidade() {
-        return especialidade;
-    }
-
-    public void setEspecialidade(final String especialidade) {
-        this.especialidade = especialidade;
-    }
-
-    public String getMedico() {
+    public Medico getMedico() {
         return medico;
     }
 
-    public void setMedico(final String medico) {
-        this.medico = medico;
+    public Paciente getPaciente() {
+        return paciente;
     }
 
-    public String getEmailPaciente() {
-        return emailPaciente;
-    }
-
-    public void setEmailPaciente(final String email) {
-        this.emailPaciente = emailPaciente;
-    }
-
-    public String getDia() {
-        return dia;
-    }
-
-    public void setDia(final String dia) {
-        this.dia = dia;
-    }
-
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(final String horario) {
-        this.horario = horario;
+    public Agenda getAgenda() {
+        return agenda;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(final Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getEmailMedico() {
-        return emailMedico;
+    public void setMedico(Medico medico) {
+        this.medico = medico;
     }
 
-    public void setEmailMedico(String emailMedico) {
-        this.emailMedico = emailMedico;
-    }
-
-    public String getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(String paciente) {
+    public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
+    }
+
+    /*Getters e Setters utilizados no cadastro e na exibição dos dados*/
+
+    public StringProperty getNomeMedico() {
+        return medico.getNome();
+    }
+
+    public StringProperty getEspecialidade() {
+        return medico.getEspecialidade();
+    }
+
+    public StringProperty getNomePaciente() {
+        return paciente.getNome();
+    }
+
+    public String getEmailPaciente() {
+        return paciente.getEmail();
+    }
+
+    public StringProperty getDia() {
+        return agenda.getDia();
+    }
+
+    public StringProperty getHorario() {
+        return agenda.getHorario();
+    }
+
+    public static class Builder {
+        protected Paciente paciente;
+        protected Medico medico;
+        protected Agenda agenda;
+
+        public Consulta.Builder paciente(final Paciente paciente) {
+            this.paciente = paciente;
+            return this;
+        }
+
+        public Consulta.Builder medico(final Medico medico) {
+            this.medico = medico;
+            return this;
+        }
+
+        public Consulta.Builder agenda(final Agenda agenda) {
+            this.agenda = agenda;
+            return this;
+        }
+
+        public Consulta build() {
+            return new Consulta(paciente, medico, agenda);
+        }
     }
 }

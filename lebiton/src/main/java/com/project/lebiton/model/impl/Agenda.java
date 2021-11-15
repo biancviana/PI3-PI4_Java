@@ -5,8 +5,8 @@ import javafx.beans.property.StringProperty;
 
 public class Agenda {
 	private Long id;
-	private final StringProperty horario;
-	private final StringProperty dia;
+	protected final StringProperty horario;
+	protected final StringProperty dia;
 
 //	public Agenda(final Long id, final StringProperty horario, final StringProperty dia) {
 //		this.id = id;

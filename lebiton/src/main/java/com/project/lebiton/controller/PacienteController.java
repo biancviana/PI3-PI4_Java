@@ -59,14 +59,14 @@ public class PacienteController implements Initializable {
     @FXML
     public void initTable() {
         try {
-            tbConsultas.setItems(atualizaTabela());
-            clCodigo.setCellValueFactory(new PropertyValueFactory<>("id"));
-            clEspecialidade.setCellValueFactory(new PropertyValueFactory<>("especialidade"));
-            clMedico.setCellValueFactory(new PropertyValueFactory<>("medico"));
-            clHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
-            clDia.setCellValueFactory(new PropertyValueFactory<>("dia"));
 
-            tbConsultas.getColumns().setAll(clCodigo, clEspecialidade, clMedico,clHorario, clDia );
+            clCodigo.setCellValueFactory(new PropertyValueFactory<>("id"));
+            clMedico.setCellValueFactory(cellData -> cellData.getValue().getNomeMedico());
+            clEspecialidade.setCellValueFactory(cellData -> cellData.getValue().getEspecialidade());
+            clDia.setCellValueFactory(cellData -> cellData.getValue().getDia());
+            clHorario.setCellValueFactory(cellData -> cellData.getValue().getHorario());
+
+            tbConsultas.setItems(atualizaTabela());
 
         } catch (final Exception e) {
             System.out.println("ERRO: " + e.getMessage());
@@ -105,10 +105,10 @@ public class PacienteController implements Initializable {
         index = tbConsultas.getSelectionModel().getSelectedIndex();
         final Consulta consultaSelecionada = tbConsultas.getItems().get(index);
 
-        txEspecialista.setText(consultaSelecionada.getEspecialidade());
-        txMedico.setText(consultaSelecionada.getMedico());
-        txDia.setText(consultaSelecionada.getDia());
-        txHorario.setText(consultaSelecionada.getHorario());
+        txEspecialista.setText(consultaSelecionada.getEspecialidade().get());
+        txMedico.setText(consultaSelecionada.getNomeMedico().get());
+        txDia.setText(consultaSelecionada.getDia().get());
+        txHorario.setText(consultaSelecionada.getHorario().get());
         idConsulta = consultaSelecionada.getId();
 
         return consultaSelecionada;
@@ -150,5 +150,4 @@ public class PacienteController implements Initializable {
             }
         }
     }
-
 }

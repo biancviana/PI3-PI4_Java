@@ -49,14 +49,12 @@ public class MedicoConsultasController implements Initializable {
     @FXML
     public void initTable() {
         try {
-            tbConsultas.setItems(atualizaTabela());
             clCodigo.setCellValueFactory(new PropertyValueFactory<>("id"));
-            clPaciente.setCellValueFactory(new PropertyValueFactory<>("paciente"));
-            clDia.setCellValueFactory(new PropertyValueFactory<>("dia"));
-            clHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
+            clPaciente.setCellValueFactory(cellData -> cellData.getValue().getNomePaciente());
+            clDia.setCellValueFactory(cellData -> cellData.getValue().getDia());
+            clHorario.setCellValueFactory(cellData -> cellData.getValue().getHorario());
 
-
-            tbConsultas.getColumns().setAll(clCodigo, clPaciente, clDia, clHorario);
+            tbConsultas.setItems(atualizaTabela());
 
         } catch (final Exception e) {
             System.out.println("ERRO: " + e.getMessage());

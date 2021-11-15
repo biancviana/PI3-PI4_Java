@@ -4,9 +4,10 @@ import com.project.lebiton.dao.AgendarEspecialistaDaoInterface;
 import com.project.lebiton.dao.PacienteDaoInterface;
 import com.project.lebiton.dao.factory.FactoryAgendarEspecialistalDAO;
 import com.project.lebiton.dao.factory.FactoryPacienteDAO;
-import com.project.lebiton.model.impl.AgendaMedico;
-import com.project.lebiton.model.impl.Consulta;
-import com.project.lebiton.model.impl.Sessao;
+import com.project.lebiton.handleError.ErrorHandle;
+import com.project.lebiton.model.impl.*;
+import com.project.lebiton.utils.Message;
+import com.project.lebiton.utils.RequestField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +21,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AgendaEspecialistaController implements Initializable {
@@ -103,14 +107,65 @@ public class AgendaEspecialistaController implements Initializable {
     }
 
     @FXML
-    public void cadastrarConsulta() {
-        final PacienteDaoInterface dao = FactoryPacienteDAO.criarPacientendao();
-        final boolean agendamento = dao.cadastrarConsulta(new Consulta(txMedico.getText(),
-                txDia.getText(), txUser.getText(), txHorario.getText()));
+    public void cadastrarConsulta() throws Exception {
+        ErrorHandle.checkFields(setFieldList());
 
-        if (agendamento) {
-            voltarPaciente();
+        final PacienteDaoInterface dao = FactoryPacienteDAO.criarPacientendao();
+
+        if(!dao.cadastrarConsulta(buildConsulta())){
+            System.out.println("Ocorreu um erro!");
+
+            Message.showAlert("ERRO AO CADASTRAR!", "Cadastro Inválido!",
+                    "Não conseguimos processar seu cadastro! Tente novamente.", Alert.AlertType.ERROR);
+        }{
+            System.out.println("Consulta cadastrada!");
+
+            Message.showAlert("CADASTRO REALIZADO!", "Consulta cadastrada com sucesso!",
+                    "Dados validados!", Alert.AlertType.INFORMATION);
+
+            txHorario.clear();
+            txMedico.clear();
+            txDia.clear();
+            txUser.clear();
+
         }
+
+    }
+
+    private Consulta buildConsulta() {
+
+        return new Consulta.Builder()
+                .medico(new Medico.Builder()
+                        .nome(txMedico.getText())
+                        .build())
+                .paciente(new Paciente.Builder()
+                        .email(txUser.getText())
+                        .build())
+                .agenda(new Agenda.Builder()
+                        .horario(txHorario.getText())
+                        .dia(txDia.getText())
+                        .build())
+                .build();
+    }
+
+    private List<RequestField> setFieldList() {
+        final List<RequestField> request = new ArrayList<>();
+        final LinkedHashMap<String, TextField> map = new LinkedHashMap<>();
+
+        map.put("medico", txMedico);
+        map.put("dia", txDia);
+        map.put("paciente", txUser);
+        map.put("horario", txHorario);
+
+        for (final String key : map.keySet()) {
+            final RequestField field = new RequestField();
+            field.setKey(key);
+            field.setValue(map.get(key));
+
+            request.add(field);
+        }
+
+        return request;
     }
 
     @FXML
