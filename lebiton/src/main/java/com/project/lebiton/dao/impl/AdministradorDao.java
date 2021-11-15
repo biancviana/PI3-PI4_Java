@@ -2,6 +2,8 @@ package com.project.lebiton.dao.impl;
 
 import com.project.lebiton.dao.AdministradorDaoInterface;
 import com.project.lebiton.dao.connction.ConnectionFactory;
+import com.project.lebiton.factory.UsuarioFactory;
+import com.project.lebiton.model.UsuarioInterface;
 import com.project.lebiton.model.impl.*;
 
 import java.sql.Connection;
@@ -63,6 +65,44 @@ public class AdministradorDao implements AdministradorDaoInterface {
             System.out.println("Erro: " + e.getMessage());
         }
         return agenda;
+    }
+
+    @Override
+    public List<AgendaMedico> listarAgendaMedico() {
+        final List<AgendaMedico> agendaMedico = new ArrayList<>();
+
+        try {
+            connection = ConnectionFactory.getConnection();
+            final ResultSet result;
+            final PreparedStatement statement;
+
+            statement = connection.prepareStatement("select * from view_agenda_medico" );
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                final AgendaMedico ag = new AgendaMedico();
+
+                final UsuarioInterface user = UsuarioFactory.criar("", "");
+                final Usuario usuario = (Usuario) user;
+                usuario.setNome(result.getString("nome"));
+                ag.setUsuario(usuario);
+
+                final Medico medico = new Medico();
+                medico.setEspecialidade(result.getString("especialidade"));
+                ag.setMedico(medico);
+
+                final Agenda agenda = new Agenda();
+                agenda.setDia(result.getString("dia"));
+                agenda.setHorario(result.getString("horario"));
+                ag.setAgenda(agenda);
+
+                agendaMedico.add(ag);
+            }
+        }catch (final Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        return agendaMedico;
     }
 
     @Override
@@ -149,6 +189,4 @@ public class AdministradorDao implements AdministradorDaoInterface {
         }
         return false;
     }
-
-
 }

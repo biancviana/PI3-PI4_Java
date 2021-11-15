@@ -10,6 +10,8 @@ public interface AdministradorDaoInterface {
 
     List<Agenda> listarAgenda();
 
+    List<AgendaMedico> listarAgendaMedico();
+
     List<Paciente> listarPacientes();
 
     List<Consulta> listarConsultas();
