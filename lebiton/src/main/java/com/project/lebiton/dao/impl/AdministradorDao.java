@@ -2,10 +2,7 @@ package com.project.lebiton.dao.impl;
 
 import com.project.lebiton.dao.AdministradorDaoInterface;
 import com.project.lebiton.dao.connction.ConnectionFactory;
-import com.project.lebiton.model.impl.Agenda;
-import com.project.lebiton.model.impl.AgendaMedico;
-import com.project.lebiton.model.impl.Medico;
-import com.project.lebiton.model.impl.Paciente;
+import com.project.lebiton.model.impl.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -91,6 +88,43 @@ public class AdministradorDao implements AdministradorDaoInterface {
         }
 
         return paciente;
+    }
+
+    @Override
+    public List<Consulta> listarConsultas() {
+        final List<Consulta> consultas = new ArrayList<>();
+
+        try {
+            connection = ConnectionFactory.getConnection();
+            final ResultSet result;
+            final PreparedStatement statement;
+
+            statement = connection.prepareStatement("select * from view_consultas_adm");
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                final Consulta cs = new Consulta();
+
+                final Medico medico = new Medico();
+                medico.setNome(result.getString("medico"));
+                cs.setMedico(medico);
+
+                final Paciente paciente = new Paciente();
+                paciente.setNome(result.getString("paciente"));
+                cs.setPaciente(paciente);
+
+                final Agenda agenda = new Agenda();
+                agenda.setDia(result.getString("dia"));
+                agenda.setHorario(result.getString("horario"));
+                cs.setAgenda(agenda);
+
+                consultas.add(cs);
+            }
+        }catch (final Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        return consultas;
     }
 
     @Override

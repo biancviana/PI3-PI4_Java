@@ -1,9 +1,6 @@
 package com.project.lebiton.dao;
 
-import com.project.lebiton.model.impl.Agenda;
-import com.project.lebiton.model.impl.AgendaMedico;
-import com.project.lebiton.model.impl.Medico;
-import com.project.lebiton.model.impl.Paciente;
+import com.project.lebiton.model.impl.*;
 
 import java.util.List;
 
@@ -14,6 +11,8 @@ public interface AdministradorDaoInterface {
     List<Agenda> listarAgenda();
 
     List<Paciente> listarPacientes();
+
+    List<Consulta> listarConsultas();
 
     boolean createAgendaMedico(final AgendaMedico agMedico);
 }

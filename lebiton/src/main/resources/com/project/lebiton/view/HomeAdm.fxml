@@ -37,7 +37,7 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btConsultas" layoutX="127.0" layoutY="397.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="376.0" text="Exibir Consultas">
+      <Button fx:id="btConsultas" layoutX="127.0" layoutY="397.0" mnemonicParsing="false" onAction="#visualizarConsultas" prefHeight="44.0" prefWidth="376.0" text="Exibir Consultas">
          <font>
             <Font size="15.0" />
          </font>
