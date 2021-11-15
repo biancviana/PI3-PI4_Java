@@ -30,7 +30,6 @@ public class PacienteDao implements PacienteDaoInterface {
             statement.setString(3, consulta.getHorario().get());
             statement.setString(4, consulta.getDia().get());
 
-
             if (!statement.execute()) {
                 return true;
             }

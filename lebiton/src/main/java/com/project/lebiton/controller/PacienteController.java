@@ -59,7 +59,6 @@ public class PacienteController implements Initializable {
     @FXML
     public void initTable() {
         try {
-
             clCodigo.setCellValueFactory(new PropertyValueFactory<>("id"));
             clMedico.setCellValueFactory(cellData -> cellData.getValue().getNomeMedico());
             clEspecialidade.setCellValueFactory(cellData -> cellData.getValue().getEspecialidade());
