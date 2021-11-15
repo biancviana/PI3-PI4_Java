@@ -92,6 +92,22 @@ public class HomeAdmController implements Initializable {
     }
 
     @FXML
+    public void visualizarConsultas(final ActionEvent actionEvent) {
+
+        final Stage stage = (Stage) btConsultas.getScene().getWindow();
+
+        try {
+            root = new FXMLLoader(HomeAdmController.class.getResource("/com/project/lebiton/view/ExibirConsultas.fxml"));
+            final Scene scene = new Scene(root.load());
+            stage.setScene(scene);
+            stage.setTitle("Exibição de consultas");
+            stage.show();
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void deslogarOnClicked() {
         final Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("MENSAGEM");

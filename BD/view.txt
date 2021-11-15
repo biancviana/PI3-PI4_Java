@@ -6,3 +6,9 @@ inner join medicos m on m.idUsuario = am.idMedico
 inner join usuario u on u.id = m.idUsuario;
 
 -- View para exibir o horário de atendimento de todos os médicos
+
+-- View para exibir consultas ao adm
+create view view_consultas_adm as
+select p.nome as medico, m.nome as paciente, c.horario, c.dia from consulta c
+inner join usuario p on c.idPaciente = p.id
+inner join usuario m on c.idMedico = m.id;
