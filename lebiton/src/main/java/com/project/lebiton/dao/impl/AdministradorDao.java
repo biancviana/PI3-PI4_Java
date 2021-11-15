@@ -66,6 +66,39 @@ public class AdministradorDao implements AdministradorDaoInterface {
     }
 
     @Override
+    public List<AgendaMedico> listarAgendaMedico() {
+        final List<AgendaMedico> agendaMedico = new ArrayList<>();
+
+        try {
+            connection = ConnectionFactory.getConnection();
+            final ResultSet result;
+            final PreparedStatement statement;
+
+            statement = connection.prepareStatement("select * from view_agenda_medico" );
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                final AgendaMedico ag = new AgendaMedico();
+
+                final Medico medico = new Medico();
+                medico.setNome(result.getString("medico"));
+                ag.setMedico(medico);
+
+                final Agenda agenda = new Agenda();
+                agenda.setDia(result.getString("dia"));
+                agenda.setHorario(result.getString("horario"));
+                ag.setAgenda(agenda);
+
+                agendaMedico.add(ag);
+            }
+        }catch (final Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        return agendaMedico;
+    }
+
+    @Override
     public List<Paciente> listarPacientes() {
         final List<Paciente> paciente = new ArrayList<Paciente>();
 
@@ -149,6 +182,4 @@ public class AdministradorDao implements AdministradorDaoInterface {
         }
         return false;
     }
-
-
 }

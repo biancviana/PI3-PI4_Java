@@ -32,12 +32,17 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btVisualizarUser" layoutX="127.0" layoutY="333.0" mnemonicParsing="false" onAction="#visualizarUsuarios" prefHeight="44.0" prefWidth="376.0" text="Exibir usuários">
+      <Button fx:id="btVisualizarUser" layoutX="127.0" layoutY="333.0" mnemonicParsing="false" onAction="#visualizarUsuarios" prefHeight="44.0" prefWidth="376.0" text="Exibir Usuários">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
       <Button fx:id="btConsultas" layoutX="127.0" layoutY="397.0" mnemonicParsing="false" onAction="#visualizarConsultas" prefHeight="44.0" prefWidth="376.0" text="Exibir Consultas">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btVisualizarAgenda" layoutX="127.0" layoutY="458.0" mnemonicParsing="false" onAction="#vizualizarAgendas" prefHeight="44.0" prefWidth="376.0" text="Exibir Agendas">
          <font>
             <Font size="15.0" />
          </font>
