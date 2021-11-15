@@ -2,7 +2,12 @@ package com.project.lebiton.dao.impl;
 
 import com.project.lebiton.dao.PacienteDaoInterface;
 import com.project.lebiton.dao.connction.ConnectionFactory;
+import com.project.lebiton.factory.UsuarioFactory;
+import com.project.lebiton.model.UsuarioInterface;
+import com.project.lebiton.model.impl.Agenda;
 import com.project.lebiton.model.impl.Consulta;
+import com.project.lebiton.model.impl.Medico;
+import com.project.lebiton.model.impl.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,11 +25,10 @@ public class PacienteDao implements PacienteDaoInterface {
             final PreparedStatement statement;
 
             statement = connection.prepareStatement("call createConsulta(?,?,?,?)");
-            statement.setString(1, consulta.getMedico());
+            statement.setString(1, consulta.getNomeMedico().get());
             statement.setString(2, consulta.getEmailPaciente());
-            statement.setString(3, consulta.getHorario());
-            statement.setString(4, consulta.getDia());
-
+            statement.setString(3, consulta.getHorario().get());
+            statement.setString(4, consulta.getDia().get());
 
             if (!statement.execute()) {
                 return true;
@@ -40,7 +44,7 @@ public class PacienteDao implements PacienteDaoInterface {
     }
 
     public List<Consulta> listarAgenda(final String email) {
-        final List<Consulta> agenda = new ArrayList<>();
+        final List<Consulta> consultas = new ArrayList<>();
 
         try {
             connection = ConnectionFactory.getConnection();
@@ -56,20 +60,27 @@ public class PacienteDao implements PacienteDaoInterface {
             result = statement.executeQuery();
 
             while (result.next()) {
-                final Consulta ag = new Consulta();
-                ag.setId(result.getLong("id"));
-                ag.setEspecialidade(result.getString("especialidade"));
-                ag.setMedico(result.getString("nome"));
-                ag.setDia(result.getString("dia"));
-                ag.setHorario(result.getString("horario"));
-                agenda.add(ag);
+                final Consulta cs = new Consulta();
+                cs.setId(result.getLong("id"));
+
+                final Medico medico = new Medico();
+                medico.setEspecialidade(result.getString("especialidade"));
+                medico.setNome(result.getString("nome"));
+                cs.setMedico(medico);
+
+                final Agenda agenda = new Agenda();
+                agenda.setDia(result.getString("dia"));
+                agenda.setHorario(result.getString("horario"));
+                cs.setAgenda(agenda);
+
+                consultas.add(cs);
             }
 
         } catch (final Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
 
-        return agenda;
+        return consultas;
     }
 
     public boolean excluirConsultaAgendada(final Long id) {
@@ -84,7 +95,7 @@ public class PacienteDao implements PacienteDaoInterface {
             return true;
 
         } catch (final Exception e) {
-            System.out.println("Erro bem aqui: " + e.getMessage());
+            System.out.println("Erro ao excluir consulta: " + e.getMessage());
         }
 
         return false;

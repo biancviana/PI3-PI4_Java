@@ -87,6 +87,4 @@ public class AgendaMedico {
 
 		public AgendaMedico build() {return new AgendaMedico(usuario,medico,agenda);}
 	}
-
-
 }
