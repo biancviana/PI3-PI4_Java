@@ -67,7 +67,7 @@ public class AgendaEspecialistaController implements Initializable {
     public void initComboBox() {
         final ObservableList<String> especialidades = FXCollections.observableArrayList("cardiologia", "clinico geral",
                 "dermatologia", "endocrinologia", "gastroenterologia", "ginecologia", "neurologia", "oftalmologia",
-                "ortopedia", "otorrinolaringologia", "pneumologia");
+                "otorrinolaringologia", "pneumologia");
 
         cbEspecialidade.setItems(especialidades);
     }

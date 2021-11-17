@@ -100,7 +100,6 @@ public class CadastroPacienteController implements Initializable {
         final LinkedHashMap<String, TextField> map = new LinkedHashMap<>();
 
         map.put("nome", txNome);
-        map.put("data nascimento", txDataNascimento);
         map.put("cpf", txCpf);
         map.put("telefone", txTelefone);
         map.put("email", txEmail);

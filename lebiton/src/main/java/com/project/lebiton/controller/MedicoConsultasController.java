@@ -82,7 +82,6 @@ public class MedicoConsultasController implements Initializable {
             final FXMLLoader root = new FXMLLoader(MedicoController.class.getResource("/com/project/lebiton/view/Medico.fxml"));
             final Scene scene = new Scene(root.load());
             stage.setScene(scene);
-            stage.setTitle("Tela do Médico");
             stage.show();
 
         } catch (final IOException e) {

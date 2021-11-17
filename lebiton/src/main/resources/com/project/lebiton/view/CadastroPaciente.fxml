@@ -9,18 +9,14 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.lebiton.controller.CadastroPacienteController">
    <children>
-      <Label layoutX="131.0" layoutY="74.0" text="Nome:" />
-      <Label layoutX="131.0" layoutY="254.0" text="Endereco:" />
-      <Label layoutX="131.0" layoutY="135.0" text="Data de Nascimento:" />
+      <Label layoutX="131.0" layoutY="123.0" text="Nome:" />
       <Label layoutX="131.0" layoutY="421.0" text="E-mail:" />
-      <Label layoutX="131.0" layoutY="312.0" text="Telefone:" />
-      <Label layoutX="131.0" layoutY="190.0" text="CPF:" />
+      <Label layoutX="131.0" layoutY="267.0" text="Telefone:" />
+      <Label layoutX="131.0" layoutY="192.0" text="CPF:" />
       <Label layoutX="131.0" layoutY="481.0" text="Senha:" />
-      <TextField fx:id="txNome" layoutX="131.0" layoutY="91.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txDataNascimento" layoutX="131.0" layoutY="151.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txCpf" layoutX="131.0" layoutY="207.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txEndereco" layoutX="131.0" layoutY="270.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txTelefone" layoutX="131.0" layoutY="328.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txNome" layoutX="131.0" layoutY="140.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txCpf" layoutX="131.0" layoutY="209.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txTelefone" layoutX="131.0" layoutY="283.0" prefHeight="34.0" prefWidth="340.0" />
       <TextField fx:id="txEmail" layoutX="131.0" layoutY="438.0" prefHeight="34.0" prefWidth="340.0" />
       <TextField fx:id="txSenha" layoutX="131.0" layoutY="498.0" prefHeight="34.0" prefWidth="340.0" />
       <Button fx:id="btCadastrar" layoutX="131.0" layoutY="563.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="34.0" prefWidth="340.0" text="Cadastrar" />
