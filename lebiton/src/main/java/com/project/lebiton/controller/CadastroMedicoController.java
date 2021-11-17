@@ -107,7 +107,6 @@ public class CadastroMedicoController implements Initializable {
         final LinkedHashMap<String, TextField> map = new LinkedHashMap<>();
 
         map.put("nome", txNome);
-        map.put("data nascimento", txDataNascimento);
         map.put("crm", txCrm);
         map.put("especialidade", txEspecialidade);
         map.put("telefone", txTelefone);

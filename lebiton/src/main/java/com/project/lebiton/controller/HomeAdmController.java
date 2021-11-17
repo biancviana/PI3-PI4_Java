@@ -52,7 +52,7 @@ public class HomeAdmController implements Initializable {
             root = new FXMLLoader(HomeAdmController.class.getResource("/com/project/lebiton/view/CadastroDiasAgenda.fxml"));
             final Scene scene = new Scene(root.load());
             stage.setScene(scene);
-            stage.setTitle("Cadastro Dias");
+            stage.setTitle("Cadastro Dias na Agenda");
             stage.show();
         } catch (final IOException e) {
             e.printStackTrace();
@@ -84,7 +84,7 @@ public class HomeAdmController implements Initializable {
             root = new FXMLLoader(HomeAdmController.class.getResource("/com/project/lebiton/view/ExibirUsuarios.fxml"));
             final Scene scene = new Scene(root.load());
             stage.setScene(scene);
-            stage.setTitle("Exibição de usuáruis");
+            stage.setTitle("Exibição de Usuários");
             stage.show();
         } catch (final IOException e) {
             e.printStackTrace();
@@ -100,7 +100,7 @@ public class HomeAdmController implements Initializable {
             root = new FXMLLoader(HomeAdmController.class.getResource("/com/project/lebiton/view/ExibirConsultas.fxml"));
             final Scene scene = new Scene(root.load());
             stage.setScene(scene);
-            stage.setTitle("Exibição de consultas");
+            stage.setTitle("Exibição de Consultas");
             stage.show();
         } catch (final IOException e) {
             e.printStackTrace();
@@ -116,7 +116,7 @@ public class HomeAdmController implements Initializable {
             root = new FXMLLoader(HomeAdmController.class.getResource("/com/project/lebiton/view/ExibirAgendas.fxml"));
             final Scene scene = new Scene(root.load());
             stage.setScene(scene);
-            stage.setTitle("Exibição de consultas");
+            stage.setTitle("Exibição de Agendas");
             stage.show();
         } catch (final IOException e) {
             e.printStackTrace();
