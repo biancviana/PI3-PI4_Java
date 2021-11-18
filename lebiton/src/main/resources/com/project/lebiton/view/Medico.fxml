@@ -21,7 +21,7 @@
             <Font size="37.0" />
          </font>
       </Label>
-      <TextField fx:id="txUser" editable="false" layoutX="525.0" layoutY="19.0" prefHeight="25.0" prefWidth="125.0" />
+      <TextField fx:id="txUser" disable="true" editable="false" layoutX="525.0" layoutY="19.0" prefHeight="25.0" prefWidth="125.0" />
       <Button fx:id="btAgenda" layoutX="242.0" layoutY="458.0" mnemonicParsing="false" onAction="#visualizarConsultas" prefHeight="39.0" prefWidth="180.0" text="Ver consultas">
          <font>
             <Font size="18.0" />
