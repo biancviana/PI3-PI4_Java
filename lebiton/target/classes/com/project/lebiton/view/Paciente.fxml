@@ -30,7 +30,7 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <TextField fx:id="txUser" disable="true" editable="false" layoutX="468.0" layoutY="13.0" prefHeight="21.0" prefWidth="130.0" />
+      <TextField fx:id="txUser" disable="true" editable="false" layoutX="475.0" layoutY="13.0" prefHeight="25.0" prefWidth="165.0" />
       <Button fx:id="btDesmarcar" layoutX="487.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#excluirConsulta" prefHeight="40.0" prefWidth="149.0" text="Desmarcar" />
       <Label layoutX="44.0" layoutY="414.0" text="Para agendar uma nova consulta, clique no botão abaixo:">
          <font>

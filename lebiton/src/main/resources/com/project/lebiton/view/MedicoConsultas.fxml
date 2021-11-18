@@ -24,7 +24,6 @@
         </columns>
       </TableView>
       <TextField fx:id="txUser" disable="true" editable="false" layoutX="429.0" layoutY="15.0" prefHeight="25.0" prefWidth="165.0" />
-      <TextField fx:id="txUser" editable="false" layoutX="437.0" layoutY="14.0" />
       <Label layoutX="147.0" layoutY="59.0" text="Estas são as suas consultas:" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
