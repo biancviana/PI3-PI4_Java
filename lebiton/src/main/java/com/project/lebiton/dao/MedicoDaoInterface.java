@@ -6,8 +6,8 @@ import com.project.lebiton.model.impl.Consulta;
 import java.util.List;
 
 public interface MedicoDaoInterface {
-    List<Agenda> listarHorarios(final String email);
 
+    List<Agenda> listarHorarios(final String email);
     List<Consulta> listarConsultas(final String email);
 
 }

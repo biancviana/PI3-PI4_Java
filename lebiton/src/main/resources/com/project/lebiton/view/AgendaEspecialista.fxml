@@ -35,6 +35,6 @@
       <TextField fx:id="txHorario" disable="true" layoutX="513.0" layoutY="324.0" />
       <TextField fx:id="txEspecialidade" disable="true" layoutX="513.0" layoutY="191.0" />
       <Button fx:id="btAgendar" layoutX="540.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#cadastrarConsulta" prefHeight="36.0" prefWidth="96.0" text="Agendar" />
-      <TextField fx:id="txUser" disable="true" layoutX="514.0" layoutY="26.0" />
+      <TextField fx:id="txUser" disable="true" layoutX="513.0" layoutY="18.0" prefWidth="165.0" />
    </children>
 </Pane>

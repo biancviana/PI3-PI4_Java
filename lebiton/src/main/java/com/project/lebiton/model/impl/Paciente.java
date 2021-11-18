@@ -27,10 +27,6 @@ public class Paciente extends Usuario implements UsuarioInterface {
         return cpf;
     }
 
-    public void setCpf(final String cpf) {
-        this.cpf = cpf;
-    }
-
     @Override
     public boolean logar() {
         final GeneralUsuarioDaoInterface dao = FactoryGeneralUsuarioDAO.criarGeneralUsuariodao();

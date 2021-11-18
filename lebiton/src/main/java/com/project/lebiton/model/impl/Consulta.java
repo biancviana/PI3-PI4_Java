@@ -21,12 +21,24 @@ public class Consulta {
         return medico;
     }
 
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
     public Paciente getPaciente() {
         return paciente;
     }
 
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
     public Agenda getAgenda() {
         return agenda;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
     }
 
     public Long getId() {
@@ -37,19 +49,7 @@ public class Consulta {
         this.id = id;
     }
 
-    public void setMedico(Medico medico) {
-        this.medico = medico;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-
-    public void setAgenda(Agenda agenda) {
-        this.agenda = agenda;
-    }
-
-    /*Getters e Setters utilizados no cadastro e na exibição dos dados*/
+    /* Getters e Setters oriundos da associação */
 
     public StringProperty getNomeMedico() {
         return medico.getNome();

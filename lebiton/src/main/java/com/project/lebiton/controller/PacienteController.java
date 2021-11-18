@@ -37,12 +37,11 @@ public class PacienteController implements Initializable {
     private TableColumn<Consulta, String> clDia = new TableColumn<>("Dia");
     @FXML
     private TableColumn<Consulta, String> clHorario = new TableColumn<>("Horário");
-
     @FXML
     private Button btAgendar, btDeslogar;
     @FXML
     private TextField txUser, txEspecialista, txMedico, txDia, txHorario;
-    
+
     FXMLLoader root = null;
 
     int index;
@@ -51,9 +50,7 @@ public class PacienteController implements Initializable {
     @Override
     public void initialize(final URL arg0, final ResourceBundle arg1) {
         txUser.setText(Sessao.getInstance().getEmail());
-
         initTable();
-
     }
 
     @FXML
@@ -70,7 +67,6 @@ public class PacienteController implements Initializable {
         } catch (final Exception e) {
             System.out.println("ERRO: " + e.getMessage());
         }
-
     }
 
     public ObservableList<Consulta> atualizaTabela() {
@@ -90,7 +86,7 @@ public class PacienteController implements Initializable {
         final Stage stage = (Stage) btAgendar.getScene().getWindow();
         try {
             final FXMLLoader root = new FXMLLoader(PacienteController.class.getResource("/com/project/lebiton/view/AgendaEspecialista.fxml"));
-            final Scene scene = new Scene(root.load(), 700, 540);
+            final Scene scene = new Scene(root.load());
             stage.setScene(scene);
             stage.show();
 
@@ -135,10 +131,10 @@ public class PacienteController implements Initializable {
         final Optional<ButtonType> result = alert.showAndWait();
 
         if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-        	
-        	final Stage stage = (Stage) btDeslogar.getScene().getWindow();
-        	
-        	try {
+
+            final Stage stage = (Stage) btDeslogar.getScene().getWindow();
+
+            try {
                 root = new FXMLLoader(PacienteController.class.getResource("/com/project/lebiton/view/Login.fxml"));
                 final Scene scene = new Scene(root.load());
                 stage.setScene(scene);

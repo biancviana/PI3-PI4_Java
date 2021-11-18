@@ -25,19 +25,15 @@ public class ExibirUsuariosController implements Initializable {
 
     @FXML
     private TableView<Medico> tbMedicos = new TableView<>();
-
     @FXML
     private TableColumn<Medico, String> clMedico = new TableColumn<Medico, String>("Nome");
-
     @FXML
     private TableColumn<Medico, String> clEspecialidade = new TableColumn<Medico, String>("Especialidade");
-
     @FXML
     private TableColumn<Medico, String> clCrm = new TableColumn<Medico, String>("CRM");
 
     @FXML
     private TableView<Paciente> tbPacientes = new TableView<>();
-
     @FXML
     private TableColumn<Paciente, String> clPaciente = new TableColumn<>("Nome");
 

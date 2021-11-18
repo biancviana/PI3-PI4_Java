@@ -5,9 +5,9 @@ import com.project.lebiton.model.impl.Consulta;
 import java.util.List;
 
 public interface PacienteDaoInterface {
-    boolean cadastrarConsulta(final Consulta consulta);
 
+    boolean cadastrarConsulta(final Consulta consulta);
+    boolean excluirConsultaAgendada(final Long id);
     List<Consulta> listarAgenda(final String email);
 
-    boolean excluirConsultaAgendada(final Long id);
 }
