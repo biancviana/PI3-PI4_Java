@@ -20,7 +20,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -31,15 +30,9 @@ import java.util.*;
 public class LoginController implements Initializable {
 
     @FXML
-    public TextField txLogin;
+    public TextField txLogin, txSenha;
     @FXML
-    public PasswordField txSenha;
-    @FXML
-    public Button btLogar;
-    @FXML
-    public Button btSair;
-    @FXML
-    public Button btCadastrar;
+    public Button btLogar, btSair, btCadastrar;
 
     final String VIEW_PATH = "/com/project/lebiton/view/";
 

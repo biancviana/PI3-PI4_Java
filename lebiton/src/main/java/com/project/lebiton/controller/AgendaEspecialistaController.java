@@ -6,6 +6,7 @@ import com.project.lebiton.dao.factory.FactoryAgendarEspecialistalDAO;
 import com.project.lebiton.dao.factory.FactoryPacienteDAO;
 import com.project.lebiton.handleError.ErrorHandle;
 import com.project.lebiton.model.impl.*;
+import com.project.lebiton.utils.CleanField;
 import com.project.lebiton.utils.Message;
 import com.project.lebiton.utils.RequestField;
 import javafx.collections.FXCollections;
@@ -109,25 +110,23 @@ public class AgendaEspecialistaController implements Initializable {
     @FXML
     public void cadastrarConsulta() throws Exception {
         ErrorHandle.checkFields(setFieldList());
+        List<RequestField> lista = setFieldList();
 
         final PacienteDaoInterface dao = FactoryPacienteDAO.criarPacientendao();
 
-        if(!dao.cadastrarConsulta(buildConsulta())){
+        if (!dao.cadastrarConsulta(buildConsulta())) {
             System.out.println("Ocorreu um erro!");
 
             Message.showAlert("ERRO AO CADASTRAR!", "Cadastro Inválido!",
                     "Não conseguimos processar seu cadastro! Tente novamente.", Alert.AlertType.ERROR);
-        }{
+        }
+        {
             System.out.println("Consulta cadastrada!");
 
             Message.showAlert("CADASTRO REALIZADO!", "Consulta cadastrada com sucesso!",
                     "Dados validados!", Alert.AlertType.INFORMATION);
 
-            txHorario.clear();
-            txMedico.clear();
-            txDia.clear();
-            txUser.clear();
-
+            CleanField.cleanFieldList(lista);
         }
 
     }
@@ -184,4 +183,3 @@ public class AgendaEspecialistaController implements Initializable {
         }
     }
 }
-

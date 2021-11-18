@@ -4,6 +4,7 @@ import com.project.lebiton.dao.factory.FactoryAdministradorDAO;
 import com.project.lebiton.dao.AdministradorDaoInterface;
 import com.project.lebiton.handleError.ErrorHandle;
 import com.project.lebiton.model.impl.*;
+import com.project.lebiton.utils.CleanField;
 import com.project.lebiton.utils.Message;
 import com.project.lebiton.utils.RequestField;
 import javafx.collections.FXCollections;
@@ -28,27 +29,22 @@ public class CadastroAgendaMedicoController implements Initializable {
 
     @FXML
     private TableView<Medico> tbMedico = new TableView<>();
-
     @FXML
     private TableColumn<Medico, String> clMedico = new TableColumn<Medico, String>("Nome");
-
     @FXML
     private TableColumn<Medico, String> clEspecialidade = new TableColumn<Medico, String>("Especialidade");
+
     @FXML
     private TableView<Agenda> tbAgenda = new TableView<>();
-
     @FXML
     private TableColumn<Agenda, String> clDia = new TableColumn<Agenda, String>("Dia");
-    ;
-
     @FXML
     private TableColumn<Agenda, String> clHorario = new TableColumn<Agenda, String>("Horário");
-    ;
 
     @FXML
     private TextField txMedico, txHorario, txDia;
     @FXML
-    private Button btCadastrar, btVoltar;
+    private Button btVoltar;
 
 
     @Override
@@ -115,6 +111,7 @@ public class CadastroAgendaMedicoController implements Initializable {
     @FXML
     public void cadastrarAgendaMedico() throws Exception {
         ErrorHandle.checkFields(setFieldList());
+        List<RequestField> lista = setFieldList();
 
         final AdministradorDaoInterface dao = FactoryAdministradorDAO.criarAdministradordao();
 
@@ -129,10 +126,7 @@ public class CadastroAgendaMedicoController implements Initializable {
             Message.showAlert("CADASTRO REALIZADO!", "Agenda cadastrada com sucesso!",
                     "Dados validados!", Alert.AlertType.INFORMATION);
 
-            txHorario.clear();
-            txMedico.clear();
-            txDia.clear();
-
+            CleanField.cleanFieldList(lista);
         }
     }
 

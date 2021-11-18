@@ -2,24 +2,24 @@ package com.project.lebiton.model.impl;
 
 public class Sessao {
 
-	private static Sessao uniqueInstance;
-	private String email;
+    private static Sessao uniqueInstance;
+    private String email;
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(final String email) {
-		this.email = email;
-	}
+    public void setEmail(final String email) {
+        this.email = email;
+    }
 
-	private Sessao() {
-	}
+    private Sessao() {
+    }
 
-	public static synchronized Sessao getInstance() {
-		if (uniqueInstance == null)
-			uniqueInstance = new Sessao();
+    public static synchronized Sessao getInstance() {
+        if (uniqueInstance == null)
+            uniqueInstance = new Sessao();
 
-		return uniqueInstance;
-	}
+        return uniqueInstance;
+    }
 }

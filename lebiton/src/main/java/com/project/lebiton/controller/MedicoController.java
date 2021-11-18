@@ -27,29 +27,24 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class MedicoController implements Initializable {
+
     @FXML
     private TableView<Agenda> tbHorarios = new TableView<>();
-
     @FXML
     private TableColumn<Agenda, String> clDia = new TableColumn<Agenda, String>("Dia");
     @FXML
     private TableColumn<Agenda, String> clHorario = new TableColumn<Agenda, String>("Horario");
-
     @FXML
     private TextField txUser;
-
     @FXML
     private Button btAgenda, btDeslogar;
 
     FXMLLoader root = null;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         txUser.setText(Sessao.getInstance().getEmail());
-
         initTable();
-
     }
 
     public void initTable() {

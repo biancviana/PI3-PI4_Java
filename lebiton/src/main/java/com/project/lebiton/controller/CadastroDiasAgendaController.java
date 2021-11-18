@@ -11,6 +11,7 @@ import com.project.lebiton.dao.CadastrarDiasAgendaDaoInterface;
 import com.project.lebiton.dao.factory.FactoryCadastroDiasAgendaDAO;
 import com.project.lebiton.handleError.ErrorHandle;
 import com.project.lebiton.model.impl.Agenda;
+import com.project.lebiton.utils.CleanField;
 import com.project.lebiton.utils.Message;
 import com.project.lebiton.utils.RequestField;
 
@@ -30,19 +31,14 @@ public class CadastroDiasAgendaController implements Initializable {
     }
 
     @FXML
-    TextField txDia;
+    TextField txDia, txHorario;
     @FXML
-    TextField txHorario;
-    @FXML
-    Button btVoltar;
-    @FXML
-    Button btCadastrarDias;
+    Button btVoltar, btCadastrarDias;
 
     @FXML
     public void cadastrarDiasAgenda() throws Exception {
-
-        //Verifica se campos são validos
         ErrorHandle.checkFields(setFieldList());
+        List<RequestField> lista = setFieldList();
 
         final CadastrarDiasAgendaDaoInterface dao = FactoryCadastroDiasAgendaDAO.criarCadastroDiasAgendadao();
 
@@ -56,6 +52,8 @@ public class CadastroDiasAgendaController implements Initializable {
 
             Message.showAlert("CADASTRO REALIZADO!", "Horário e Dia cadastrados com sucesso!",
                     "Dia/Horário validados!", AlertType.INFORMATION);
+
+            CleanField.cleanFieldList(lista);
         }
 
     }

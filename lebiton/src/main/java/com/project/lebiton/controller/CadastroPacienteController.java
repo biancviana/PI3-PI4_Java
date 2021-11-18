@@ -24,26 +24,14 @@ import java.util.ResourceBundle;
 
 public class CadastroPacienteController implements Initializable {
 
+    @FXML
+    TextField txNome, txDataNascimento, txCpf, txTelefone, txEmail, txSenha;
+    @FXML
+    Button btCadastrar, btVoltar;
+
     @Override
     public void initialize(final URL arg0, final ResourceBundle arg1) {
     }
-
-    @FXML
-    TextField txNome;
-    @FXML
-    TextField txDataNascimento;
-    @FXML
-    TextField txCpf;
-    @FXML
-    TextField txTelefone;
-    @FXML
-    TextField txEmail;
-    @FXML
-    TextField txSenha;
-    @FXML
-    Button btCadastrar;
-    @FXML
-    Button btVoltar;
 
     @FXML
     public void cadastrar() throws Exception {

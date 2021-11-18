@@ -9,10 +9,8 @@ public class UsuarioFactory {
 
     public static UsuarioInterface criar(final String email, final String senha) {
 
-        if (email.contains("@medico.com"))
-            return new Medico(email, senha);
-        else if (email.contains("adm"))
-            return new Administrador(email, senha);
+        if (email.contains("@medico.com")) return new Medico(email, senha);
+        else if (email.contains("adm")) return new Administrador(email, senha);
         else return new Paciente(email, senha);
     }
 }

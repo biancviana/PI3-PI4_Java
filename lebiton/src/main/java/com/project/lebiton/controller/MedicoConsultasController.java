@@ -23,9 +23,6 @@ import java.util.ResourceBundle;
 
 public class MedicoConsultasController implements Initializable {
 
-
-    @FXML
-    private Button btVoltar;
     @FXML
     private TableView<Consulta> tbConsultas = new TableView();
     @FXML
@@ -38,11 +35,12 @@ public class MedicoConsultasController implements Initializable {
     private TableColumn<Consulta, String> clHorario = new TableColumn<>("Horário");
     @FXML
     private TextField txUser;
+    @FXML
+    private Button btVoltar;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         txUser.setText(Sessao.getInstance().getEmail());
-
         initTable();
     }
 

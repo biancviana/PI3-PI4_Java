@@ -25,24 +25,9 @@ import java.util.ResourceBundle;
 public class CadastroMedicoController implements Initializable {
 
     @FXML
-    TextField txNome;
+    TextField txNome, txDataNascimento, txCrm, txEspecialidade, txTelefone, txEmail, txSenha;
     @FXML
-    TextField txDataNascimento;
-    @FXML
-    TextField txCrm;
-    @FXML
-    TextField txEspecialidade;
-    @FXML
-    TextField txTelefone;
-    @FXML
-    TextField txEmail;
-    @FXML
-    TextField txSenha;
-    @FXML
-    Button btCadastrar;
-    @FXML
-    Button btVoltar;
-
+    Button btCadastrar, btVoltar;
 
     @Override
     public void initialize(final URL arg0, final ResourceBundle arg1) {
@@ -89,7 +74,6 @@ public class CadastroMedicoController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
     private Medico setMedicoBuider() {
         return new Medico.Builder()

@@ -3,7 +3,6 @@ package com.project.lebiton.controller;
 import com.project.lebiton.dao.AdministradorDaoInterface;
 import com.project.lebiton.dao.factory.FactoryAdministradorDAO;
 import com.project.lebiton.model.impl.Consulta;
-import com.project.lebiton.model.impl.Medico;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -22,9 +21,6 @@ import javafx.stage.Stage;
 
 public class ExibirConsultasController implements Initializable {
 
-
-    @FXML
-    private Button btVoltar;
     @FXML
     private TableView<Consulta> tbConsultas = new TableView<>();
     @FXML
@@ -35,13 +31,15 @@ public class ExibirConsultasController implements Initializable {
     private TableColumn<Consulta, String> clHorario = new TableColumn<>("Horario");
     @FXML
     private TableColumn<Consulta, String> clDia = new TableColumn<>("Dia");
+    @FXML
+    private Button btVoltar;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initTableConsultas();
     }
 
-    public void initTableConsultas(){
+    public void initTableConsultas() {
 
         clMedico.setCellValueFactory(cellData -> cellData.getValue().getNomeMedico());
         clPaciente.setCellValueFactory(cellData -> cellData.getValue().getNomePaciente());

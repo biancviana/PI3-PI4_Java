@@ -27,9 +27,17 @@ public class Medico extends Usuario implements UsuarioInterface {
         super(nome);
     }
 
+    public StringProperty getEspecialidade() {
+        return especialidade;
+    }
+
     public void setEspecialidade(final String especialidade) {
         this.especialidade = new SimpleStringProperty("");
         this.especialidade.set(especialidade);
+    }
+
+    public StringProperty getCrm() {
+        return crm;
     }
 
     public void setCrm(final String crm) {
@@ -37,17 +45,9 @@ public class Medico extends Usuario implements UsuarioInterface {
         this.crm.set(crm);
     }
 
-    public StringProperty getEspecialidade() {
-        return especialidade;
-    }
-
     @Override
     public StringProperty getNome() {
         return nome;
-    }
-
-    public StringProperty getCrm() {
-        return crm;
     }
 
     @Override
