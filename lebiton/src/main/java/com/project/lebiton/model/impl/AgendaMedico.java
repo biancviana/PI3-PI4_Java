@@ -3,8 +3,6 @@ package com.project.lebiton.model.impl;
 import javafx.beans.property.StringProperty;
 
 public class AgendaMedico {
-
-    private Usuario usuario;
     private Medico medico;
     private Agenda agenda;
 
@@ -13,21 +11,7 @@ public class AgendaMedico {
         this.agenda = agenda;
     }
 
-    public AgendaMedico(final Usuario usuario, final Medico medico, final Agenda agenda) {
-        this.medico = medico;
-        this.agenda = agenda;
-        this.usuario = usuario;
-    }
-
     public AgendaMedico() {
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(final Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public Medico getMedico() {
@@ -46,12 +30,6 @@ public class AgendaMedico {
         this.agenda = agenda;
     }
 
-    /* get utilizado pela tableView ao exibir a agenda dos especialistas */
-
-    public StringProperty getNome() {
-        return usuario.getNome();
-    }
-
     public StringProperty getEspecialidade() {
         return medico.getEspecialidade();
     }
@@ -65,14 +43,8 @@ public class AgendaMedico {
     }
 
     public static class Builder {
-        protected Usuario usuario;
         protected Medico medico;
         protected Agenda agenda;
-
-        public Builder usuario(final Usuario usuario) {
-            this.usuario = usuario;
-            return this;
-        }
 
         public Builder medico(final Medico medico) {
             this.medico = medico;
@@ -85,7 +57,7 @@ public class AgendaMedico {
         }
 
         public AgendaMedico build() {
-            return new AgendaMedico(usuario, medico, agenda);
+            return new AgendaMedico(medico, agenda);
         }
     }
 }

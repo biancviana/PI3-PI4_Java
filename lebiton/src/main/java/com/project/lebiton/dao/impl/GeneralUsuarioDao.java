@@ -82,5 +82,4 @@ public class GeneralUsuarioDao implements GeneralUsuarioDaoInterface {
 
         return false;
     }
-
 }

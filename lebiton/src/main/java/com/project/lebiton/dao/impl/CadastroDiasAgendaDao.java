@@ -23,20 +23,12 @@ public class CadastroDiasAgendaDao implements CadastrarDiasAgendaDaoInterface {
             if (!statement.execute()) {
                 return true;
             }
-            
+
             ConnectionFactory.closeConnection(connection, statement);
-			
-			
-			
-			
+
 		} catch (final Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
-
-
-        return false;
-		
-		
+		return false;
 	}
-
 }

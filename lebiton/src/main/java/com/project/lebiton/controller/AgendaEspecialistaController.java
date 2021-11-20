@@ -75,7 +75,7 @@ public class AgendaEspecialistaController implements Initializable {
 
     public void initTable() {
 
-        clMedico.setCellValueFactory(cellData -> cellData.getValue().getNome());
+        clMedico.setCellValueFactory(cellData -> cellData.getValue().getMedico().getNome());
         clEspecialidade.setCellValueFactory(cellData -> cellData.getValue().getEspecialidade());
         clDia.setCellValueFactory(cellData -> cellData.getValue().getDia());
         clHorario.setCellValueFactory(cellData -> cellData.getValue().getHorario());
@@ -100,7 +100,7 @@ public class AgendaEspecialistaController implements Initializable {
         final AgendaMedico consultaSelecionada = (AgendaMedico) tbAgendaEspecialista.getItems().get(index);
 
         txEspecialidade.setText(consultaSelecionada.getEspecialidade().get());
-        txMedico.setText(consultaSelecionada.getNome().get());
+        txMedico.setText(consultaSelecionada.getMedico().getNome().get());
         txDia.setText(consultaSelecionada.getDia().get());
         txHorario.setText(consultaSelecionada.getHorario().get());
 
