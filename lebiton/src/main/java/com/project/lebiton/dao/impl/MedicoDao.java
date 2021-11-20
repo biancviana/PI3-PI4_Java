@@ -79,6 +79,4 @@ public class MedicoDao implements MedicoDaoInterface {
 
         return consulta;
     }
-
-
 }

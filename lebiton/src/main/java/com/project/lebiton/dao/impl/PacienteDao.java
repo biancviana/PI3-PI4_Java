@@ -100,5 +100,4 @@ public class PacienteDao implements PacienteDaoInterface {
 
         return false;
     }
-
 }

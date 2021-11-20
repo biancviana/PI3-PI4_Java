@@ -42,7 +42,7 @@ public class ExibirAgendasController implements Initializable {
 
     public void initTable() {
 
-        clMedico.setCellValueFactory(cellData -> cellData.getValue().getNome());
+        clMedico.setCellValueFactory(cellData -> cellData.getValue().getMedico().getNome());
         clEspecialidade.setCellValueFactory(cellData -> cellData.getValue().getEspecialidade());
         clDia.setCellValueFactory(cellData -> cellData.getValue().getDia());
         clHorario.setCellValueFactory(cellData -> cellData.getValue().getHorario());

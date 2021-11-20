@@ -82,12 +82,8 @@ public class AdministradorDao implements AdministradorDaoInterface {
             while (result.next()) {
                 final AgendaMedico ag = new AgendaMedico();
 
-                final UsuarioInterface user = UsuarioFactory.criar("", "");
-                final Usuario usuario = (Usuario) user;
-                usuario.setNome(result.getString("nome"));
-                ag.setUsuario(usuario);
-
                 final Medico medico = new Medico();
+                medico.setNome(result.getString("nome"));
                 medico.setEspecialidade(result.getString("especialidade"));
                 ag.setMedico(medico);
 
