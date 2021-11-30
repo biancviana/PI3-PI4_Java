@@ -2,8 +2,6 @@ package com.project.lebiton.dao.impl;
 
 import com.project.lebiton.dao.AdministradorDaoInterface;
 import com.project.lebiton.dao.connction.ConnectionFactory;
-import com.project.lebiton.factory.UsuarioFactory;
-import com.project.lebiton.model.UsuarioInterface;
 import com.project.lebiton.model.impl.*;
 
 import java.sql.Connection;
@@ -110,8 +108,8 @@ public class AdministradorDao implements AdministradorDaoInterface {
             final ResultSet result;
             final PreparedStatement statement;
 
-            statement = connection.prepareStatement("select nome from usuario\n" +
-                    "where email like '%@paciente.com%'\n" );
+            statement = connection.prepareStatement("select u.nome from pacientes p\n" +
+                    "inner join usuario u on p.idUsuario = u.id" );
             result = statement.executeQuery();
 
             while (result.next()) {

@@ -2,12 +2,9 @@ package com.project.lebiton.dao.impl;
 
 import com.project.lebiton.dao.PacienteDaoInterface;
 import com.project.lebiton.dao.connction.ConnectionFactory;
-import com.project.lebiton.factory.UsuarioFactory;
-import com.project.lebiton.model.UsuarioInterface;
 import com.project.lebiton.model.impl.Agenda;
 import com.project.lebiton.model.impl.Consulta;
 import com.project.lebiton.model.impl.Medico;
-import com.project.lebiton.model.impl.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
