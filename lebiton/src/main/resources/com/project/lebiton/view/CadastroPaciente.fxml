@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
@@ -15,10 +16,9 @@
       <Label layoutX="131.0" layoutY="192.0" text="CPF:" />
       <Label layoutX="131.0" layoutY="481.0" text="Senha:" />
       <TextField fx:id="txNome" layoutX="131.0" layoutY="140.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txCpf" layoutX="131.0" layoutY="209.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txTelefone" layoutX="131.0" layoutY="283.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txEmail" layoutX="131.0" layoutY="438.0" prefHeight="34.0" prefWidth="340.0" />
-      <TextField fx:id="txSenha" layoutX="131.0" layoutY="498.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txCpf" layoutX="131.0" layoutY="209.0" prefHeight="34.0" prefWidth="340.0" promptText="000.000.000-00" />
+      <TextField fx:id="txTelefone" layoutX="131.0" layoutY="283.0" prefHeight="34.0" prefWidth="340.0" promptText="(00)00000-0000" />
+      <TextField fx:id="txEmail" layoutX="131.0" layoutY="438.0" prefHeight="34.0" prefWidth="340.0" promptText="paciente@paciente.com" />
       <Button fx:id="btCadastrar" layoutX="131.0" layoutY="563.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="34.0" prefWidth="340.0" text="Cadastrar" />
       <Separator layoutX="1.0" layoutY="383.0" prefHeight="8.0" prefWidth="601.0" />
       <Label layoutX="215.0" layoutY="21.0" text="Faça seu cadastro">
@@ -31,5 +31,6 @@
             <Font size="13.0" />
          </font>
       </Button>
+      <PasswordField fx:id="txSenha" layoutX="132.0" layoutY="498.0" prefHeight="34.0" prefWidth="340.0" />
    </children>
 </Pane>

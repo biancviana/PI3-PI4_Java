@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -25,7 +26,9 @@ import java.util.ResourceBundle;
 public class CadastroMedicoController implements Initializable {
 
     @FXML
-    TextField txNome, txDataNascimento, txCrm, txEspecialidade, txTelefone, txEmail, txSenha;
+    TextField txNome, txCrm, txEspecialidade, txTelefone, txEmail;
+    @FXML
+    PasswordField txSenha;
     @FXML
     Button btCadastrar, btVoltar;
 
@@ -92,8 +95,8 @@ public class CadastroMedicoController implements Initializable {
 
         map.put("nome", txNome);
         map.put("crm", txCrm);
-        map.put("especialidade", txEspecialidade);
         map.put("telefone", txTelefone);
+        map.put("especialidade", txEspecialidade);
         map.put("email", txEmail);
         map.put("senha", txSenha);
 
