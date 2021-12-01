@@ -10,6 +10,8 @@ Repositório para o projeto interdisciplinar do 3° e 4° semestre (mesmo projet
 
 - Pasta POO: Local onde está armazenado todo o código do software, incluindo imagens, conteúdos de fxml, classes, interfaces e etc.
 
+- O arquivo "POO-Lebiton_Apresentação" é a apresentação completa do software exibida na instituição IFSP Campinas no dia 01/12/2021.
+
 ## Detalhes da construção do código
 
 -> Projeto realizado em Java com utilização do framework JavaFX e construção em cima do padrão MVC.<br>
