@@ -1,6 +1,6 @@
 # PI3 & PI4 em Java
-Repositório para o projeto interdisciplinar do 3° e 4° semestre (mesmo projeto) do tecnólogo TADS. 
-<b>Software para o agendamento de consultas online<b>
+Repositório para o projeto interdisciplinar do 3° e 4° semestre (mesmo projeto) do tecnólogo TADS. <br>
+<b>Software para o agendamento e administração online de consultas<b>
 
 ![image](https://user-images.githubusercontent.com/75282067/144155207-0a657481-3e1f-4b74-995c-12a9252f14fb.png)
 
